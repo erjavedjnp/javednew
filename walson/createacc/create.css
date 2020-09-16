@@ -35,7 +35,7 @@ video{
 }
 .form_horizontal .btn{
 	color: black;
-	background-color: #fff;
+	background-color: #f3c33e;
 	font-size: 15px;
 	font-weight: 600;
 	letter-spacing: 1px;
@@ -76,7 +76,7 @@ video{
 	right:15px;
 }
 .form_horizontal .create{
-	color: #fff;
+	color: #f3c33e;
 	background-color: #ffb3079c;
 	font-size: 15px;
 	font-weight: 600;

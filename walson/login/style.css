@@ -44,7 +44,7 @@
 }
 .form_horizontal .form-control{
 	color: #555;
-	background-color: #fff;
+	background-color: #f3c33e;
 	font-size: 13px;
 	letter-spacing: 1px;
 	height: 37px;
@@ -59,7 +59,7 @@
 }
 
 .form_horizontal .btn{
-	color: #fff;
+	color: #f3c33e;
 	background-color: black;
 	font-size: 15px;
 	font-weight: 600;
@@ -73,7 +73,7 @@
 }
 .form_horizontal .btn:hover{
 	background-color: black;
-	color:#fff;
+	color:#f3c33e;
 
 }
 .form_horizontal .form-options{
@@ -84,7 +84,7 @@
 }
 
 .form-options li a{
-	color: #fff;
+	color: #f3c33e;
 	letter-spacing:0.5px;
 	margin: 0 0 10px;
 	display: block;
