@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        IdentityPage
+    </title>
+    
+    <link rel="stylesheet" type="text/css" href="css\id.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="form_bg">
+    
+        
+            
+              <div class="image">
+                  <div>
+                    <a href="#" data-toggle="tooltip" title="Platform">
+                    <img id="image1" src="images\Image (2).jpeg"></a>
+                    
+                </div>
+                <div>
+                  <a href="#" data-toggle="tooltip" title="Comfort Zone ">
+                  <img id="image2" src="images\Image (3).jpeg"></a>
+                </div>
+                <div>
+                  <a href="#" data-toggle="tooltip" title="4U2DateMe">
+                  <img id="image3" src="images\Image.jpeg"></a>
+                </div>
+                <div>
+                  <a href="#" data-toggle="tooltip" title="Chorus">
+                  <img id="image4" src="images\Image (5).jpeg"></a>
+                </div>
+                <div>
+                  <a href="#" data-toggle="tooltip" title="FriendLine">
+                  <img id="image5" src="images\Image (4).jpeg"></a>
+                </div>
+                <div>
+                  <a href="#" data-toggle="tooltip" title="TV">
+                  <img id="image6" src="images\Image (1).jpeg"></a>
+                </div>
+                <div>   
+                  <a href="/dashboard.html"><video id="video1" autoplay muted loop>
+                    <source src="images\screen.mp4">
+                  </video></a>  
+                 </div>
+                  </div>
+              <div class="avatar-wrapper">
+                  <div id="circle1">
+                    <a href="/notifications.html"><i class="fa fa-bell" aria-hidden="true"></i></a>
+                  </div>
+                  <div id="circle2">
+                   <a href="/messages.html"><i class="fa fa-comment" aria-hidden="true"></i></a> 
+                  </div>
+                  <div id="circle3">
+                    <a href="/settings.html"><i class="fa fa-cog" aria-hidden="true"></i></a>
+                  </div>
+                  <div id="circle4">
+                   <i ><span onclick="openNav()" style="font-size: 25px;">&#9776;</span></i> 
+                  </div>
+                  <div id="circle5">
+                    <a href="/followers.html"><i class="fa fa-users" aria-hidden="true"></i></a>
+                  </div>
+                  <div class="form_horizontal">
+                      <img src="images\Black PNG.png" class="logo" alt="logo" />
+                    </div>
+              </div>
+           <!-- <video autoplay muted loop>
+		<source src="screen.mp4">
+	</video>-->    
+    </div>
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Clients</a>
+      <a href="#">Contact</a>
+    </div>
+    
+    
+    
+    
+</div>
+<script>
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+</body>
+</html>
