@@ -1,0 +1,22 @@
+.comment{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+    box-shadow: 0 1px 3px #eeeeee;
+    background: linear-gradient(to bottom,#8a66139c,#f0bc2e);
+    width: 350px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 2rem;
+    margin: 10px 660px;
+    text-align: left;
+
+}
+
+@media(max-width:500px){
+    .comment{
+        margin: 10px 10px;
+        width: 230px;
+        height: 50px;
+
+    }
+}
