@@ -1,0 +1,90 @@
+body{
+    margin: 0;
+    
+    background: linear-gradient(to bottom,#ffb3079c,#C49A22); 
+    overflow-x: hidden;
+   }
+   
+   .webcam{
+     height: 50%;
+     align-items: center;
+     text-align: center;
+   }
+   
+    .button2{
+     margin-top: 100px;
+     color: black;
+       background-color: #fff;
+       font-size: 15px;
+       font-weight: 600;
+       letter-spacing: 1px;
+     width: 15%;
+     height: 50px;
+       padding: 10px 2static0px;
+       border-radius: 10px;
+     text-transform: uppercase;
+     
+   }
+   
+   textarea{
+     background: #eeeeee;
+     border-radius: 10px;
+     height: 50px;
+     margin: 3px;
+     
+   }
+   
+   .header{
+     background-color: #f5ba13;
+     margin: auto -16px;
+     padding: 16px 32px;
+     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+     height: 56px;
+     width: 1550px;
+   }
+   .button1{
+     background: linear-gradient(to bottom,#ffb3079c,#C49A22);
+     color: white;
+     width: 80px;
+     border-radius: 10px;
+     font-family: 'loto',sans-serif;
+     
+   
+   }
+   .logo{
+     height: 70px;
+       width: 70px;
+       border-radius: 50%;
+       border: none;
+       margin-top: -20px;
+   }
+   .main{
+     width: 1530px;
+     height: 100vh;
+     
+   }
+   
+   
+   @media(max-width:500px){
+     .header{
+       width: 105%;
+     }
+     .button2{
+       width: 30%;
+       margin-left: 10px;
+     }
+     .main{
+       width: 100%;
+       overflow-x: hidden;
+     }
+     
+     .textarea{
+       width: 370px;
+     }
+    .video{
+      margin-left: -110px;
+    }
+     
+     
+   }
+   
