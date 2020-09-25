@@ -68,10 +68,15 @@ margin: 10px;
     margin: 10px;
   }
   .avatar-wrapper .fa-users {
-    
     text-align: center;  
     color: #34495e;
     margin: 10px;
+  }
+  .fa-users{
+    width: 45px;
+    height: 45px;
+    background-color: wheat;
+    border-radius: 50%;
   }
   #circle1 {
     width: 45px;
