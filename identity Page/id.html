@@ -5,7 +5,7 @@
         IdentityPage
     </title>
     
-    <link rel="stylesheet" type="text/css" href="id.css">
+    <link rel="stylesheet" type="text/css" href="/css/id.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -13,67 +13,96 @@
 <div class="form_bg">
     
         
-            <div class="avatar-wrapper">   
-                <i class="fa fa-user-circle" aria-hidden="true"></i> 
-              </div>
+            <!-- for images-->
               <div class="image">
                   <div>
-                    <a href="#" data-toggle="tooltip" title="Platform">
-                    <img id="image1" src="Image (2).jpeg">
+                    <img id="image1" src="/Images/Image (2).jpeg">
+                    <label id="label1">Platform</label>
                     
                 </div>
                 <div>
-                  <a href="#" data-toggle="tooltip" title="Comfort Zone ">
-                  <img id="image2" src="Image (3).jpeg">
+                  
+                  <img id="image2" src="/Images/Image (3).jpeg">
+                  <label id="label2">Comfort Zone</label>
                 </div>
                 <div>
-                  <a href="#" data-toggle="tooltip" title="4U2DateMe">
-                  <img id="image3" src="download.jpg">
+                  
+                  <img id="image3" src="/Images/Image.jpeg">
+                  <label id="label3">4U2DateMe</label>
                 </div>
                 <div>
-                  <a href="#" data-toggle="tooltip" title="Chorus">
-                  <img id="image4" src="Image (5).jpeg">
+                  
+                  <img id="image4" src="/Images/Image (5).jpeg">
+                  <label id="label4">Chorus</label>
                 </div>
                 <div>
-                  <a href="#" data-toggle="tooltip" title="FriendLine">
-                  <img id="image5" src="Image (4).jpeg">
+                  
+                  <img id="image5" src="/Images/Image (4).jpeg">
+                  <label id="label5">FriendLine</label>
                 </div>
                 <div>
-                  <a href="#" data-toggle="tooltip" title="TV">
-                  <img id="image6" src="Image (1).jpeg"></a>
+                  
+                  <img id="image6" src="/Images/Image (1).jpeg">
+                  <label id="label6">TV</label>
                 </div>
+                <div>   
+                  <a href="/profile.html"><video id="video1" autoplay muted loop>
+                    <source src="/Images/screen.mp4">
+                  </video></a>  
+                 </div>
                   </div>
+                  <!-- for  icons -->
               <div class="avatar-wrapper">
                   <div id="circle1">
-                    <i class="fa fa-bell" aria-hidden="true"></i>
+                    <a href="/notifications.html"><i class="fa fa-bell" aria-hidden="true"></i></a>
                   </div>
                   <div id="circle2">
-                    <i class="fa fa-comment" aria-hidden="true"></i>
+                   <a href="/messages.html"><i class="fa fa-comment" aria-hidden="true"></i></a> 
                   </div>
                   <div id="circle3">
-                    <i class="fa fa-cog" aria-hidden="true"></i>
+                    <a href="/settings.html"><i class="fa fa-cog" aria-hidden="true"></i></a>
                   </div>
                   <div id="circle4">
-                    <i class="fa fa-server" aria-hidden="true"></i>
+                   <i ><span onclick="openNav()" style="font-size: 25px;">&#9776;</span></i> 
                   </div>
-                  <div id="circle5">
-                    <i class="fa fa-users" aria-hidden="true"></i>
-                  </div>
+                  <!-- Logo -->
                   <div class="form_horizontal">
-                      <img src="Black%20PNG.png" class="logo" alt="logo" />
+                      <img src="/Images/Black PNG.png" class="logo" alt="logo" />
                     </div>
               </div>
-            <video autoplay muted loop>
-		<source src="screen.mp4">
-	</video>
-            
-        
+              
     </div>
+    <!-- Side Bar --> 
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Clients</a>
+      <a href="#">Contact</a>
+    </div>
+    <!-- for showing followers-->
+    <div class="box">
+      <div><label id="label7">Charley James</label></div>
+      <div><label id="label8"> 23.3K followers</label></div>
+      <a href="/followers.html"><i class="fa fa-users" aria-hidden="true" style="font-size: 40px"></i></a>
+      
+     </div>
+    
+    
+    
 </div>
 <script>
   $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
 });
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
 </script>
 </body>
 </html>
