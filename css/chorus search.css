@@ -1,0 +1,257 @@
+body {
+
+  background-color:goldenrod;
+}
+
+.container {
+  display: inline-block;
+  cursor: pointer;
+ 
+}
+
+.container-fluid {
+  
+ position: absolute;
+  top: -10;
+  left: 0;
+}
+.image1 {
+  position: relative;
+  top: 0px;
+  left: 0;
+  border-radius: 50% ;
+  z-index: 1;
+  
+}
+
+.image2 {
+  position: relative ;
+  bottom: 90px;
+  z-index:0;
+  border: 1px;
+  opacity : 0.9;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+ 
+}
+
+h5{
+  z-index : 0;
+  bottom : 160px;
+  position:relative;
+
+  color:white;
+  float: left;
+  padding-left: 15px;
+  font-size:30px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+ 
+.navbar{
+  margin : auto;
+  padding-right: 10px ;
+   display : inline-flex;
+  width : 13%;
+  border-color: black;
+  position: relative;
+  padding-top : 720px;
+}
+
+.navbar input{
+         background-color:goldenrod;
+}
+
+button{
+  background-color : goldenrod;
+   color : black;
+}
+
+button:hover{
+   background-color : white;
+   transition: 0.3s;
+}
+ 
+
+
+
+.parent{
+  display: inline;
+}
+
+.task1 {
+   float: left;
+   font-size : 25px;
+   padding-left : 50px;
+   padding-top: 10px;
+}
+
+.task2 {
+    float: right;
+    padding-right: 50px;
+    font-size : 20px;
+    padding-bottom : 20px;
+    text-decoration : underline;
+    padding-top: 5px;
+}
+
+section {
+  float: left;
+  position: relative;
+  width: 100%;
+}
+
+.follow-men {
+  
+  display: inline-block;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  width: 100%;
+  position: relative;
+  padding-top:5px;
+}
+
+figure {
+  margin: 0;
+   display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 20px;
+    margin-inline-end: 40px;
+}
+
+figure > img {
+   border-radius : 50%;
+}
+.follow-men > figure {
+  display: inline-block;
+  float : left;
+  padding-left : 1px;
+}
+
+hr{
+   border-bottom: 1px solid black;
+}
+
+h4{
+  float : left;
+  
+}
+
+a{
+  color : black;
+  float : right;
+  
+}
+
+.follow-men > a{
+  background-color : white;
+  color:black;
+  padding : 2px 20px;
+  border-radius: 15px;
+
+}
+span{
+  float : left;
+  color : white;
+}
+
+*{
+  margin : 0;
+  padding : 0;
+  box-sizing: border-box;
+}
+
+img{
+  pointer-events : none;
+}
+
+
+
+.story-container ul{
+  list-style-type: none;
+  display: flex;
+  user-select: none;
+  overflow-x: auto;
+  padding-left: 310px;
+  padding-top : 580px;
+  position: absolute;
+}
+
+.story-container ul li {
+  padding : 0px 17px;
+  display : flex;
+  flex-direction : column;
+  align-items : center;
+  justify-content : center;
+  position : relative;
+  
+}
+
+.story-container ul li:first-child{
+  padding-left : 5px;
+}
+
+.story-container ul li:last-child{
+  padding-left:12px;
+}
+
+.story-container ul li .story{
+  width: 75px;
+  height : 75px;
+  border-radius : 50%;
+  background : rgba(255,255,255,.75);
+  padding : 1px;
+  position : relative;
+  
+}
+
+.story-container ul li .has-story .story{
+  padding:2px;
+  background : linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%,
+   #bc1888 100%);
+}
+
+.story-container ul li .story img{
+  padding:2px;
+  background :  linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%,
+  #bc1888 100%);
+  text-decoration: dotted;
+  border-radius : 50%;
+  width : 100%;
+  height : 100%;
+}
+
+.story-container ul li span {
+  color: white;
+  font-weight : 300;
+  font-size:15px;
+  max-width : 100px;
+  overflow : hidden;
+  text-overflow : ellipsis;
+  margin-top:2px;
+  z-index : 2;
+}
+
+
+.mystory {
+    position : relative;
+    font-size: 30px;
+    text-align: center;
+    padding-left : 16%;
+    font-family : 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-decoration: none;
+}
+
+.mystory a:hover{
+  background-color: white;
+ 
+  color: black;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding-left: 20px;
+  padding-right:25px;
+  margin-bottom: 10px;
+}
+
