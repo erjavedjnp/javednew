@@ -3,8 +3,8 @@ const User=require('../../models/user/user')
 
 const auth= async(req,res,next)=>{
     try{
-        const token = req.cookies['auth_token']
-        const decoded=jwt.verify(token,'thisismyjwtsecret')
+        const token = req.cookies['auth_token_2']
+        const decoded=jwt.verify(token,'thisismyjwtsecret2')
         
         const user=await User.findOne({_id:decoded._id,'tokens.token':token})
         if(!user){

@@ -23,7 +23,7 @@ app.use(cookieParser())
 app.use(express.static( "public"));
       
 app.get("/",(req,res)=>{
-			res.render('index.ejs')
+			res.redirect('/user/signup')
 });
 
 

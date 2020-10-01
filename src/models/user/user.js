@@ -4,26 +4,16 @@ const bcrypt=require('bcryptjs')
 const jwt=require('jsonwebtoken')
 
 const userSchema = new mongoose.Schema({
-	firstname:{
+	fullname:{
 		type:String,
 		required:true,
 		trim:true
 	},
-	lastname:{
-		type:String,
-		required:true,
-		trim:true
-	},
-	password:{
+	username:{
 		type:String,
 		required:true,
 		unique:true,
-		trim:true,
-		validate(value){
-			if(value.length<6){
-				throw new Error()
-			}
-		}
+		trim:true
 	},
 	email:{
 		type:String,
@@ -35,13 +25,17 @@ const userSchema = new mongoose.Schema({
 			}
 		}
 	},
-	phoneno:{
+	age:{
+		type:Number,
+		required:true
+	},
+	password:{
 		type:String,
 		required:true,
-		unique:true,
+		trim:true,
 		validate(value){
-			if(!value.length==10){
-				throw new Error('phn no not valid!!')
+			if(value.length<6){
+				throw new Error()
 			}
 		}
 	},
@@ -51,6 +45,12 @@ const userSchema = new mongoose.Schema({
 			required:true
 		}
 	}],
+	gender:{
+		type:String,
+	},
+	country:{
+		type:String,
+	},
 	isVendor: Boolean,
 	isAdmin:Boolean,
 	mailverified:{
@@ -61,7 +61,7 @@ const userSchema = new mongoose.Schema({
 
 userSchema.methods.generatingauthtoken=async function(){
 	const user=this
-	const token=jwt.sign({_id:user._id.toString()},'thisismyjwtsecret')
+	const token=jwt.sign({_id:user._id.toString()},'thisismyjwtsecret2')
 	user.tokens=user.tokens.concat({token})
     await user.save()
 	return token

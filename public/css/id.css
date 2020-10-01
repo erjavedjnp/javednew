@@ -1,0 +1,287 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.form_bg{
+	background: linear-gradient(to bottom,#ffb3079c,#C49A22);
+	height: 100vh;
+	display: flex;
+	align-items: center;	
+}
+
+.form_horizontal{
+    
+    text-align: center;
+    
+}
+.form_horizontal .logo{
+height: 180px;
+width: 180px;
+border-radius: 50%;
+border: none;
+position: absolute;
+top: -4%;
+left: 41%;
+text-align: center;  
+margin: 10px;
+
+
+}
+.avatar-wrapper {  
+    border-radius: 50%;
+    overflow: initial;
+    -webkit-box-shadow: 1px 1px 15px -5px black;
+            box-shadow: 1px 1px 15px -5px black;   
+  }
+  .avatar-wrapper:hover {
+    cursor: pointer;
+  }
+  /* 
+  .avatar-wrapper .fa-user-circle {
+    position: absolute;
+    top: 48%;
+    left: 43%;
+    font-size: 140px; 
+    text-align: center;  
+    color: #34495e;
+  } 
+  */
+  .avatar-wrapper .fa-bell {
+    
+    font-size: 25px; 
+    text-align: center;  
+    color: #34495e;
+    margin: 10px;
+  }
+  .avatar-wrapper .fa-comment {
+    
+    font-size: 25px; 
+    text-align: center;  
+    color: #34495e;
+    margin: 10px;
+  }
+  .avatar-wrapper .fa-cog {
+    
+    font-size: 25px; 
+    text-align: center;  
+    color: #34495e;
+    margin: 10px;
+  }
+  .avatar-wrapper .fa-users {
+    text-align: center;  
+    color: #34495e;
+    margin: 10px;
+  }
+  .fa-users{
+    width: 45px;
+    height: 45px;
+    background-color: wheat;
+    border-radius: 50%;
+  }
+  #circle1 {
+    width: 45px;
+    height: 45px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background: white;
+    position: absolute;
+    top: 80%;
+    left: 44%;
+    text-align: center;  
+    margin: 10px;
+ }
+ #circle2 {
+    width: 45px;
+    height: 45px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background: white;
+    position: absolute;
+    top: 80%;
+    left: 49%;
+    text-align: center;  
+    margin: 10px;
+ }
+ #circle3 {
+    width: 45px;
+    height: 45px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background: white;
+    position: absolute;
+    top: 5%;
+    right: 0;
+    text-align: center;  
+    margin: 10px;
+ }
+ #circle4 {
+    width: 40px;
+    height: 40px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background: white;
+    position: absolute;
+    top: 5%;
+    left: 0%;
+    text-align: center;  
+    margin: 10px;
+ } 
+ .box {
+  position: absolute;
+  top: 25%;
+  right: 5%;
+  text-align: center;  
+  margin: 10px;
+}
+  .image {
+    
+    border-radius: 50%;
+      
+  }
+  .image:hover{
+      cursor: pointer;
+  }
+ .image #image1{
+    border-radius: 50%;
+     width: 100px;
+     height: 100px;
+     position: absolute;
+     top: 41%;
+     left: 31%; 
+  }
+  .image #image2{
+    border-radius: 50%;
+     width: 100px;
+     height: 100px;
+     position: absolute;
+     top: 24%;
+     left: 38%; 
+  }
+  .image #image3{
+    border-radius: 50%;
+     width: 100px;
+     height: 100px;
+     position: absolute;
+     top: 24%;
+     left: 51%; 
+  }
+  .image #image4{
+    border-radius: 50%;
+     width: 100px;
+     height: 100px;
+     position: absolute;
+     top: 41%;
+     left: 60%;
+  }
+  .image #image5{
+    border-radius: 50%;
+     width: 100px;
+     height: 100px;
+     position: absolute;
+     top: 62%;
+     left: 51%; 
+  }
+  .image #image6{
+     border-radius: 50%;
+     width: 100px;
+     height: 100px;
+     position: absolute;
+     top: 62%;
+     left: 38%; 
+  }
+  label{
+    color: white;
+    font-size: medium;
+  }
+  #label1{
+    position: absolute;
+     top: 38%;
+     left: 32.5%;
+  }
+  #label2{
+    position: absolute;
+    top: 21%;
+    left: 38%;
+  }
+  #label3{
+    position: absolute;
+     top: 21%;
+     left: 52%;
+  }
+  #label4{
+    position: absolute;
+     top: 38%;
+     left: 61.5%;
+  }
+  #label5{
+    position: absolute;
+     top: 59%;
+     left: 51%;
+  }
+  #label6{
+    position: absolute;
+     top: 59%;
+     left: 41%;
+  }
+  video{
+  border-radius: 50%;
+  width: 160px;
+  height: 160px;
+  overflow: hidden;
+  }
+  .image #video1{
+    position: absolute;
+    top: 39%;
+    left: 43%;
+    font-size: 140px
+  }
+
+  
+  .sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color:goldenrod;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+ 
+  
+ 
+  
+ 
+  
+  
+  
+  
+  /*# sourceMappingURL=sigup.css.map */

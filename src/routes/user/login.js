@@ -6,8 +6,8 @@ const bcryptjs=require('bcryptjs')
 const jwt=require('jsonwebtoken')
 
 
-router.get("/register",(req,res)=>{
-	res.render("registration.ejs");
+router.get("/signup",(req,res)=>{
+	res.render("signup.ejs");
 });
 
 
@@ -31,9 +31,9 @@ router.get("/signin",(req,res)=>{
 
 
 // //<-------------->TO READ THE USER PROFILE<---------------->
-// router.get('/profile',auth,async(req,res)=>{
-// 	res.send(req.user)
-// })
+router.get('/id',auth,async(req,res)=>{
+	res.render('id.ejs')
+})
 
 
 //<------------>TO LOGOUT THE USER<---------------->
@@ -59,17 +59,15 @@ router.get('/logout',auth,async(req,res)=>{
 //======================================
 
 
-router.post("/register",async(req,res)=>{ 
+router.post("/signup",async(req,res)=>{ 
 	try{
-        const user=new User(req.body)
-        const token=await user.generatingauthtoken()
-		res.cookie('auth_token',token)
-		const userproduct=new Userproduct({})
-		await userproduct.save()
-		user.products=userproduct._id
-        await user.save()
-        res.send('register sucessfully')
+		const user=new User(req.body)
+        // const token=await user.generatingauthtoken()
+		// res.cookie('auth_token-2',token)
+		await user.save()
+        res.redirect('/user/signin')
 	}catch(e){
+		console.log(e)
 		res.send(e)
 	}
 });
@@ -80,20 +78,21 @@ router.post("/register",async(req,res)=>{
 //   CORRECT IT!!!!!!!!
 router.post('/signin',async (req,res)=>{
 	try{
-		const user=await User.findOne({email:req.body.email})
+		console.log(req.body)
+		const user=await User.findOne({username:req.body.username})
 		if(!user){
-			res.send({error:'Email id is not registered'})
+			res.send({error:'Username is not registered'})
 		}
-
+		console.log(user)
 		const isMatch=await bcryptjs.compare(req.body.password,user.password)
 		if(!isMatch){
 			res.send({error:'Invalid password'})
 		}
-
 		const token=await user.generatingauthtoken()
-		res.cookie('auth_token',token)
-		res.redirect('/user/profile')
+		res.cookie('auth_token_2',token)
+		res.redirect('/user/id')
 	}catch(e){
+		console.log('yes')
 		res.redirect('/')
 	}
 })
@@ -120,7 +119,7 @@ router.post('/forget-password',async(req,res)=>{
 router.post('/reset-password',async(req,res)=>{
 	try{
 		const token=req.query.token
-		const decode=jwt.verify(token,'thisismyjwtsecret')
+		const decode=jwt.verify(token,'thisismyjwtsecret2')
 
 		var message=null,error=null
 		if(decode.type !== 'resetpassword')
