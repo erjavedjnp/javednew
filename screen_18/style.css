@@ -3,7 +3,7 @@ body{
 }
 #parent{
     display: grid;
-    grid-template-columns: 10vw 60vw 28vw;
+    grid-template-columns: 10vw 60vw 29vw;
     grid-template-rows: 6vh 6vh 6vh;
 
 }
@@ -45,7 +45,7 @@ body{
 }
 .grid-container {
     display: grid;
-    grid-template-columns: 10vw 70vw 18vw;
+    grid-template-columns: 10vw 70vw 19vw;
     grid-template-rows: 5vh 5vh;
     grid-template-areas:
       "usr_logo song_name like_plus_button"
@@ -53,6 +53,7 @@ body{
   }
   .usr_logo { 
       grid-area: usr_logo;
+      display: flex;
     }
     .user_logo_img {
         width: 10vw;
@@ -73,15 +74,14 @@ body{
   
   .like_plus_button {
        grid-area: like_plus_button;
-        align-items: center;
-        justify-items: flex-start;
+        display: flex;
     }
 .follower{
   font-size: 4vh;  
 }
 .likebutton {
     vertical-align: middle;
-    padding: 1vh;
+    padding-right: 5vw;
     width: 10vw;
     height: 10vh;
     image-rendering: auto;
@@ -99,7 +99,7 @@ body{
 
 .grid-container2 {
     display: grid;
-    grid-template-columns: 40vw 30vw 28vw;
+    grid-template-columns: 40vw 30vw 29vw;
     grid-template-rows: 10vh 10vh 10vh;
     grid-template-areas:
       "country1 like1 dislike1"
@@ -115,6 +115,11 @@ body{
   .country3 { grid-area: country3; }
   .like3 { grid-area: like3; }
   .dislike3 { grid-area: dislike3; }
+  .country_name{
+  	width: 20vw;
+  	height: 8vh;
+  	text-align: center;
+  }
   .like_class{
     vertical-align: middle;
     width: 9vw;
