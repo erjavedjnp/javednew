@@ -11,6 +11,10 @@ router.get("/signup",(req,res)=>{
 });
 
 
+router.get('/create',async(req,res)=>{
+	res.render("create.ejs")
+})
+
 // router.get("/vender-register",(req,res)=>{
 // 	res.render("venderregistration.ejs")
 // })
@@ -20,9 +24,9 @@ router.get("/signin",(req,res)=>{
 	res.render("signin.ejs")
 })
 
-// router.get("/forget-password",(req,res)=>{
-// 	res.render("forgetpassword.ejs")
-// })
+router.get("/forget",(req,res)=>{
+	res.render("forget.ejs")
+})
 
 // router.get("/reset-password",(req,res)=>{
 // 	const token=req.query.token
@@ -61,11 +65,24 @@ router.get('/logout',auth,async(req,res)=>{
 
 router.post("/signup",async(req,res)=>{ 
 	try{
-		const user=new User(req.body)
-        // const token=await user.generatingauthtoken()
-		// res.cookie('auth_token-2',token)
-		await user.save()
-        res.redirect('/user/signin')
+		const email=await User.findOne({email:req.body.email})
+		const username=await User.findOne({username:req.body.username})
+		if(email)
+		{
+			req.flash('error','Email is already register!')
+			res.redirect('/user/signup')
+		}
+		else if(username)
+		{
+			req.flash('error','Username is already register!')
+			res.redirect('/user/signup')
+		}
+		else
+		{
+			const user=new User(req.body)
+			await user.save()
+			res.redirect('/user/signin')
+		}
 	}catch(e){
 		console.log(e)
 		res.send(e)
@@ -78,22 +95,27 @@ router.post("/signup",async(req,res)=>{
 //   CORRECT IT!!!!!!!!
 router.post('/signin',async (req,res)=>{
 	try{
-		console.log(req.body)
 		const user=await User.findOne({username:req.body.username})
 		if(!user){
-			res.send({error:'Username is not registered'})
+			req.flash('error','Username is not registered')
+			res.redirect('/user/signin')
 		}
-		console.log(user)
-		const isMatch=await bcryptjs.compare(req.body.password,user.password)
-		if(!isMatch){
-			res.send({error:'Invalid password'})
+		else
+		{
+			const isMatch=await bcryptjs.compare(req.body.password,user.password)
+			if(!isMatch){
+				req.flash('error','Invalid password')
+				res.redirect('/user/signin')
+			}
+			else
+			{
+				const token=await user.generatingauthtoken()
+				res.cookie('auth_token_2',token)
+				res.redirect('/user/id')
+			}
 		}
-		const token=await user.generatingauthtoken()
-		res.cookie('auth_token_2',token)
-		res.redirect('/user/id')
 	}catch(e){
-		console.log('yes')
-		res.redirect('/')
+		res.send('server error')
 	}
 })
 
