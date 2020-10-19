@@ -6,6 +6,11 @@ const bcryptjs=require('bcryptjs')
 const jwt=require('jsonwebtoken')
 
 
+router.get('/profile',async(req,res)=>{
+	res.render('profile.ejs')
+})
+
+
 router.get("/signup",(req,res)=>{
 	res.render("signup.ejs");
 });
@@ -67,18 +72,22 @@ router.post("/signup",async(req,res)=>{
 	try{
 		const email=await User.findOne({email:req.body.email})
 		const username=await User.findOne({username:req.body.username})
+		console.log('yes')
 		if(email)
 		{
+			console.log('yes')
 			req.flash('error','Email is already register!')
 			res.redirect('/user/signup')
 		}
 		else if(username)
 		{
+			console.log('yes')
 			req.flash('error','Username is already register!')
 			res.redirect('/user/signup')
 		}
 		else
 		{
+			console.log('yes')
 			const user=new User(req.body)
 			await user.save()
 			res.redirect('/user/signin')

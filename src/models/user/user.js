@@ -39,6 +39,9 @@ const userSchema = new mongoose.Schema({
 			}
 		}
 	},
+	avatar:{
+		type:String
+	},
 	tokens:[{
 		token:{
 			type:String,
@@ -51,12 +54,7 @@ const userSchema = new mongoose.Schema({
 	country:{
 		type:String,
 	},
-	isVendor: Boolean,
 	isAdmin:Boolean,
-	mailverified:{
-		type:Boolean,
-		default:false
-	}
 });
 
 userSchema.methods.generatingauthtoken=async function(){

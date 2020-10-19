@@ -2,7 +2,6 @@ const express = require("express")
 const app = express()
 const bodyParser= require("body-parser")
 const cookieParser=require('cookie-parser')
-const userloginRoutes=require('./routes/user/login')
 const session=require('express-session')
 const flash=require('connect-flash')
 
@@ -46,10 +45,10 @@ app.get("/",(req,res)=>{
 });
 
 
-app.use('/user',userloginRoutes)
+app.use('/user',require('./routes/user/login'))
+app.use('/user',require('./routes/user/post'))
+
 const PORT = process.env.PORT || 3000;
-
-
 app.listen(PORT,function()
 		  {
 	console.log(`Server has started at ${PORT}`);
