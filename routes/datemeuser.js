@@ -14,7 +14,7 @@ router.get('/chatuser',(req,res)=>{
 });
 
 router.get('/date-match',(req,res)=>{
-    res.render('date&match',{})
+    res.render('Date&match',{})
 });
 
 module.exports = router;
