@@ -34,7 +34,7 @@ app.get('/groups',(req,res)=>{
     res.render('groups',{})
 });
 
-app.get('groups/:name',(req,res)=>{
+app.get('/groups/:name',(req,res)=>{
     res.render('group-detail',{})
 });
 
