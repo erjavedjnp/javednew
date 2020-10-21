@@ -1,0 +1,386 @@
+* {
+  box-sizing: border-box;
+}
+.col-md-6 {
+  float: left;
+  width: 50%;
+  padding: 0 10px;
+  padding:20px;
+    
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+.brand{
+    padding: 10px;
+    font-size: 30px
+}
+.brands{
+    width:100%;
+    height: 200px;
+    border-radius: 15px 15px 0px 0px
+}
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+  background-color: #f1f1f1;
+  width:100%;
+    border-radius: 15px
+}
+
+body{
+	margin: 0;
+	padding: 0;
+    font-family: 'loto',sans-serif;
+	 text-align: center;
+	 display: inherit;
+background-color: #ffb3079c;
+
+}
+ 
+.banner{
+	width: 100%;
+	border-radius: 50px 50px 0px 0px;
+	height: 150px;
+	border: none;
+   
+}
+.form_horizontal{
+          font-family: 'loto',sans-serif;
+		  text-align: center;
+		  
+}
+
+.center{
+	margin: 0% 18% 0% 18%;
+}
+
+.logo{
+	height: 150px;
+	width: 150px;
+	border-radius: 50%;
+	border: none;
+    position: relative;
+}
+.ProfilePic{
+	height: 200px;
+	width: 200px;
+	border-radius: 50%;
+	border: 5px solid #fff;
+	margin-left: 10px;
+	margin-top: 10px;
+	
+   
+}
+
+.container {
+  position: relative;
+  text-align: center;
+
+}
+@media only screen and (max-width: 400px){
+	
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+  margin-top: 10%;
+}
+	}
+
+
+
+@media(max-width: 400px){
+	{
+
+	}
+}
+ul{
+   
+    padding-right: 25px;
+    padding-top: 5px;
+}
+.top2{
+  position: relative;
+  top: -255px;
+  float: right;
+  margin-right: 4%;
+  padding-right: 10px;
+  background-color: skyblue;
+  padding-left: 10px;
+  color: white;
+  text-align: left;
+  font-size: 28px;
+  border-radius: 50%;
+}
+.top3{
+  position: relative;
+  top: -255px;
+  float: right;
+  margin-right: 4%;
+  padding-right: 10px;
+  background-color: skyblue;
+  padding-left: 10px;
+  color: white;
+  text-align: left;
+  font-size: 28px;
+  border-radius: 50%;
+}
+
+.bottom-left {
+  position: absolute;
+  bottom: 960px;
+  left: 66px;
+    color: white;
+}
+.bottom-left2 {
+  position: absolute;
+  bottom: 550px;
+  left: 66px;
+    color: white;
+}
+.bottom-left3 {
+  position: absolute;
+  bottom: 150px;
+  left: 66px;
+    color: white;
+}
+.bottom {
+  position: absolute;
+  bottom: 1000px;
+  right: 66px;
+    color: white;
+}
+.bottom2 {
+  position: absolute;
+  bottom: 600px;
+  right: 55px;
+    color: white;
+}
+.bottom3 {
+  position: absolute;
+  bottom: 190px;
+  right: 66px;
+    color: white;
+}
+
+.top-left .bell {
+  position: absolute;
+  top: 115px;
+  left: 25px;
+}
+
+.top-left .angle-lft {
+  position: absolute;
+  top: 40px;
+  left: 20px;
+}
+
+.user {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+}
+.top-right {
+  position: absolute;
+  top: 0%;
+  right: 45%;
+}
+
+.bottom-right {
+ 
+  position: absolute;
+  bottom: 65px;
+  right: 66px;
+    color: yellow
+}
+.trophy{
+    position: absolute;
+  bottom: 200px;
+  right: 66px;
+    color: yellow
+}
+
+.centered {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.form_horizontal .btn{
+	color: black;
+	border-radius: 200px;
+	background-color: #fff;
+	font-size: 15px;
+	font-weight: 600;
+	letter-spacing: 1px;
+	width: 50%;
+	padding: 10px 2static0px;
+	border: none;
+	text-transform: uppercase;
+}
+.topleft2{
+  position: relative;
+  top: -275px;
+  float: left;
+  padding-left: 10px;
+    font-size: 75px;
+    color: yellow;
+    left: 35px;
+    font-style: bold;
+}
+.topleft3{
+  position: relative;
+  top: -275px;
+  float: left;
+  padding-left: 10px;
+    font-size: 75px;
+    color: yellow;
+    left: 35px;
+    font-style: bold;
+}
+.live2{
+  position: relative;
+  top: -75px;
+  right: -100px;    
+  float: right;
+  margin-right: 4%;
+  padding-right: 10px;
+  background-color: yellow;
+  padding-left: 10px;
+  color: black;
+  text-align: center;
+  border-radius: 15px;
+        }  
+.live3{
+  position: relative;
+  top: -75px;
+  right: -100px;    
+  float: right;
+  margin-right: 4%;
+  padding-right: 10px;
+  background-color: yellow;
+  padding-left: 10px;
+  color: black;
+  text-align: center;
+  border-radius: 15px;
+        }  
+.column {
+  float: left;
+  width: 25%;
+  padding: 10px;
+}
+.bl {
+  position: absolute;
+  bottom: 60px;
+  left: 66px;
+    color: white;
+}
+
+/* Style the images inside the grid */
+.column img {
+  opacity: 1; 
+  background-color: #ffb3079c;
+ border-radius: 15px;
+}
+
+/* Clear floats after the columns */
+.row {
+  content: "";
+  clear: both;
+}
+
+/* The expanding image container */
+.show.container {
+  position: relative;
+  display: none;
+}
+
+.show{
+	height: 200px;
+	text-decoration-style: center;
+}
+
+/* Expanding image text */
+#imgtext {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: white;
+  font-size: 20px;
+}
+
+/* Closable button inside the expanded image */
+.closebtn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+}
+.text-block {
+  position: relative;
+  bottom: 30px;
+  right: 0;
+  padding-left: 10px;
+  color: white;
+  text-align: left;
+}
+    
+  .live{
+  position: relative;
+  top: -75px;
+  right: -100px;    
+  float: right;
+  margin-right: 4%;
+  padding-right: 10px;
+  background-color: yellow;
+  padding-left: 10px;
+  color: black;
+  text-align: center;
+  border-radius: 15px;
+        }            
+
+.top{
+  position: relative;
+  top: -255px;
+  float: right;
+  margin-right: 4%;
+  padding-right: 10px;
+  background-color: skyblue;
+  padding-left: 10px;
+  color: white;
+  text-align: left;
+  font-size: 28px;
+  border-radius: 50%;
+}
+
+.topleft{
+  position: relative;
+  top: -275px;
+  float: left;
+  padding-left: 10px;
+    font-size: 75px;
+    color: yellow;
+    left: 35px;
+    font-style: bold;
+}
