@@ -2,7 +2,6 @@ const express=require('express')
 const router=express.Router()
 const Posts=require('../../models/user/post')
 const multer=require('multer')
-const cloudinary=require('cloudinary').v2
 
 router.get('/timeline',async(req,res)=>{
     try{
@@ -15,7 +14,19 @@ router.get('/timeline',async(req,res)=>{
     }
 })
 
+
+// const cloudinary = require('cloudinary').v2;
+// cloudinary.config({ 
+//   cloud_name: 'drybfwveo', 
+//   api_key: "328354267454673", 
+//   api_secret:"K_hc0VA-vOtGG6zzGi3aA1ANRy8" 
+// });
+
+
 const storage=multer.diskStorage({
+    destination:(req,file,cb)=>{
+        cb(null,process.env.PWD+'/storage/postupload')
+    },
     filename:(req,file,cb)=>{
         cb(null,file.fieldname + '-' + Date.now())
     }
@@ -27,14 +38,35 @@ const upload=multer({
     // fileFilter(req,res,cal)
 })
 
-
-router.post('/post',upload.single('avatar'),upload.single('music'),async(req,res)=>{
+router.post('/post',upload.array('avatar'),async(req,res)=>{
     try{
-        console.log('yes')
-        console.log(req.file)
-        // cloudinary.uploader.upload()
-        console.log(req.body)
+        for(var i=0;i<req.files.length;i++)
+        {
+            if(req.files[i].originalname.match(/\.(png|jpeg|jpg|gif)$/))
+            {
+                var avatar=req.files[i].filename
+            }
+            else if(req.files[i].originalname.match(/\.(mp3)$/))
+            {
+                var audio=req.files[i].filename
+            }
+            else
+            {
+                var video=req.files[i].filename
+            }            
+        }
+        const new_post={
+            ...req.body,
+            avatar,
+            audio,
+            video
+        }
+        const post=new Posts(new_post)
+        await post.save()
+        res.redirect('/user/timeline')
+        
     }catch(e){
+        console.log(e)
         res.send(e)
     }
 })

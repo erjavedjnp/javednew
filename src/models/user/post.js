@@ -12,6 +12,12 @@ const postSchema=new mongoose.Schema({
     avatar:{
         type:String
     },
+    audio:{
+        type:String
+    },
+    video:{
+        type:String,
+    },
     text:{
         type:String
     },
