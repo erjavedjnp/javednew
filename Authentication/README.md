@@ -1,6 +1,6 @@
-# Node Passport Authentication
+# Node Authentication
 
-## [Tutorial](https://youtu.be/vkIltwAySrk)
+
 
 ## 1. USAGE
 
@@ -24,11 +24,6 @@
 8. cookie-parser
 9. connect-flash
 
-```mermaid
-graph TD
-A[Source Code] -->|Branched > ytsource | B(Source Code As In Youtube Video)
-A --> C(Starter Kit)
-```
 
 ## Directory Structure
 
