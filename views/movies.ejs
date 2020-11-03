@@ -81,51 +81,25 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="mov-caro">
+
+							<% popular.forEach(function(movie) { %>
 							<div class="movie-item">
-								<img src="/images/resources/mov-caro1.jpg" alt="">
+								<img src="<%= movie.ImgUrl %>" alt="">
 								<div class="movie-detail">
-									<h2>Fast & Furious9 2020</h2>
-									<span>united states</span>
+									<h2><%= movie.Name %></h2>
+									<span><%= movie.Country %></span>
 									<ul class="stars-rating">
 										<li><i class="lni lni-star-filled"></i></li>
 										<li><i class="lni lni-star-filled"></i></li>
 										<li><i class="lni lni-star-filled"></i></li>
 										<li><i class="lni lni-star-filled"></i></li>
 										<li><i class="lni lni-star-filled"></i></li>
-										<li>5/5</li>
+										<li><%= movie.Rating %>/5</li>
 									</ul>
 								</div>
 							</div>
-							<div class="movie-item">
-								<img src="/images/resources/mov-caro3.jpg" alt="">
-								<div class="movie-detail">
-									<h2>Rio2 Animated</h2>
-									<span>UAE</span>
-									<ul class="stars-rating">
-										<li><i class="lni lni-star-filled"></i></li>
-										<li><i class="lni lni-star-filled"></i></li>
-										<li><i class="lni lni-star-filled"></i></li>
-										<li><i class="lni lni-star-filled"></i></li>
-										<li><i class="lni lni-star-filled"></i></li>
-										<li>5/4.5</li>
-									</ul>
-								</div>
-							</div>
-							<div class="movie-item">
-								<img src="/images/resources/mov-caro2.jpg" alt="">
-								<div class="movie-detail">
-									<h2>Highway 2020</h2>
-									<span>UK</span>
-									<ul class="stars-rating">
-										<li><i class="lni lni-star-filled"></i></li>
-										<li><i class="lni lni-star-filled"></i></li>
-										<li><i class="lni lni-star-filled"></i></li>
-										<li><i class="lni lni-star-filled"></i></li>
-										<li><i class="lni lni-star-filled"></i></li>
-										<li>5/3.5</li>
-									</ul>
-								</div>
-							</div>
+							<% }); %>
+
 						</div>
 					</div>
 				</div>
@@ -141,22 +115,22 @@
 						<h5 class="main-title">Categories</h5>
 						<ul class="movie-cat">
 							<li>
-								<a href="/movie-categories" title=""><i class="lni lni-heart"></i><span>Romance</span></a>
+								<a href="/movie-categories/Romance" title=""><i class="lni lni-heart"></i><span>Romance</span></a>
 							</li>
 							<li>
-								<a href="/movie-categories" title=""><i class="lni lni-app-store"></i><span>Action</span></a>
+								<a href="/movie-categories/Action" title=""><i class="lni lni-app-store"></i><span>Action</span></a>
 							</li>
 							<li>
-								<a href="/movie-categories" title=""><i class="lni lni-emoji-happy"></i><span>Animated</span></a>
+								<a href="/movie-categories/Animated" title=""><i class="lni lni-emoji-happy"></i><span>Animated</span></a>
 							</li>
 							<li>
-								<a href="/movie-categories" title=""><i class="lni lni-drupal"></i><span>Crime</span></a>
+								<a href="/movie-categories/Crime" title=""><i class="lni lni-drupal"></i><span>Crime</span></a>
 							</li>
 							<li>
-								<a href="/movie-categories" title=""><i class="lni lni-mailchimp"></i><span>Comedy</span></a>
+								<a href="/movie-categories/Comedy" title=""><i class="lni lni-mailchimp"></i><span>Comedy</span></a>
 							</li>
 							<li>
-								<a href="/movie-categories" title=""><i class="lni lni-video"></i><span>Drama</span></a>
+								<a href="/movie-categories/Drama" title=""><i class="lni lni-video"></i><span>Drama</span></a>
 							</li>
 						</ul>
 					</div>
@@ -177,120 +151,29 @@
 							<li><a href="#" title="">Popular</a></li>
 						</ul>
 						<div class="row merged-5">
+
+							<% movies.forEach(function(movie) {  %>
 							<div class="col-4">
 								<div class="single-post">
-									<a href="/movie/:name" title="">
-										<img src="/images/resources/mov-1.jpg" alt="">
+									<a href="/movie/<%= movie._id%>" title="">
+										<img src="<%= movie.ImgUrl %>" alt="">
 										<ul class="stars-rating">
 											<li><i class="lni lni-star-filled"></i></li>
 											<li><i class="lni lni-star-filled"></i></li>
 											<li><i class="lni lni-star-filled"></i></li>
 											<li><i class="lni lni-star-filled"></i></li>
 											<li><i class="lni lni-star-filled"></i></li>
-											<li>5/3.5</li>
+											<li><%= movie.Rating %>/5</li>
 										</ul>
 									</a>
 									<div class="movie-info">
-										<h5><a href="/movie/:name" title="">Jungle Cruise</a></h5>
-										<span>UK</span>
+										<h5><a href="/movie/<%= movie._id %>" title=""><%= movie.Name %></a></h5>
+										<span><%= movie.Country %></span>
 									</div>
 								</div>
 							</div>
-							<div class="col-4">
-								<div class="single-post">
-									<a href="/movie/:name" title="">
-										<img src="/images/resources/mov-2.jpg" alt="">
-										<ul class="stars-rating">
-											<li><i class="lni lni-star-filled"></i></li>
-											<li><i class="lni lni-star-filled"></i></li>
-											<li><i class="lni lni-star-filled"></i></li>
-											<li><i class="lni lni-star-filled"></i></li>
-											<li><i class="lni lni-star-filled"></i></li>
-											<li>5/5</li>
-										</ul>
-									</a>
-									<div class="movie-info">
-										<h5><a href="/movie/:name" title="">Mulan 2020</a></h5>
-										<span>UAE</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-4">
-								<div class="single-post">
-									<a href="/movie/:name" title="">
-										<img src="/images/resources/mov-3.jpg" alt="">
-										<ul class="stars-rating">
-											<li><i class="lni lni-star-filled"></i></li>
-											<li><i class="lni lni-star-filled"></i></li>
-											<li><i class="lni lni-star-filled"></i></li>
-											<li><i class="lni lni-star-filled"></i></li>
-											<li><i class="lni lni-star-filled"></i></li>
-											<li>5/4.5</li>
-										</ul>
-									</a>
-									<div class="movie-info">
-										<h5><a href="/movie/:name" title="">Skyfall 2020</a></h5>
-										<span>USA</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-4">
-								<div class="single-post">
-									<a href="/movie/:name" title="">
-										<img src="/images/resources/mov-4.jpg" alt="">
-										<ul class="stars-rating">
-											<li><i class="lni lni-star-filled"></i></li>
-											<li><i class="lni lni-star-filled"></i></li>
-											<li><i class="lni lni-star-filled"></i></li>
-											<li><i class="lni lni-star-filled"></i></li>
-											<li><i class="lni lni-star-filled"></i></li>
-											<li>5/4.5</li>
-										</ul>
-									</a>
-									<div class="movie-info">
-										<h5><a href="/movie/:name" title="">Skyfall 2020</a></h5>
-										<span>USA</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-4">
-								<div class="single-post">
-									<a href="/movie/:name" title="">
-										<img src="/images/resources/mov-5.jpg" alt="">
-										<ul class="stars-rating">
-											<li><i class="lni lni-star-filled"></i></li>
-											<li><i class="lni lni-star-filled"></i></li>
-											<li><i class="lni lni-star-filled"></i></li>
-											<li><i class="lni lni-star-filled"></i></li>
-											<li><i class="lni lni-star-filled"></i></li>
-											<li>5/4.5</li>
-										</ul>
-									</a>
-									<div class="movie-info">
-										<h5><a href="/movie/:name" title="">code8 2020</a></h5>
-										<span>USA</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-4">
-								<div class="single-post">
-									<a href="/movie/:name" title="">
-										<img src="/images/resources/mov-6.jpg" alt="">
-										<ul class="stars-rating">
-											<li><i class="lni lni-star-filled"></i></li>
-											<li><i class="lni lni-star-filled"></i></li>
-											<li><i class="lni lni-star-filled"></i></li>
-											<li><i class="lni lni-star-filled"></i></li>
-											<li><i class="lni lni-star-filled"></i></li>
-											<li>5/4.5</li>
-										</ul>
-									</a>
-									<div class="movie-info">
-										<h5><a href="/movie/:name" title="">Avatar 2012</a></h5>
-										<span>USA</span>
-									</div>
-								</div>
-							</div>
+							<% }); %>
+
 							<div class="col-12">
 								<div class="paginations">
 									<a class="prev" href="#"><i class="lni lni-arrow-left"></i></a>
