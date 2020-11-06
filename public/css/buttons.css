@@ -1,0 +1,39 @@
+
+button{
+	width:100px;
+	height:30px;
+	position:absolute;
+	margin-left:600px;
+	
+  }
+  #play_button {
+    position:absolute;
+    transition: .5s ease;
+    top: 50%;
+    left: 50%;
+}
+  button .msg-follow,
+  button .msg-following,
+  button .msg-unfollow{
+	display: none;
+  }
+  
+  button .msg-follow{
+	display: inline;
+  }
+  
+  button.following .msg-follow{
+	display: none;
+  }
+  
+  button.following .msg-following{
+	display: inline;
+  }
+  
+  button.following:not(.wait):hover .msg-following{
+	display: none;
+  }
+  
+  button.following:not(.wait):hover .msg-unfollow{
+	display: inline;
+  }
