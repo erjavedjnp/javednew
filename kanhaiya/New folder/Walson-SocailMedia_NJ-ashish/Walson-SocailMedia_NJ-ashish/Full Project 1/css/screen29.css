@@ -1,0 +1,187 @@
+body{
+    margin: 0;
+    background-color: #f3c33e;
+}
+
+.logo{
+    position: relative;
+    height: 100px;
+    width: 100px;
+    z-index: 1;
+    left: 500px;
+    top: 50px;
+    margin: auto;
+
+    
+}
+
+.wall{
+    margin: auto;
+    height: 265px;
+    width: 100%;
+    
+    position: relative;
+    z-index: -1;
+    
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.topdiv h1{
+    color: white;
+    margin: auto;
+    position: absolute;
+    display: inline-block;
+    left: 250px;
+    top: 270px;
+}
+
+
+.middiv{
+    display: flex;
+    margin-left:410px ;
+    
+}
+.middiv div{
+    margin: 20px;
+    text-align: center;
+
+}
+
+.vl {
+    border-left: 6px solid white;
+    height: 50px;
+  }
+
+
+
+.accordion img{
+    border-radius: 50%;
+}
+
+.svg-iconarrow {
+    width: 2em;
+    height: 2em;
+    margin-left: 900px;
+    margin-top: -50px;
+  }
+  
+  .svg-iconarrow path,
+  .svg-iconarrow polygon,
+  .svg-iconarrow rect {
+    fill: black;
+  }
+  
+  .svg-iconarrow circle {
+    stroke: black;
+    stroke-width: 1;
+  }
+
+  
+
+  .svg-icon {
+    width: 3em;
+    height: 3em;
+    margin-left: 900px;
+  }
+  
+  .svg-icon path,
+  .svg-icon polygon,
+  .svg-icon rect {
+    fill:  #f3c33e;
+  }
+  
+  .svg-icon circle {
+    stroke:  #f3c33e;
+    stroke-width: 1;
+  }
+
+ 
+  .svg-iconbackarrow {
+    width: 2em;
+    height: 2em;
+    margin-top: 10px;
+  }
+  
+  .svg-iconbackarrow path,
+  .svg-iconbackarrow polygon,
+  .svg-iconbackarrow rect {
+    fill:black;
+  }
+  
+  .svg-iconbackarrow circle {
+    stroke: black;
+    stroke-width: 1;
+  }
+
+  .svg-iconprofile {
+    width: 2em;
+    height: 2em;
+    margin-left: 880px;
+  }
+  
+  .svg-iconprofile path,
+  .svg-iconprofile polygon,
+  .svg-iconprofile rect {
+    fill: black;
+  }
+  
+  .svg-iconprofile circle {
+    stroke: black;
+    stroke-width: 1;
+  }
+
+  
+
+  .svg-iconsearch {
+    width: 2em;
+    height: 2em;
+    margin-left: -200px ;
+    margin-top: 170px;
+    position: absolute;
+  }
+  
+  .svg-iconsearch path,
+  .svg-iconsearch polygon,
+  .svg-iconsearch rect {
+    fill: #f3c33e;
+  }
+  
+  .svg-iconsearch circle {
+    stroke: #f3c33e;
+    stroke-width: 1;
+  }
+
+  @media(max-width:500px){
+      .logo{
+          left: 100px;
+          top: 80px;
+      }
+      .svg-iconprofile{
+          margin-left: 300px;
+          margin-top: -70px;
+      }
+      .svg-iconbackarrow{
+          margin-top: 60px;
+      }
+      .topdiv h1{
+          margin: auto;
+          left: 30px;
+      }
+      .middiv{
+          margin: auto;
+      }
+      
+      
+      .svg-iconarrow{
+          margin-left: 270px;
+      }
+      .svg-icon{
+          margin-left: 170px;
+      }
+      .svg-iconsearch{
+          margin-left: -50px;
+          margin-top: 155px ;
+      }
+      
+  }

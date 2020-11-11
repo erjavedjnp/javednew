@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 4U2NV</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body style="background-color: darkgoldenrod;">
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <h4><strong>Lets Comments</strong></h4>
+                <p>This feature of the app is called CHORUS. The feature is a music video
+                    competition. This feature is basically for users that are musically gifted to upload videos to be voted into
+                    CHORUS, an online singing competition.
+                    Voting features will be available for users.
+                    Followers and people followed can use the buttons provided to vote for the singer to stand a chance of
+                    getting into the singing competition on 4U2NV’s CHORUS music competition.
+                    Alternatively, there will be a link a user can click to send he/her voting link to any 4U2NV profile user to
+                    vote. (click link – space will upload to search for name, list of all followers will also upload - type name –
+                    send link to the desired name requesting them to vote for you – the receiver clicks accept or decline.
+                    When the receiver clicks accept, the vote will automatically be recorded).</p>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <h4 class="border-bottom pb-2">Comments</h4>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="">Write a comment</label>
+                    <textarea id="textarea" rows="3" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <button id="submitBtn" style="background-color: rgb(219, 219, 219);"class="btn btn-primary float-right">Post comment</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="typing text-success"></div>
+                <ul class="comment__box">
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/moment.min.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+
+</html>
