@@ -1,0 +1,4 @@
+ img: { 
+            data: fs.readFileSync(path.join(__dirname + '../uploads/' + req.file.filename)), 
+            contentType: 'image/png'
+        } ,
