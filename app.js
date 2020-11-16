@@ -1,10 +1,14 @@
 const express = require("express");
+var mongoose = require('mongoose');
 const bodyParser =  require("body-parser");
 const path = require('path');
 const app = express();
 const userController = require("./Routes/user");
 const datemeuserController = require("./Routes/datemeuser");
 const cookieParser = require("cookie-parser");
+const user = require('./models/comment');
+const blogs = require('./models/blogs');
+const reco = require('./models/reco');
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(cookieParser())
@@ -86,7 +90,80 @@ app.get('/blog/:name',(req,res)=>{
     console.log(req.params.name)
     res.render('blog-detail',{})
 });
+app.use('/public', express.static('blog_detail'));
+mongoose.connect('mongodb://localhost/Company');
+//mine
+app.get('/mak', function(req, res){
+    res.render('blog-detail');
+    });
+//post routes
+app.post('/new', function(req, res){
+new user({
 
+about: req.body.about,
+
+}).save(function(err, doc){
+if(err) res.json(err);
+else res.redirect('/mak')
+});
+});
+
+    
+    //mine
+    //for blogs
+    app.get('/mak2', function(req, res){
+        blogs.find({}, function(err, docs){
+        if(err) res.json(err);
+        else res.render('blogs2', {users: docs});
+        });
+        });
+    //post routes
+    app.post('/new', function(req, res){
+    new blogs({
+    name: req.body.name,
+    lname: req.body.lname,
+    about: req.body.about,
+    photo: req.body.photo,
+    age : req.body.age
+    }).save(function(err, doc){
+    if(err) res.json(err);
+    else res.redirect('/mak2')
+    });
+    });
+
+
+
+
+    //for blogs
+
+    //for recomendation
+
+    
+    //get routes
+    app.get('/mak3', function(req, res){
+        reco.find({}, function(err, docs){
+        if(err) res.json(err);
+        else res.render('swipping2', {users: docs});
+        });
+        });
+    //post routes
+    app.post('/new', function(req, res){
+    new reco({
+        name: req.body.name,
+        lname: req.body.lname,
+        about: req.body.about,
+        photo: req.body.photo,
+        age : req.body.age
+    }).save(function(err, doc){
+    if(err) res.json(err);
+    else res.redirect('/mak3')
+    });
+    });
+    
+
+
+
+    //recomendations
 app.get('/events/:name',(req,res)=>{
     res.render('event-detail',{})
 });
@@ -95,6 +172,6 @@ app.use("/:user",userController);
 
 app.use("/DateMe/:user",datemeuserController);
 
-app.listen(5000, () =>{
-    console.log("server running at port 5000")
+app.listen(3456, () =>{
+    console.log("server running at port 3456")
 })
