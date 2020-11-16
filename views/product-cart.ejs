@@ -84,7 +84,7 @@
 						<div class="head-meta">
 							<h5>Your Cart</h5>
 							<ul class="breadcrumb">
-								<li><a href="#" title="">Home</a></li>
+								<li><a href="/marketplace" title="">Home</a></li>
 								<li>Cart</li>
 							</ul>
 						</div>
@@ -99,75 +99,69 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
+						<% items.forEach(item => {	%>
 						<div class="cart-box">
-							<span class="del-cart-item"><i class="lni lni-trash"></i></span>
+							
+							
+						   
 							<div class="prod-cart">
-								<figure><img src="/images/resources/prod-cat1.jpg" alt=""></figure>
+								<figure><img src="<%= item.imgurl %>" alt=""></figure>
 								<div class="cart-price">
-									<h2>Dell Laptop 4230</h2>
-									<span class="price">$199 <del>$300</del></span>
+									<h2><%= item.name %></h2>
+									<span class="price">$<%= item.price %> <del>$<%= item.originalprice %></del></span>
 								</div>
 							</div>
+							
 							<div class="cart-list-quantity">
-								<div class="c-input-number">
+								<!--<div class="c-input-number">
+									
 									<span>
-										<input id="box1" type="text" class="manual-adjust" value="0"/>
+										<input id="box" type="text" class="manual-adjust" value="<%= item.number %>"/>
 									</span>
-								</div>
+
+								
+								</div>-->
+								<form action="/cart/<%= item.id %>?_method=DELETE" method="POST">
+							
+					
+									<button type="submit" class="main-btn">DELETE</button>
+									  </form>
 							</div>
 						</div>
-						<div class="cart-box">
-							<span class="del-cart-item"><i class="lni lni-trash"></i></span>
-							<div class="prod-cart">
-								<figure><img src="/images/resources/prod-cat2.jpg" alt=""></figure>
-								<div class="cart-price">
-									<h2>Men's watch Breguet</h2>
-									<span class="price">$49 <del>$69</del></span>
-								</div>
-							</div>
-							<div class="cart-list-quantity">
-								<div class="c-input-number">
-									<span>
-										<input id="box2" type="text" class="manual-adjust" value="0"/>
-									</span>
-								</div>
-							</div>
-						</div>
-						<div class="cart-box">
-							<span class="del-cart-item"><i class="lni lni-trash"></i></span>
-							<div class="prod-cart">
-								<figure><img src="/images/resources/prod-cat3.jpg" alt=""></figure>
-								<div class="cart-price">
-									<h2>Room chair wooden</h2>
-									<span class="price">$89 <del>$99</del></span>
-								</div>
-							</div>
-							<div class="cart-list-quantity">
-								<div class="c-input-number">
-									<span>
-										<input id="box3" type="text" class="manual-adjust" value="0"/>
-									</span>
-								</div>
-							</div>
-						</div>
+						<% }) %>
+						<% 
+						let subtotal=0;
+						let total=0;
+						let dis=0;
+						 items.forEach(item => { 
+							 subtotal+=(item.originalprice*item.number);
+							 total+=(item.price*item.number);
+							 dis+=(item.originalprice-item.price);
+						 });
+
+							
+							%>
+					
 						<div class="amount-area">				
 							<div class="total-area">
 								<ul>
 									<li>
 										<span>Cart Subtotal:</span>
-										<i>$1060.00</i>
+										<i>$<%= subtotal %></i>
 									</li>
+									<!--
 									<li>
 										<span>Shipping:</span>
-										<i>$19</i>
+										<i>$0</i>
 									</li>
+									-->
 									<li>
 										<span>Discount:</span>
-										<i>$15</i>
+										<i>$<%= dis %></i>
 									</li>
 									<li class="order-total">
 										<span>ORDER TOTAL:</span>
-										<i>$1060.00</i>
+										<i>$<%= total %></i>
 									</li>
 								</ul>
 							</div>
@@ -178,8 +172,11 @@
 									<button><i class="lni lni-enter"></i></button>
 								</form>
 							<div class="proceed">
-								<a class="main-btn2" title="" href="#">Update Cart</a>
+								<form action="/cart?_method=PUT" method="POST">
+								
+								<button type="submit" class="main-btn2">Update Cart</button>
 								<a class="main-btn" title="" href="product-checkout">Proceed to Checkout</a>
+								</form>
 							</div>
 						</div>
 					</div>

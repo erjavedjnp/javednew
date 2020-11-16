@@ -81,8 +81,8 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="single-title">
-							<h5>HandMade Winter Jersy</h5>
-							<span>100% cotton shirt</span>
+							<h5><%= item.name %></h5>
+							<span><%= item.description %></span>
 							<ul class="stars-rating">
 								<li><i class="lni lni-star-filled"></i></li>
 								<li><i class="lni lni-star-filled"></i></li>
@@ -91,36 +91,34 @@
 								<li><i class="lni lni-star-filled"></i></li>
 							</ul>
 						</div>
-						<div class="product-caro">
-							<div class="prod-item">
-								<figure><img src="/images/resources/black-thsirt.jpg" alt=""></figure>
+						<div class="container">
+							<div class="popular-box">
+								<figure><img src="<%= item.imgurl %>" alt=""></figure>
 							</div>
-							<div class="prod-item">
-								<figure><img src="/images/resources/blue-thsirt.jpg" alt=""></figure>
-							</div>
-							<div class="prod-item">
-								<figure><img src="/images/resources/red-thsirt.jpg" alt=""></figure>
-							</div>
+							
 						</div>
 						<div class="product-info">
 							<span class="price">
-								$112
-								<del>$130</del>	
+	                          $<%= item.price %>
+								<del>$<%= item.originalprice %></del>	
 							</span>
-							<h4>5 in stock</h4>
+							<h4><%= item.stock %> left in stock</h4>
 							<h2>Description</h2>
 							<p>
-								This is the 100% cotton shirt which is the 100% cotton wear shirt, which is made by China with fine qualit and user flexibility.
+								<%= item.detail %>
 							</p>
-							<a href="#" title="" class="main-btn2">Add to Cart</a>
+							<form action="/product/<%= item.id %>" method="POST">
+							<button type="submit" class="main-btn2 d-inline">Add to Cart</button>
+							
 							<a href="#" title="" class="main-btn">Buy Now</a>
+							</form>
 						</div>
 						<div class="additional-info">
 							<h5>Additional Info</h5>
 							<ul>
-								<li><i class="lni lni-checkmark"></i> <span>Brand:</span> XYZ</li>
-								<li><i class="lni lni-checkmark"></i> <span>Supplier:</span> Ching Xang</li>
-								<li><i class="lni lni-checkmark"></i> <span>Color:</span> Black</li>
+								<li><i class="lni lni-checkmark"></i> <span>Brand:</span> <%= item.brand %></li>
+								<li><i class="lni lni-checkmark"></i> <span>Supplier:</span><%= item.supplier %></li>
+								
 							</ul>
 						</div>
 						<div class="reviews">
@@ -146,7 +144,7 @@
 		</div>
 	</section><!-- feature caro section -->
 
-	<a href="/user/cart" title="" class="view-cart">View Cart</a>
+	<a href="/cart" title="" class="view-cart">View Cart</a>
 
 	<div class="gap"></div>
 

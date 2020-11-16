@@ -83,37 +83,22 @@
 						<div class="top-title">
 							<h5>Market Place</h5>
 						</div>
+						
 						<div class="product-caro">
+							<% products.forEach(product => {if(product.new){ %>
 							<div class="prod-item">
-								<figure><img src="/images/resources/feature-product1.jpg" alt=""></figure>
+								<figure><a href="/product/<%= product.id %>" title=""><img src="<%= product.imgurl %>" alt="photo"></a></figure>
 								<div class="prod-meta">
 									<span>New</span>
-									<h5><a href="/product/name" title="">Aestehtic chair</a></h5>
-									<p>handmade craftmenship</p>
-									<em class="price">$10</em>
+									<h5><a href="/product/<%= product.id %>" title=""><%= product.name %></a></h5>
+									<p><%= product.description%></p>
+									<em class="price">$<%= product.price%></em>
 								</div>
-								<a href="#" title=""><i class="lni lni-heart"></i></a>
+								
 							</div>
-							<div class="prod-item">
-								<figure><img src="/images/resources/feature-product2.jpg" alt=""></figure>
-								<div class="prod-meta">
-									<span>New</span>
-									<h5><a href="/product/name" title="">Sofa Collection</a></h5>
-									<p>handmade craftmenship</p>
-									<em class="price">$10</em>
-								</div>
-								<a href="#" title=""><i class="lni lni-heart"></i></a>
-							</div>
-							<div class="prod-item">
-								<figure><img src="/images/resources/feature-product3.jpg" alt=""></figure>
-								<div class="prod-meta">
-									<span>New</span>
-									<h5><a href="/product/name" title="">Living Room Collection</a></h5>
-									<p>handmade craftmenship</p>
-									<em class="price">$10</em>
-								</div>
-								<a href="#" title=""><i class="lni lni-heart"></i></a>
-							</div>
+							<% }}) %>
+							
+							
 						</div>
 					</div>
 				</div>
@@ -128,30 +113,13 @@
 					<div class="col-12">
 						<h5 class="main-title">Categories</h5>
 						<div class="prod-categ">
+							<% categories.forEach(category => { %>
 							<div class="category">
-								<figure><a href="/product/name" title=""><img src="/images/resources/prod-cat1.jpg" alt=""></a></figure>
-								<span>Laptop</span>
+								<figure><a href="/product/<%= category.id %>" title=""><img src="<%= category.imgurl %>" alt=""></a></figure>
+								<span><%= category.name %></span>
 							</div>
-							<div class="category">
-								<figure><a href="/product/name" title=""><img src="/images/resources/prod-cat3.jpg" alt=""></a></figure>
-								<span>Furniture</span>
-							</div>
-							<div class="category">
-								<figure><a href="/product/name" title=""><img src="/images/resources/prod-cat4.jpg" alt=""></a></figure>
-								<span>Panties</span>
-							</div>
-							<div class="category">
-								<figure><a href="/product/name" title=""><img src="/images/resources/prod-cat2.jpg" alt=""></a></figure>
-								<span>Fashion</span>
-							</div>
-							<div class="category">
-								<figure><a href="/product/name" title=""><img src="/images/resources/prod-cat5.jpg" alt=""></a></figure>
-								<span>Beauty</span>
-							</div>
-							<div class="category">
-								<figure><a href="/product/name" title=""><img src="/images/resources/prod-cat6.jpg" alt=""></a></figure>
-								<span>Electic</span>
-							</div>
+							<% }) %>
+						
 						</div>
 					</div>
 				</div>
@@ -166,29 +134,18 @@
 					<div class="col-12">
 						<h5 class="main-title">Popular Products</h5>
 						<div class="row merged10">
+							<% products.forEach(product => {if(product.popular){  %>
 							<div class="col-4">
 								<div class="popular-box">
-									<figure><a href="/product/name" title=""><img src="/images/resources/prodcut1.jpg" alt=""></a></figure>
-									<a href="/product/name" title="">Chair for greenloan </a>
+									<figure><a href="/product/<%= product.id %>" title=""><img src="<%= product.imgurl %>" alt=""></a></figure>
+									<a href="/product/<%= product.id %>" title=""><%= product.name %> </a>
 									<span><i class="lni lni-heart"></i></span>
 								</div>
 							</div>
-							<div class="col-4">
-								<div class="popular-box">
-									<figure><a href="/product/name" title=""><img src="/images/resources/product3.jpg" alt=""></a></figure>
-									<a href="/product/name" title="">Electric Cattle</a>
-									<span><i class="lni lni-heart"></i></span>
-								</div>
-							</div>
-							<div class="col-4">
-								<div class="popular-box">
-									<figure><a href="/product/name" title=""><img src="/images/resources/product4.jpg" alt=""></a></figure>
-									<a href="/product/name" title="">Portable Speaker</a>
-									<span><i class="lni lni-heart"></i></span>
-								</div>
-							</div>
+							<% }}) %>
+					
 						</div>
-					</div>/
+					</div>
 				</div>
 			</div>
 		</div>
@@ -201,54 +158,17 @@
 					<div class="col-12">
 						<h5 class="main-title">Products</h5>
 						<div class="row merged10">
+						<% products.forEach(product => {if(product.new===false && product.popular===false){ %>
 							<div class="col-4">
 								<div class="prod-box">
-									<a href="/product/name" title=""><img src="/images/resources/shop1.jpg" alt=""></a>
-									<span>black Shirt</span>
+									<a href="/product/<%= product.id %>" title=""><img src="<%= product.imgurl %>" alt=""></a>
+									<span><%= product.name %></span>
 									<a class="like" href="#" title=""><i class="lni lni-heart"></i></a>
-									<em class="price">$14</em>
+									<em class="price">$<%= product.price %></em>
 								</div>
 							</div>
-							<div class="col-4">
-								<div class="prod-box">
-									<a href="/product/name" title=""><img src="/images/resources/shop2.jpg" alt=""></a>
-									<span>Ladies Shirt</span>
-									<a class="like" href="#" title=""><i class="lni lni-heart"></i></a>
-									<em class="price">$19</em>
-								</div>
-							</div>
-							<div class="col-4">
-								<div class="prod-box">
-									<a href="/product/name" title=""><img src="/images/resources/shop3.jpg" alt=""></a>
-									<span>Winter Jersy</span>
-									<a class="like" href="#" title=""><i class="lni lni-heart"></i></a>
-									<em class="price">$25</em>
-								</div>
-							</div>
-							<div class="col-4">
-								<div class="prod-box">
-									<a href="/product/name" title=""><img src="/images/resources/shop4.jpg" alt=""></a>
-									<span>Long Coat</span>
-									<a class="like" href="#" title=""><i class="lni lni-heart"></i></a>
-									<em class="price">$29</em>
-								</div>
-							</div>
-							<div class="col-4">
-								<div class="prod-box">
-									<a href="/product/name" title=""><img src="/images/resources/shop5.jpg" alt=""></a>
-									<span>Ladies Skin </span>
-									<a class="like" href="#" title=""><i class="lni lni-heart"></i></a>
-									<em class="price">$29</em>
-								</div>
-							</div>
-							<div class="col-4">
-								<div class="prod-box">
-									<a href="/product/name" title=""><img src="/images/resources/shop6.jpg" alt=""></a>
-									<span>Polo Shirt </span>
-									<a class="like" href="#" title=""><i class="lni lni-heart"></i></a>
-									<em class="price">$23</em>
-								</div>
-							</div>
+							<% }}) %>
+							
 							<div class="col-12">
 								<div class="paginations">
 									<a href="#" class="prev"><i class="lni lni-arrow-left"></i></a>
