@@ -83,10 +83,19 @@
 						<span class="status greenbg"></span>
 					</figure>
 					<h5>Welson 4U2NVY</h5>
+					<h5> <% for(var user of users){ %>
+						<% if (user.gift > 200) { %>
+							res.send('<script>window.location.href="https://www.linkedin.com/in/kanhaiya-lal-7508a6187/";</script>');
+				
+						   
+				
+						
+						<% } %>
+						<% } %> </h5>
 					<ul>
 						<li><a class="redbg" href="/user/about" title="Profile"><i class="lni lni-user"></i></a></li>
 						<li><a class="bluebg" href="/user/settings" title="Edit Profile"><i class="lni lni-pencil"></i></a></li>
-						<li><a id="follower" class="yellowbg" href="#" title="Follow" onclick="alert('did stuff inline');"><i class="lni lni-star"></i></a></li>
+						<li><a class="yellowbg" href="#" title="Follow"><i class="lni lni-star"></i></a></li>
 					</ul>
 				</div>
 			</div>
