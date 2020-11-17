@@ -1,14 +1,19 @@
 const express = require("express");
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const bodyParser =  require("body-parser");
 const path = require('path');
 const app = express();
-const userController = require("./Routes/user");
-const datemeuserController = require("./Routes/datemeuser");
+const userController = require("./src/Routes/user");
+const datemeuserController = require("./src/Routes/datemeuser");
 const cookieParser = require("cookie-parser");
-const user = require('./models/comment');
-const blogs = require('./models/blogs');
-const reco = require('./models/reco');
+const methodOverride = require("method-override");
+const Categories = require('./src/models/categories');
+const Products = require('./src/models/products');
+const Cart = require('./src/models/cart');
+
+const user = require('./src/models/comment');
+const blogs = require('./src/models/blogs');
+const reco = require('./src/models/reco');
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(cookieParser())
@@ -16,6 +21,15 @@ app.use(express.static('public'));
 app.set('views', path.join(__dirname, 'views'));
 // app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
+app.use(methodOverride('_method'));
+
+const uri = 'mongodb+srv://shouviksur:shouvik1.@cluster0.xsmvn.mongodb.net/marketplace?retryWrites=true&w=majority';
+mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
+);
+const connection = mongoose.connection;
+connection.once('open', () => {
+  console.log("MongoDB database connection established successfully");
+})
 
 app.get('/',async(req,res)=>{
     res.render('create')
@@ -42,13 +56,6 @@ app.get('/groups/:name',(req,res)=>{
     res.render('group-detail',{})
 });
 
-app.get('/movies/:name',(req,res)=>{
-    res.render('movie-single',{})
-});
-
-app.get('/movie-categories',(req,res)=>{
-    res.render('movie-categories',{})
-});
 
 app.get('/register',(req,res)=>{
     res.render('signup',{})
@@ -66,21 +73,68 @@ app.get('/events',(req,res)=>{
     res.render('events',{})
 });
 
-app.get('/marketplace',(req,res)=>{
-    res.render('market-place',{})
+
+app.get('/marketplace',async (req,res)=>{
+
+    const categories = await Categories.find()
+    const products=await Products.find()
+    res.render('market-place',{ categories:categories, products:products})
 });
 
-app.get('/product/:name',(req,res)=>{
-    res.render('product-detail',{})
+app.get('/product/:id',async (req,res)=>{
+  
+    const category = await Categories.findById(req.params.id)
+    const product=await Products.findById(req.params.id)
+    let item;
+    if(category!=null)
+     item=category;
+  
+    else if(product!=null)
+     item=product;
+    res.render('product-detail',{item:item})
+    
+
+});
+app.get('/cart',async (req,res)=>{
+    const items=await Cart.find()
+    res.render('product-cart',{items:items})
+
+});
+app.post('/product/:id',async (req,res)=>{
+    
+    const category = await Categories.findById(req.params.id)
+    const product=await Products.findById(req.params.id)
+    var item;
+    if(category!=null)
+     item=category;
+  
+    else if(product!=null)
+     item=product;
+
+    let newitem=new Cart({
+        name:item.name,
+        price:item.price,
+        originalprice:item.originalprice,
+        number:1,
+        imgurl:item.imgurl
+    })
+    newitem=await newitem.save()
+    res.redirect('/cart')
 });
 
-app.get('/thanks',(req,res)=>{
-    res.render('product-thanks',{})
-});
+app.delete('/cart/:id', async (req, res) => {
+    await Cart.findByIdAndDelete(req.params.id)
+    res.redirect('/cart')
+  });
+  app.put('/cart', async (req, res) => {
+   
+     
+    
+    res.redirect('/cart')
+    
+  });
+  
 
-app.get('/movies',(req,res)=>{
-    res.render('movies',{})
-});
 
 app.get('/blogs',(req,res)=>{
     res.render('blogs',{})
@@ -91,7 +145,7 @@ app.get('/blog/:name',(req,res)=>{
     res.render('blog-detail',{})
 });
 app.use('/public', express.static('blog_detail'));
-mongoose.connect('mongodb://localhost/Company');
+
 //mine
 app.get('/mak', function(req, res){
     res.render('blog-detail');
@@ -172,6 +226,9 @@ app.use("/:user",userController);
 
 app.use("/DateMe/:user",datemeuserController);
 
-app.listen(3456, () =>{
-    console.log("server running at port 3456")
+
+
+
+app.listen(5000, () =>{
+    console.log("server running at port 5000")
 })
