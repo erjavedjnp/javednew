@@ -10,10 +10,12 @@ const methodOverride = require("method-override");
 const Categories = require('./src/models/categories');
 const Products = require('./src/models/products');
 const Cart = require('./src/models/cart');
+const platformroutes = require("./src/routes/platform-routes")
 const eventroutes = require("./src/routes/event-routes")
 const user = require('./src/models/comment');
 const blogs = require('./src/models/blogs');
 const reco = require('./src/models/reco');
+const { AsyncLocalStorage } = require("async_hooks");
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(cookieParser())
@@ -30,6 +32,8 @@ const connection = mongoose.connection;
 connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
 })
+
+
 
 app.get('/',async(req,res)=>{
     res.render('create')
@@ -71,8 +75,9 @@ app.get('/product-detail',(req,res)=>{
 
 app.use("/events", eventroutes);
 
+app.use("/platform", platformroutes);
 
-app.get('/marketplace',async (req,res)=>{
+app.get('/market-place',async (req,res)=>{
 
     const categories = await Categories.find()
     const products=await Products.find()
@@ -131,7 +136,6 @@ app.delete('/cart/:id', async (req, res) => {
     res.redirect('/cart')
     
   });
-  
 
 
 app.get('/blogs',(req,res)=>{
