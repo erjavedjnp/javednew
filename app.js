@@ -10,7 +10,7 @@ const methodOverride = require("method-override");
 const Categories = require('./src/models/categories');
 const Products = require('./src/models/products');
 const Cart = require('./src/models/cart');
-
+const eventroutes = require("./src/routes/event-routes")
 const user = require('./src/models/comment');
 const blogs = require('./src/models/blogs');
 const reco = require('./src/models/reco');
@@ -69,9 +69,7 @@ app.get('/product-detail',(req,res)=>{
     res.render('product-detail',{})
 });
 
-app.get('/events',(req,res)=>{
-    res.render('events',{})
-});
+app.use("/events", eventroutes);
 
 
 app.get('/marketplace',async (req,res)=>{
@@ -218,9 +216,7 @@ else res.redirect('/mak')
 
 
     //recomendations
-app.get('/events/:name',(req,res)=>{
-    res.render('event-detail',{})
-});
+
 
 app.use("/:user",userController);
 
