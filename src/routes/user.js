@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const comfortzoneroutes = require('../routes/comfort-zone');
 router.get('/',(req,res)=>{
     res.render('id',{})
 });
@@ -84,5 +84,7 @@ router.get('/create-event',(req,res)=>{
 router.get('/create-page',(req,res)=>{
     res.render('create-new',{})
 });
+
+app.use('/comfortzone',comfortzoneroutes);
 
 module.exports = router;
