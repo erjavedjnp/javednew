@@ -20,11 +20,11 @@ var userSchema = new mongoose.Schema(
       type: String,
       trim: true,
       required: true,
-      unique: true
+      unique: true,
       validate(value){
       if(!validator.isEmail(value)){
-        throw new Error('Email not valid')
-    },
+        throw new Error('Email not valid');
+    }},
     password:{
     type:String,
     required:true,
@@ -38,7 +38,7 @@ var userSchema = new mongoose.Schema(
   },
     age:{
       type:Number,
-      require:true
+      required:true
 
     },
     userinfo: {
@@ -51,28 +51,28 @@ var userSchema = new mongoose.Schema(
       trim: true
     },
     posts: [{
-      type:mongoose.Schema.ObjectId
+      type:mongoose.Schema.ObjectId,
       ref:"Posts" 
     }]
   },
     followers: [{
-      type:mongoose.Schema.ObjectId
-      ref:"Followers" 
+      type:mongoose.Schema.ObjectId,
+      ref:"User" 
     }]
   ,
   following: [{
-      type:mongoose.Schema.ObjectId
-      ref:"Following" 
+      type:mongoose.Schema.ObjectId,
+      ref:"User" 
     }]
   ,
   inbox: [{
-      type:mongoose.Schema.ObjectId
+      type:mongoose.Schema.ObjectId,
       ref:"Inbox" 
     }]
   ,
   notification: [{
       type:mongoose.Schema.ObjectId,
-      ref:"Notification" 
+      ref:"Notifications" 
     }]
   ,
   story: [{
@@ -85,42 +85,34 @@ var userSchema = new mongoose.Schema(
       ref:"Messages" 
     }]
   ,
-  topleader: {
-      type:mongoose.Schema.ObjectId
-      ref:"Topleader" 
+  istopleader: {
+      type:Boolean
+      
     }
   ,
-  corusmember: {
-      type:mongoose.Schema.ObjectId
-      ref:"Corusmember" 
-    }
-  ,
-  coruspost: [{
-      type:mongoose.Schema.ObjectId
-      ref:"Coruspost" 
-    }]
-  ,
+  
   mytop8: [{
-      type:Boolean,
-      ref:"mytop8" 
+      type:mongoose.Schema.ObjectId,
+      ref:"User" 
     }]
   ,
   dating: {
-      type:mongoose.Schema.ObjectId
-      ref:"Followers" 
+      type:mongoose.Schema.ObjectId,
+      ref:"Dating" 
     }
   ,
   comments: {
-      type:mongoose.Schema.ObjectId
-      ref:"Comments" 
+      type:mongoose.Schema.ObjectId,
+      ref:"Comment" 
     }
   ,
-  notifications: {
-      type:mongoose.Schema.ObjectId
-      ref:"Notifications" 
-    }
-  ,
+ 
 
-  { timestamps: true }
+  createdAt:{
+    type:Number,
+    default:new Date().getTime()
+
+  }
+}
 );
 module.exports = mongoose.model("User",userSchema);
