@@ -1,8 +1,0 @@
-<% if(isLoggedIn) { %>
-    <% if(user && user._id != currentUser._id) { %>
-    <% const following = user.following;
-       const action = following.includes(currentUser._id) ? 'unfollow' : 'follow';
-    %>
-     <button class="btn btn-primary ml-4" data-action="<%= action %>" data-follower="<%= user._id %>" data-following="<%= currentUser._id %>" id="follow-btn">Follow</button>
-    <% } %>  
- <% } %> 
