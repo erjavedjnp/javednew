@@ -1,0 +1,40 @@
+const express=require('express')
+const router=express.Router()
+const Posts=require('../../models/user/post')
+const multer=require('multer')
+const cloudinary=require('cloudinary').v2
+
+router.get('/timeline',async(req,res)=>{
+    try{
+        res.render('timeline.ejs')
+       
+    }catch(e){
+        res.send(e)
+    }
+})
+
+const storage=multer.diskStorage({
+    filename:(req,file,cb)=>{
+        cb(null,file.fieldname + '-' + Date.now())
+    }
+})
+
+const upload=multer({
+   
+    storage
+    
+})
+
+
+router.post('/post',upload.single('avatar'),upload.single('music'),async(req,res)=>{
+    try{
+        console.log('yes')
+        console.log(req.file)
+        
+        console.log(req.body)
+    }catch(e){
+        res.send(e)
+    }
+})
+
+module.exports=router
