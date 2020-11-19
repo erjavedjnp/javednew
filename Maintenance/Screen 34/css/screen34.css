@@ -1,0 +1,152 @@
+.logo{
+    position: relative;
+    width: 150px;
+}
+.img{
+  margin-top: -60px;
+  /* z-index: 0; */
+  height: 450px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+}
+.angle{
+color: black;
+font-weight: bolder;
+float: left;
+font-size: 40px;
+margin-left: 25px;
+margin-top: 15px;
+}
+.head{
+position: absolute;
+margin-left: 5%;
+margin-top: 19%;
+font-size: 50px;
+color: white;
+}
+.gift{
+position: absolute;
+right: 15%;
+}
+.gift a{
+color: yellow;
+}
+.gift a:hover{
+text-decoration: none;
+color: yellow;
+}
+.gift i{
+font-size: 100px;
+}
+.gift p{
+font-size: 40px;
+font-weight: bold;
+font-family: 'Gill Sans', 'Trebuchet MS';
+}
+.item{
+color: black;
+}
+.item:hover{
+color: black;
+text-decoration: none;
+}
+.c_border{
+border-radius: 15px;
+}
+.c_img{
+border-top-left-radius: 15px;
+border-top-right-radius: 15px;
+}
+@media (max-width:960px){
+.logo{
+  width: 200px;
+  margin-right: 5%;
+}
+.img{
+  margin-top: -80px;
+}
+.angle{
+  font-size: 50px;
+  margin-left: 25px;
+  margin-top: 35px;
+}
+.head{
+  margin-left: 5%;
+  margin-top: 30%;
+}
+.gift{
+  right: 10%;
+}
+.gift i{
+  font-size: 100px;
+}
+}
+@media (max-width:540px){
+.logo{
+  width: 100px;
+  margin-right: 5%;
+}
+.img{
+  margin-top: -50px;
+  height: 250px;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+}
+.angle{
+  font-size: 30px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.head{
+  margin-left: 3%;
+  margin-top: 40%;
+  font-size: 30px;
+  color: white;
+}
+.gift{
+  right: 5%;
+}
+.gift i{
+  font-size: 50px;
+}
+.gift p{
+  font-size: 20px;
+}
+.c_text{
+  padding: 5px;
+}
+}
+@media (max-width:300px){
+.logo{
+  width: 100px;
+  margin-right: 6%;
+}
+.img{
+  margin-top: -50px;
+  height: 200px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+.angle{
+  font-size: 30px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.head{
+  margin-top: 40%;
+  font-size: 20px;
+  color: white;
+}
+.gift{
+  right: 5%;
+}
+.gift i{
+  font-size: 50px;
+}
+.gift p{
+  font-size: 20px;
+}
+.c_text{
+  padding: 3px;
+}
+}
