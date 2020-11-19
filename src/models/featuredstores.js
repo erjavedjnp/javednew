@@ -6,7 +6,7 @@ const featuredstoresSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  imgurl:{
+  img:{
     type:String
   },
   link:{

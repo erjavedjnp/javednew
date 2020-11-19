@@ -1,4 +1,5 @@
 const express = require('express');
+const app = express();
 const router = express.Router();
 const comfortzoneroutes = require('../routes/comfort-zone');
 router.get('/',(req,res)=>{

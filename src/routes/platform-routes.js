@@ -9,6 +9,25 @@ const Stores = require("../models/featuredstores");
 const fs = require('fs')
 const path = require('path')
 
+const storage=multer.diskStorage({
+    filename:(req,file,cb)=>{
+        cb(undefined,Date.now()+'-'+file.originalname)
+    }
+  })
+  const upload=multer({
+    storage,
+    limits:{
+        fileSize:2000000
+    },
+    fileFilter(req,file,cb){
+        if(!file.originalname.match(/\.(png|jpeg|jpg|gif)$/)){
+            cb(new Error('File must be an image!!'))   
+        }
+        cb(undefined,true)
+    }
+  })
+  
+
 cloudinary.config({ 
     cloud_name: 'shuvanshu', 
     api_key: '438498144725888', 
@@ -41,33 +60,22 @@ router.get('/addproduct',(req,res)=>{
 
 // POST Routes
 
-router.post('/addstore',(req,res)=>{
-    // console.log(req.files)
+router.post('/addstore',upload.single('imgurl'),(req,res)=>{
     const {title,link,imgurl,isfeatured} = req.body
-    console.log(req.body);
-    // var file = req.files;
-        var temp=new String;
-        cloudinary.uploader.upload(imgurl,(error,result)=>{
-            console.log(error);
+        cloudinary.uploader.upload(req.file.path,(error,result)=>{
             console.log(result);
-            temp = result.url;
+            const newstore = new Stores({title,img:result.url,link,isfeatured})
+            newstore.save()
         });
-    const newstore = new Stores({title,imgurl:temp,link,isfeatured})
-    newstore.save()
     res.redirect('/platform/addstore');
 });
 
-router.post('/addproduct',(req,res)=>{
+router.post('/addproduct',upload.single('imgurl'),(req,res)=>{
     const {title,imgurl,price,link,isfeatured} = req.body
-    // var file = req.files
-    var temp=new String;
-        cloudinary.uploader.upload(imgurl,(error,result)=>{
-            // console.log(error);
-            // console.log(result);
-            temp = result.url;
+        cloudinary.uploader.upload(req.file.path,(error,result)=>{
+            const newproduct = new Products({title,price,img:result.url,link,isfeatured})
+            newproduct.save()
         });
-    const newproduct = new Products({title,price,img:temp,link,isfeatured})
-    newproduct.save()
     res.redirect('/platform')
 });
 
