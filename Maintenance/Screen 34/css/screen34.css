@@ -54,6 +54,8 @@ text-decoration: none;
 border-radius: 15px;
 }
 .c_img{
+  width: 100%;
+height: 260px;
 border-top-left-radius: 15px;
 border-top-right-radius: 15px;
 }
@@ -80,6 +82,7 @@ border-top-right-radius: 15px;
 .gift i{
   font-size: 100px;
 }
+
 }
 @media (max-width:540px){
 .logo{
@@ -115,6 +118,9 @@ border-top-right-radius: 15px;
 .c_text{
   padding: 5px;
 }
+.c_img{
+  height: 200px;
+}
 }
 @media (max-width:300px){
 .logo{
@@ -148,5 +154,8 @@ border-top-right-radius: 15px;
 }
 .c_text{
   padding: 3px;
+}
+.c_img{
+  height: 160px;
 }
 }
