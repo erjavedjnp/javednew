@@ -1,0 +1,157 @@
+body
+{
+   background:  linear-gradient(to bottom,#ffb3079c,#C49A22);
+
+}
+.signup-container
+{
+    height: 100vh;
+    width: 100%;
+}
+.signup-form
+{
+    max-width: 100%;
+    width: 370px;
+    padding:15px ;
+    margin: auto;
+}
+.form-group{
+    margin: 0 0 10px;
+    position: relative;
+}
+
+.form_icon{
+
+	color:#fff;
+   	font-size:100px;
+	line-height:85px;
+	margin: 0 0 13px;
+	
+}		
+
+.input-icon {
+	position:absolute;
+	left: 15px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 13px;
+	color: #777;
+
+}
+
+.title{
+	color:black;
+	font-size: 23px;
+	font-weight: 700;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	margin: 0 0 35px 0;
+
+}
+.form-control {
+	color: #555;
+	background-color: #fff;
+	font-size: 13px;
+	letter-spacing: 1px;
+	height:37px;
+	padding: 2px 15px 2px 35px;
+	border: none;
+	border-radius: 50px;
+
+}
+.form-control::placeholder{
+	color: rgba(0,0,0,0.7);
+	font-size: 14px;
+    text-transform: capitalize;
+}
+.btn{
+	color: #fff;
+	background-color: #fff;
+	font-size: 15px;
+	font-weight: 600;
+	letter-spacing: 1px;
+	width: 100%;
+	padding: 10px 20px;
+	margin: 0 0 15px 0;
+	border: none;
+	border-radius: 20px;
+	text-transform: uppercase;
+}
+.avatar-wrapper {
+	position: relative;
+	height: 200px;
+	width:200px;
+	margin: 20px auto;
+	border: 4px solid black;
+	border-radius: 50%;
+	overflow: hidden;
+	-webkit-box-shadow: 1px 1px 15px -5px black;
+	box-shadow: 1px 1px 15px -5px rgb(0, 0, 0);
+	-webkit-transition: all .3s ease;
+	transition: all .3s ease;
+
+}
+.avatar-wrapper:hover {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	cursor: pointer;
+}
+
+.avatar-wrapper:hover .profile-pic {
+	opacity: .5;
+}
+
+.avatar-wrapper .profile-pic{
+	height: 100%;
+	width: 100%;
+	-webkit-transition: all .3s ease;
+	transition: all .3s ease;
+
+}
+.avatar-wrapper .profile-pic:after{
+	font-family: FontAwesome;
+	content: "\f007";
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	font-size: 200px;
+	background: #ecf0f1;
+	color:#34495e;
+	text-align: center;
+}
+
+.avatar-wrapper .upload-button {
+	position: absolute;
+	top:0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.avatar-wrapper .upload-button .fa-arrow-circle-up {
+	position: absolute;
+	font-size: 234px;
+	top: -17px;
+	left: 0;
+	text-align: center;
+	opacity: 0;
+	-webkit-transition: all .3s ease;
+	transition: all .3s ease;
+    color: #34495e;
+
+}
+
+.avatar-wrapper .upload-button:hover .fa-arrow-circle-up {
+	opacity: .9;
+}
+
+
+
+
+
+
+
+
+    
