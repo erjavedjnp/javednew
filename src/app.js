@@ -5,6 +5,7 @@ const cookieParser=require('cookie-parser')
 const session=require('express-session')
 const flash=require('connect-flash')
 
+
 //FOR POSTMAN
 app.use(express.json())
 
@@ -51,8 +52,14 @@ app.use('/post',require('./routes/user/post'))
 
 
 
+
+
+
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT,function()
 		  {
 	console.log(`Server has started at ${PORT}`);
 });
+
+

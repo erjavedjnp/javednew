@@ -5,11 +5,14 @@ const path = require("path");
 const fs = require("fs");
 const multer = require("multer");
 const User = require("../../models/user/user.js");
+//const imgModel = require("../../models/user/Image.js");
 const auth=require('../../authentication/user/auth')
 const {mailverification,resetpassword} = require("../../emails/mailverification");
 const bcryptjs=require('bcryptjs')
 const jwt=require('jsonwebtoken');
 const user = require("../../models/user/user.js");
+//const homeController = require("../../controllers/user/home.js");
+const uploadController = require("../../controllers/user/upload.js");
 
 
 router.get('/profile',async(req,res)=>{
@@ -39,7 +42,7 @@ router.get("/forget",(req,res)=>{
 	res.render("forget.ejs")
 })
 
-router.get("/mak2",(req,res)=>{
+router.get("/mak3",(req,res)=>{
 	res.render("mak2.ejs")
 })
 router.get('/timeline', function(req, res){
@@ -49,7 +52,14 @@ router.get('/timeline', function(req, res){
     });
     });
 
-	
+//try it
+router.get("/kanhaiya",(req,res)=>{
+	res.render("index1.ejs")
+})
+
+router.post("/upload", uploadController.uploadFiles);
+
+
 
 // //<-------------->TO READ THE USER PROFILE<---------------->
 router.get('/id',auth,async(req,res)=>{
@@ -71,35 +81,51 @@ router.get('/logout',auth,async(req,res)=>{
 })
 //new field
 
-const storage=multer.diskStorage({
-    filename:(req,file,cb)=>{
-        cb(undefined,Date.now()+'-'+file.originalname)
-    }
-})
+
+var storage = multer.diskStorage({ 
+    destination: (req, file, cb) => { 
+        cb(null, 'uploads') 
+    }, 
+    filename: (req, file, cb) => { 
+        cb(null, file.fieldname + '-' + Date.now()) 
+    } 
+}); 
+
+var upload = multer({ storage: storage }); 
+// Retriving the image 
 
 
-const upload=multer({
-    storage,
-    limits:{
-        fileSize:2000000
-    },
-    fileFilter(req,file,cb){
-        if(!file.originalname.match(/\.(png|jpeg|jpg|gif)$/)){
-            cb(new Error('File must be an image!!'))   
-        }
-        cb(undefined,true)
-    }
-})
 
-
-const cloudinary = require('cloudinary').v2;
+/*const cloudinary = require('cloudinary').v2;
 cloudinary.config({ 
   cloud_name: 'dyxr8b2jd', 
   api_key: "174961121367964", 
   api_secret:"PWd0b0uRa201_zfCdS6zii2uxKs" 
 });
-
-router.post('/addimage',auth,upload.array('image'),async(req,res)=>{
+*/
+// Uploading the image 
+// Uploading the image 
+/*router.post('/upload', upload.single('image'), (req, res, next) => { 
+  
+    var obj = { 
+        name: req.body.name, 
+        desc: req.body.desc, 
+        img: { 
+            data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)), 
+            contentType: 'image/png'
+        } 
+    } 
+    imgModel.create(obj, (err, item) => { 
+        if (err) { 
+            console.log(err); 
+        } 
+        else { 
+            // item.save(); 
+            res.send('done'); 
+        } 
+    }); 
+}); */
+/*router.post('/addimage',auth,upload.array('image'),async(req,res)=>{
     try{
         var avatar=[]
         for(var i=0;i<req.files.length;i++)
@@ -125,7 +151,7 @@ router.post('/addimage',auth,upload.array('image'),async(req,res)=>{
         console.log(e)
         res.send(e)
     }
-})
+})*/
 //new field
 
 //Verify the mail id
@@ -244,8 +270,7 @@ router.post('/forget-password',async(req,res)=>{
 			resetpassword(req.body.email);
 			message='Check you emailid and reset your password.'
 		}
-		//res.redirect('/user/reset');
-		res.send('done')
+		res.redirect('/user/reset');
 		console.log('reset link send');
 	}catch(e){
 		//res.render('message-reset.ejs',{message:null,error:'Server error'})
@@ -301,7 +326,7 @@ router.post("/reset-password", async (req, res) => {
 		await user.save();
 		message = "Password changed sucessfully";
 	  }
-	  res.send('done')
+	  res.redirect('/user/signin')
 	} catch (e) {
 		res.send('oops')
 	}
