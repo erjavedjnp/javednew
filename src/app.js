@@ -4,6 +4,8 @@ const bodyParser= require("body-parser")
 const cookieParser=require('cookie-parser')
 const session=require('express-session')
 const flash=require('connect-flash')
+const eventroutes = require("./routes/event-routes")
+const userroutes = require ("./routes/user-routes")
 
 
 //FOR POSTMAN
@@ -50,7 +52,8 @@ app.use('/user',require('./routes/user/login'))
 app.use('/post',require('./routes/user/post'))
 
 
-
+app.use("/events", eventroutes);
+app.use("/userprofile", userroutes)
 
 
 
