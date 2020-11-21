@@ -4,7 +4,7 @@ const bodyParser= require("body-parser")
 const cookieParser=require('cookie-parser')
 const session=require('express-session')
 const flash=require('connect-flash')
-
+const methodOverride = require ('method-override')
 
 
 const eventroutes = require("./routes/event-routes")
@@ -13,7 +13,7 @@ const userroutes = require ("./routes/user-routes")
 
 //FOR POSTMAN
 app.use(express.json())
-
+app.use(methodOverride('_method'))
 
 // <------------>  DATABASE   <-------------->
 require('./db/mongoose')
@@ -27,8 +27,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser())
 
 //<------------->  SPECIFY THE PATH OF STATIC FILES(eg. css,javascript)  <-------------------->
-app.use(express.static( "public"));
-
+app.use(express.static( "public")); 
+// app.set('views', path.join(__dirname, 'views'));
+// app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'ejs');
+// app.use(methodOverride('_method'));
 //<------------->  SETTING MESSAGES FOR REDIRECTING PAGES(i.e. stored in flash session)  <-------------------->
 app.use(session({
 	secret:'secret123',
