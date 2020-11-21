@@ -7,7 +7,7 @@ const flash=require('connect-flash')
 
 //FOR POSTMAN
 app.use(express.json())
-
+app.set('view engine','ejs');
 
 // <------------>  DATABASE   <-------------->
 require('./db/mongoose')
@@ -45,8 +45,9 @@ app.get("/",(req,res)=>{
 });
 
 
-app.use('/user',require('./routes/user/login'))
-app.use('/user',require('./routes/user/post'))
+app.use('/user',require('./routes/user/login'));
+app.use('/user',require('./routes/user/post'));
+app.use('/platform',require('./routes/platform-routes'));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT,function()

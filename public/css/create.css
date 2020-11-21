@@ -35,7 +35,11 @@ video{
 }
 .form_horizontal .btn{
 	color: black;
+<<<<<<< HEAD
 	background-color: #fff;
+=======
+	background-color: #f3c33e;
+>>>>>>> ashish
 	font-size: 15px;
 	font-weight: 600;
 	letter-spacing: 1px;
@@ -76,7 +80,11 @@ video{
 	right:15px;
 }
 .form_horizontal .create{
+<<<<<<< HEAD
 	color: #fff;
+=======
+	color: #f3c33e;
+>>>>>>> ashish
 	background-color: #ffb3079c;
 	font-size: 15px;
 	font-weight: 600;
@@ -96,4 +104,11 @@ button .fa-sign-in:before{
 	margin-left: 2px;
 	color:#ffb3079c;
 	font-size: 20px;
+<<<<<<< HEAD
 }
+=======
+}
+
+
+	
+>>>>>>> ashish

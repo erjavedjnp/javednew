@@ -3,10 +3,17 @@
 	padding: 0;
 }
 .form_bg{
+<<<<<<< HEAD
 	background: linear-gradient(to bottom,#ffb3079c,#C49A22);
 	height: 100vh;
 	display: flex;
 	align-items: center;	
+=======
+	background: rgb(211, 163, 42);
+	height: 100%;
+	display: flex;
+  align-items: center;
+>>>>>>> ashish
 }
 
 .form_horizontal{
@@ -15,6 +22,7 @@
     
 }
 .form_horizontal .logo{
+<<<<<<< HEAD
 height: 180px;
 width: 180px;
 border-radius: 50%;
@@ -24,6 +32,18 @@ top: -4%;
 left: 41%;
 text-align: center;  
 margin: 10px;
+=======
+height: 130px;
+width: 138px;
+border-radius: 50%;
+border: none;
+position: absolute;
+top: 0%;
+left: 45%;
+text-align: center;  
+margin: 12px;
+padding:10px;
+>>>>>>> ashish
 
 
 }
@@ -31,10 +51,20 @@ margin: 10px;
     border-radius: 50%;
     overflow: initial;
     -webkit-box-shadow: 1px 1px 15px -5px black;
+<<<<<<< HEAD
             box-shadow: 1px 1px 15px -5px black;   
   }
   .avatar-wrapper:hover {
     cursor: pointer;
+=======
+        box-shadow: 1px 1px 15px -5px black;   
+       text-align : center;
+       margin-bottom: 20px;
+      }
+  .avatar-wrapper:hover {
+    cursor: pointer;
+
+>>>>>>> ashish
   }
   /* 
   .avatar-wrapper .fa-user-circle {
@@ -52,6 +82,11 @@ margin: 10px;
     text-align: center;  
     color: #34495e;
     margin: 10px;
+<<<<<<< HEAD
+=======
+    z-index : 1;
+    
+>>>>>>> ashish
   }
   .avatar-wrapper .fa-comment {
     
@@ -59,6 +94,10 @@ margin: 10px;
     text-align: center;  
     color: #34495e;
     margin: 10px;
+<<<<<<< HEAD
+=======
+    z-index : 1;
+>>>>>>> ashish
   }
   .avatar-wrapper .fa-cog {
     
@@ -68,16 +107,37 @@ margin: 10px;
     margin: 10px;
   }
   .avatar-wrapper .fa-users {
+<<<<<<< HEAD
+=======
+    
+    font-size: 25px; 
+>>>>>>> ashish
     text-align: center;  
     color: #34495e;
     margin: 10px;
   }
+<<<<<<< HEAD
   .fa-users{
     width: 45px;
     height: 45px;
     background-color: wheat;
     border-radius: 50%;
   }
+=======
+#center{
+  width: 160px;
+    height: 160px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 41%;
+    left: 44%;
+    text-align: center;  
+    margin: 10px;  
+}
+>>>>>>> ashish
   #circle1 {
     width: 45px;
     height: 45px;
@@ -86,11 +146,26 @@ margin: 10px;
     border-radius: 50%;
     background: white;
     position: absolute;
+<<<<<<< HEAD
     top: 80%;
     left: 44%;
     text-align: center;  
     margin: 10px;
  }
+=======
+    top: 90%;
+    left: 45%;
+    text-align: center;  
+    margin: 10px;
+    z-index:5;
+ }
+
+ #circle1 :hover{
+     color : goldenrod;
+     transition : 0.6s;
+ }
+
+>>>>>>> ashish
  #circle2 {
     width: 45px;
     height: 45px;
@@ -99,11 +174,27 @@ margin: 10px;
     border-radius: 50%;
     background: white;
     position: absolute;
+<<<<<<< HEAD
     top: 80%;
     left: 49%;
     text-align: center;  
     margin: 10px;
  }
+=======
+    top: 90%;
+    left: 50%;
+    text-align: center;  
+    margin: 10px;
+    z-index:5;
+ }
+
+ #circle2 :hover{
+  color : goldenrod;
+  transition : 0.6s;
+}
+
+
+>>>>>>> ashish
  #circle3 {
     width: 45px;
     height: 45px;
@@ -117,9 +208,22 @@ margin: 10px;
     text-align: center;  
     margin: 10px;
  }
+<<<<<<< HEAD
  #circle4 {
     width: 40px;
     height: 40px;
+=======
+
+ #circle3 :hover{
+  color : goldenrod;
+  transition : 0.6s;
+}
+
+
+ #circle4 {
+    width: 42px;
+    height: 42px;
+>>>>>>> ashish
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
@@ -129,14 +233,42 @@ margin: 10px;
     left: 0%;
     text-align: center;  
     margin: 10px;
+<<<<<<< HEAD
  } 
  .box {
+=======
+    padding-right:4px;
+    padding-top:4px;
+ } 
+
+ #circle4 :hover{
+  color : goldenrod;
+  transition : 0.6s;
+}
+
+ #circle5 {
+  width: 45px;
+  height: 45px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  background: white;
+>>>>>>> ashish
   position: absolute;
   top: 25%;
   right: 5%;
   text-align: center;  
   margin: 10px;
 }
+<<<<<<< HEAD
+=======
+
+#circle5 :hover{
+  color : goldenrod;
+  transition : 0.6s;
+}
+
+>>>>>>> ashish
   .image {
     
     border-radius: 50%;
@@ -147,6 +279,7 @@ margin: 10px;
   }
  .image #image1{
     border-radius: 50%;
+<<<<<<< HEAD
      width: 100px;
      height: 100px;
      position: absolute;
@@ -159,18 +292,41 @@ margin: 10px;
      height: 100px;
      position: absolute;
      top: 24%;
+=======
+     width: 220px;
+     height: 220px;
+     position: absolute;
+     top: 40%;
+     left: 30%; 
+     
+  }
+  .image #image2{
+    border-radius: 50%;
+     width: 220px;
+     height: 220px;
+     position: absolute;
+     top: 23%;
+>>>>>>> ashish
      left: 38%; 
   }
   .image #image3{
     border-radius: 50%;
+<<<<<<< HEAD
      width: 100px;
      height: 100px;
      position: absolute;
      top: 24%;
+=======
+     width: 220px;
+     height: 220px;
+     position: absolute;
+     top: 23%;
+>>>>>>> ashish
      left: 51%; 
   }
   .image #image4{
     border-radius: 50%;
+<<<<<<< HEAD
      width: 100px;
      height: 100px;
      position: absolute;
@@ -183,10 +339,25 @@ margin: 10px;
      height: 100px;
      position: absolute;
      top: 62%;
+=======
+     width: 220px;
+     height: 220px;
+     position: absolute;
+     top: 40%;
+     left: 58%;
+  }
+  .image #image5{
+    border-radius: 50%;
+     width: 220px;
+     height: 220px;
+     position: absolute;
+     top: 59%;
+>>>>>>> ashish
      left: 51%; 
   }
   .image #image6{
      border-radius: 50%;
+<<<<<<< HEAD
      width: 100px;
      height: 100px;
      position: absolute;
@@ -233,6 +404,21 @@ margin: 10px;
   height: 160px;
   overflow: hidden;
   }
+=======
+     width: 220px;
+     height: 220px;
+     position: absolute;
+     top: 59%;
+     left: 38%; 
+  }
+  
+  video{
+  border-radius: 50%;
+  
+ 
+  }
+
+>>>>>>> ashish
   .image #video1{
     position: absolute;
     top: 39%;
@@ -242,6 +428,7 @@ margin: 10px;
 
   
   .sidenav {
+<<<<<<< HEAD
   height: 100%;
   width: 0;
   position: fixed;
@@ -274,6 +461,63 @@ margin: 10px;
   font-size: 36px;
   margin-left: 50px;
 }
+=======
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color:goldenrod;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    border-radius:6px;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    display: block;
+    transition: 0.5s;
+    right : 20px;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+.semi-circle { 
+    position: absolute; 
+    top: 102%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    height: 100px; 
+    width: 200px; 
+    border-radius: 150px 150px 0 0; 
+    background-color: white; 
+    opacity : 0.3;
+    
+} 
+
+p{
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align:center;
+  margin:auto;
+}
+
+>>>>>>> ashish
 
  
   
@@ -284,4 +528,11 @@ margin: 10px;
   
   
   
+<<<<<<< HEAD
   /*# sourceMappingURL=sigup.css.map */
+=======
+  /*# sourceMappingURL=sigup.css.map */
+
+  
+  
+>>>>>>> ashish
