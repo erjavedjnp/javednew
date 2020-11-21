@@ -34,7 +34,7 @@ router.get("/create-event", (req,res,next) =>{
 
 var storage = multer.diskStorage({ 
     destination: (req, file, cb) => { 
-        cb(null,path.join(__dirname ,'../..','/uploads')) 
+        cb(null,path.join(__dirname ,'..','/uploads')) 
     }, 
     filename: (req, file, cb) => { 
         cb(null, file.originalname) 
@@ -69,7 +69,9 @@ router.post("/create-event"  ,upload.array('image',5),(req,res) =>{
             console.log(req.files)
             const {type, name,category,websiteURL,description,time,clock,timezone,date} = req.body
             
-        
+        if(!req.file){
+            console.log("not received")
+        }
        var d = new Date(date);
        var month = months[d.getMonth()].slice(0,3);
     
@@ -116,6 +118,8 @@ router.get("/eventdetail/:eventid" , async (req,res,next) =>{
         console.log(err)
     }
 
+   
+  
 
    
 })

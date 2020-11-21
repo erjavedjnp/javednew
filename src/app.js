@@ -6,6 +6,11 @@ const session=require('express-session')
 const flash=require('connect-flash')
 
 
+
+const eventroutes = require("./routes/event-routes")
+const userroutes = require ("./routes/user-routes")
+
+
 //FOR POSTMAN
 app.use(express.json())
 
@@ -49,6 +54,8 @@ app.get("/",(req,res)=>{
 app.use('/user',require('./routes/user/login'));
 app.use('/user',require('./routes/user/post'));
 app.use('/platform',require('./routes/platform-routes'));
+app.use("/events", eventroutes);
+app.use("/userprofile", userroutes)
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT,function()

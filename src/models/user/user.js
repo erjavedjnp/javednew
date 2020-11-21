@@ -42,6 +42,7 @@ const userSchema = new mongoose.Schema({
 	avatar:{
 		type:String
 	},
+	avatarId: String,
 	tokens:[{
 		token:{
 			type:String,
@@ -55,6 +56,24 @@ const userSchema = new mongoose.Schema({
 		type:String,
 	},
 	isAdmin:Boolean,
+	followers: [
+		{
+		  type: mongoose.Schema.Types.ObjectId,
+		  ref: "User"
+		}
+	  ],
+	  following: [
+		{
+		  type: mongoose.Schema.Types.ObjectId,
+		  ref: "User"
+		}
+	  ],
+	  posts: [
+		{
+		  type: mongoose.Schema.Types.ObjectId,
+		  ref: "Post"
+		}
+	  ]
 });
 
 userSchema.methods.generatingauthtoken=async function(){
