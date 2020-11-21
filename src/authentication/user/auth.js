@@ -15,7 +15,7 @@ const auth= async(req,res,next)=>{
         next()
     }catch(e){
         res.redirect('/')
-        
+        // res.status(401).send('You are not logged in!!')
     }
 }
 
