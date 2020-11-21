@@ -5,9 +5,10 @@ const cookieParser=require('cookie-parser')
 const session=require('express-session')
 const flash=require('connect-flash')
 
+
 //FOR POSTMAN
 app.use(express.json())
-app.set('view engine','ejs');
+
 
 // <------------>  DATABASE   <-------------->
 require('./db/mongoose')

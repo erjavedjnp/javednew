@@ -1,9 +1,18 @@
 const express = require("express");
 const router = express.Router();
+const crypto=require('crypto');
+const path = require("path");
+const fs = require("fs");
+const multer = require("multer");
 const User = require("../../models/user/user.js");
+//const imgModel = require("../../models/user/Image.js");
 const auth=require('../../authentication/user/auth')
+const {mailverification,resetpassword} = require("../../emails/mailverification");
 const bcryptjs=require('bcryptjs')
-const jwt=require('jsonwebtoken')
+const jwt=require('jsonwebtoken');
+const user = require("../../models/user/user.js");
+//const homeController = require("../../controllers/user/home.js");
+const uploadController = require("../../controllers/user/upload.js");
 
 
 router.get('/profile',async(req,res)=>{
@@ -20,23 +29,36 @@ router.get('/create',async(req,res)=>{
 	res.render("create.ejs")
 })
 
-// router.get("/vender-register",(req,res)=>{
-// 	res.render("venderregistration.ejs")
-// })
 
 
 router.get("/signin",(req,res)=>{
-	res.render("signin.ejs")
+	res.render("index.ejs")
+})
+router.get("/reset",(req,res)=>{
+	res.render("reset.ejs")
 })
 
 router.get("/forget",(req,res)=>{
 	res.render("forget.ejs")
 })
 
-// router.get("/reset-password",(req,res)=>{
-// 	const token=req.query.token
-// 	res.render("resetpassword.ejs",{token})
-// })
+router.get("/mak3",(req,res)=>{
+	res.render("mak2.ejs")
+})
+router.get('/timeline', function(req, res){
+    user.find({}, function(err, docs){
+    if(err) res.json(err);
+    else res.render('timeline.ejs', {users: docs});
+    });
+    });
+
+//try it
+router.get("/kanhaiya",(req,res)=>{
+	res.render("index1.ejs")
+})
+
+router.post("/upload", uploadController.uploadFiles);
+
 
 
 // //<-------------->TO READ THE USER PROFILE<---------------->
@@ -57,7 +79,107 @@ router.get('/logout',auth,async(req,res)=>{
 		res.redirect('/')
 	}
 })
+//new field
 
+
+var storage = multer.diskStorage({ 
+    destination: (req, file, cb) => { 
+        cb(null, 'uploads') 
+    }, 
+    filename: (req, file, cb) => { 
+        cb(null, file.fieldname + '-' + Date.now()) 
+    } 
+}); 
+
+var upload = multer({ storage: storage }); 
+// Retriving the image 
+
+
+
+/*const cloudinary = require('cloudinary').v2;
+cloudinary.config({ 
+  cloud_name: 'dyxr8b2jd', 
+  api_key: "174961121367964", 
+  api_secret:"PWd0b0uRa201_zfCdS6zii2uxKs" 
+});
+*/
+// Uploading the image 
+// Uploading the image 
+/*router.post('/upload', upload.single('image'), (req, res, next) => { 
+  
+    var obj = { 
+        name: req.body.name, 
+        desc: req.body.desc, 
+        img: { 
+            data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)), 
+            contentType: 'image/png'
+        } 
+    } 
+    imgModel.create(obj, (err, item) => { 
+        if (err) { 
+            console.log(err); 
+        } 
+        else { 
+            // item.save(); 
+            res.send('done'); 
+        } 
+    }); 
+}); */
+/*router.post('/addimage',auth,upload.array('image'),async(req,res)=>{
+    try{
+        var avatar=[]
+        for(var i=0;i<req.files.length;i++)
+        {
+            const result=await cloudinary.uploader.upload(req.files[i].path)
+            avatar=avatar.concat(result.secure_url)
+        }
+        console.log(req.body)
+        const new_product={
+            ...req.body,
+            avatar,
+            user:req.user._id
+        }
+        
+
+        
+        
+        await all_tags.save()
+       
+        console.log(product);
+        res.send('done')
+    }catch(e){
+        console.log(e)
+        res.send(e)
+    }
+})*/
+//new field
+
+//Verify the mail id
+
+router.get("/mailverification", async (req, res) => {
+	try {
+	  const token = req.query.token;
+	  const decode = jwt.verify(token, "thisismyjwtsecret");
+  
+	  var message = null,
+		error = null;
+	  if (decode.type !== "mailverification") error = "Wrong token";
+  
+	  const user = await User.findById({ _id: decode._id });
+	  if (!user) error = "Invalid user";
+  
+	  if (error === null) {
+		user.mailverified = true;
+		await user.save();
+		message = "Mail verified";
+	  }
+	  res.redirect("/user/signin");
+
+	} catch (e) {
+		res.redirect("/user/signup");
+	}
+  });
+  
 
 
 
@@ -72,21 +194,33 @@ router.post("/signup",async(req,res)=>{
 	try{
 		const email=await User.findOne({email:req.body.email})
 		const username=await User.findOne({username:req.body.username})
+		console.log('yes')
 		if(email)
 		{
+			console.log('yes')
 			req.flash('error','Email is already register!')
 			res.redirect('/user/signup')
 		}
 		else if(username)
 		{
+			console.log('yes')
 			req.flash('error','Username is already register!')
+
 			res.redirect('/user/signup')
 		}
 		else
 		{
+			console.log('yes')
 			const user=new User(req.body)
 			await user.save()
-			res.redirect('/user/signin')
+			
+			mailverification(user.email, user._id);
+			req.flash('error','Email is sent Verify email to login!')
+			res.redirect('/user/signup')
+			/*res.render("message-register.ejs", {
+				   message: "Registered Sucessfully!",
+				   error: null,
+			 });*/
 		}
 	}catch(e){
 		console.log(e)
@@ -133,38 +267,77 @@ router.post('/forget-password',async(req,res)=>{
 
 		if(error === null)
 		{
-			resetpassword(req.body.email)
+			resetpassword(req.body.email);
 			message='Check you emailid and reset your password.'
 		}
-		res.render('message-reset.ejs',{message,error})
+		res.redirect('/user/reset');
+		console.log('reset link send');
 	}catch(e){
-		res.render('message-reset.ejs',{message:null,error:'Server error'})
+		//res.render('message-reset.ejs',{message:null,error:'Server error'})
+		console.log('something is wrong');
 	}
 })
+//My new routes
 
-
-router.post('/reset-password',async(req,res)=>{
-	try{
-		const token=req.query.token
-		const decode=jwt.verify(token,'thisismyjwtsecret2')
-
-		var message=null,error=null
-		if(decode.type !== 'resetpassword')
-		error='Wrong token!!'
-
-		if(error === null)
-		{
-			const user=await User.findOne({email:decode.emailid})
-			const password=req.body.password
-			user.password=password
-			await user.save()
-			message='Password changed sucessfully'
+/*router.post('/forget',async(req,res)=>{
+	crypto.randomBytes(32,(err,buffer)=>{
+		if(err){
+			console.log(err)
 		}
-		res.render('message-passwordchange.ejs',{message,error})
-	}catch(e){
-		res.render('message-passwordchange.ejs',{message:null,error:'Server error'})
+		const token1=buffer.toString("hex")
+		User.findOne({email:req.body.email})
+		.then(user=>{
+			if(!user){
+				return res.status(422).json({error:"User dont exist with this mail"})
+			}
+			user.resetToken=token1
+			user.expireToken= Dtae.now()+3600000
+			user.save().then((result)=>{
+				transporter.sendMail({
+					to:user.email,
+					from:'kainhaiyalal@gmail.com',
+					subject:'Reset your passowrd',
+                    html:`<p>Click <a href=""https://localhost:3000/reset/${token1}">here</a> to reset your password</p>`
+        
+        
+				})
+				res.json({message:"check your mail"});
+			})
+		})
+
+	})
+})*/
+
+//my new routes
+
+router.post("/reset-password", async (req, res) => {
+	try {
+	  const token = req.body.token;
+	  const decode = jwt.verify(token, "thisismyjwtsecret2");
+  
+	  var message = null,
+		error = null;
+	  if (decode.type !== "resetpassword") error = "Wrong token!!";
+  
+	  if (error === null) {
+		const user = await User.findOne({ email: decode.emailid });
+		const password = req.body.password;
+		user.password = password;
+		await user.save();
+		message = "Password changed sucessfully";
+	  }
+	  res.redirect('/user/signin')
+	} catch (e) {
+		res.send('oops')
 	}
-})
+  });
 
 
 module.exports = router;
+
+
+
+
+
+
+

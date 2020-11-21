@@ -2,13 +2,12 @@ const express=require('express')
 const router=express.Router()
 const Posts=require('../../models/user/post')
 const multer=require('multer')
+const cloudinary=require('cloudinary').v2
 
 router.get('/timeline',async(req,res)=>{
     try{
         res.render('timeline.ejs')
-        // console.log('yes')
-        // const posts=new Posts(req.body)
-        // posts.save()
+       
     }catch(e){
         res.send(e)
     }
