@@ -42,18 +42,11 @@ router.get("/forget",(req,res)=>{
 	res.render("forget.ejs")
 })
 
-router.get("/mak3",(req,res)=>{
-	res.render("mak2.ejs")
-})
-router.get('/timeline', function(req, res){
-    user.find({}, function(err, docs){
-    if(err) res.json(err);
-    else res.render('timeline.ejs', {users: docs});
-    });
-    });
+
+
 
 //try it
-router.get("/kanhaiya",(req,res)=>{
+router.get("/photoupload",(req,res)=>{
 	res.render("index1.ejs")
 })
 
@@ -192,6 +185,7 @@ router.get("/mailverification", async (req, res) => {
 
 router.post("/signup",async(req,res)=>{ 
 	try{
+		console.log("i m here");
 		const email=await User.findOne({email:req.body.email})
 		const username=await User.findOne({username:req.body.username})
 		console.log('yes')
