@@ -1,0 +1,225 @@
+.screen10-body{
+    background-color: #f3c33e;
+    height: fit-content;
+    width: 1100px;
+    overflow-y: scroll;
+}
+.svg-iconarrow {
+    width: 2em;
+    height: 2em;
+    margin-left: 900px;
+    margin-top: -50px;
+  }
+  .svg-iconarrow path,
+  .svg-iconarrow polygon,
+  .svg-iconarrow rect {
+    fill: black;
+  }
+  
+  .svg-iconarrow circle {
+    stroke: black;
+    stroke-width: 1;
+  }
+
+  
+
+  .svg-icon {
+    width: 3em;
+    height: 3em;
+    margin-left: 900px;
+  }
+  
+  .svg-icon path,
+  .svg-icon polygon,
+  .svg-icon rect {
+    fill:  #f3c33e;
+  }
+  
+  .svg-icon circle {
+    stroke:  #f3c33e;
+    stroke-width: 1;
+  }
+
+ 
+  .svg-iconbackarrow {
+    width: 2em;
+    height: 2em;
+
+    position: relative;
+    bottom: 90%;
+  }
+  
+  .svg-iconbackarrow path,
+  .svg-iconbackarrow polygon,
+  .svg-iconbackarrow rect {
+    fill:black;
+  }
+  
+  .svg-iconbackarrow circle {
+    stroke: black;
+    stroke-width: 1;
+  }
+
+  .svg-iconprofile {
+    width: 2em;
+    height: 2em;
+    margin-left: 1300px;
+  }
+  
+  .svg-iconprofile path,
+  .svg-iconprofile polygon,
+  .svg-iconprofile rect {
+    fill: black;
+  }
+  
+  .svg-iconprofile circle {
+    stroke: black;
+    stroke-width: 1;
+  }
+
+  .logo{
+    position: relative;
+    height: 160px;
+    width: 175px;
+    z-index: 1;
+    left: 630px;
+    top: 20px;
+    margin-left: 3%;
+
+    
+}
+
+.inbox{
+    font-size: 30px;
+    font-weight: 500;
+    margin-left: 749px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    
+}
+.conversation{
+    display: grid;
+    grid-template-columns: 70px 1fr max-content;
+    color: #000;
+    background-color: white;
+    grid-gap: 4px;
+    font-size: 0.9rem;
+    border-radius: 15px 15px 15px 15px;
+    padding: 10px 20px 10px 10px;
+    position: relative;
+    left: 41%;
+    width: 700px;
+    margin-bottom: 10px;
+}
+.conversation:hover{
+    cursor: pointer; 
+ }
+ .conversation >img{
+     grid-row: span 2;
+     height: 60px;
+     width: 60px;
+     border-radius: 100%;
+ }
+ .title-text{
+     font-weight: bold;
+     color: #000;
+     font-size: 1.1rem;
+     
+     padding-left: 3px;
+     white-space: nowrap;
+     overflow-x: hidden;
+     text-overflow: ellipsis;
+ }
+ .created-date{
+     color: rgba(54, 52, 52, 0.89);
+       font-size: 0.8rem;
+     margin-top: 5px;
+     font-weight: bold;
+     
+ 
+ }
+ .conversation-message{
+     padding-left: 5px;
+font-weight: bold;
+color: rgb(110, 108, 108);
+     white-space: nowrap;
+     overflow-x: hidden;
+     text-overflow: ellipsis;
+ }
+
+
+@media screen and (max-width:500px)
+{
+    .screen10-body{
+       max-width: fit-content;
+       width: fit-content;
+    }
+
+    .logo{
+        position: relative;
+        height: 150px;
+        width: 165px;
+        z-index: 1;
+        left: 50px;
+        top: 10px;
+        margin-left: 3%;
+    
+        
+    }
+    .inbox{
+        font-size: 30px;
+        font-weight: 500;
+        margin-left: 140px;
+        padding-top: 10px;
+        padding-bottom: 30px;
+        
+    }
+    .svg-iconbackarrow {
+        width: 2em;
+        height: 2em;
+        margin-top:1%;
+      }
+
+      .conversation{
+        display: grid;
+        grid-template-columns: 70px 1fr max-content;
+        color: #000;
+        background-color: white;
+        grid-gap: 10px;
+        font-size: 0.9rem;
+        border-radius: 15px 15px 15px 15px;
+        padding: 10px 20px 10px 10px;
+        position: relative;
+        left: 1%;
+        max-width: 340px;
+        margin-left: 8px;
+    }
+    .created-date{
+        color: rgba(54, 52, 52, 0.89);
+          font-size: 0.8rem;
+        margin-top: 2px;
+        font-weight: bold;
+        
+    
+    }
+      
+}
+
+@media screen and  (max-width: 500px ) and (min-width:400px)
+{
+  .conversation{
+    display: grid;
+    grid-template-columns: 70px 1fr max-content;
+    color: #000;
+    background-color: white;
+    grid-gap: 10px;
+    font-size: 0.9rem;
+    border-radius: 15px 15px 15px 15px;
+    padding: 10px 20px 10px 10px;
+    position: relative;
+    left: 1%;
+    width: 700px;
+    margin-left: 12px;
+}
+
+}
