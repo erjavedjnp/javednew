@@ -55,7 +55,7 @@ router.post("/upload", uploadController.uploadFiles);
 
 
 // //<-------------->TO READ THE USER PROFILE<---------------->
-router.get('/id',auth,async(req,res)=>{
+router.get('/id',async(req,res)=>{
 	res.render('id.ejs')
 })
 
