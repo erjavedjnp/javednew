@@ -1,0 +1,134 @@
+body{
+    background-color: rgb(248, 204, 16);
+}
+#parent{
+    display: grid;
+    grid-template-columns: 10vw 60vw 29vw;
+    grid-template-rows: 6vh 6vh 6vh;
+
+}
+.back_button{
+    grid-column: 1/2;
+    grid-row:1/2;
+    justify-self: auto;
+}
+.back_button_img{
+    padding-left: 2vmin;
+    padding-top: 2vmin;
+    max-width: 6vw;
+    max-height: 3vh;
+}
+.app_logo{
+    grid-column: 2/4;
+    grid-row: 1/3;
+    
+}
+.app_logo_img{
+    max-width: 15vw;
+    max-height: 15vh;
+    padding-left: 35vw;
+}
+
+.two{
+    grid-row: 2/4;
+    grid-column: 1/4;
+    z-index: -1;
+    background-image: url('social_gathering.jpg');
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+}
+#user_name{
+    padding-top: 4vh;
+    padding-left: 10vw;
+    font-size: 4vh;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 10vw 70vw 19vw;
+    grid-template-rows: 5vh 5vh;
+    grid-template-areas:
+      "usr_logo song_name like_plus_button"
+      "usr_logo no_of_views like_plus_button";
+  }
+  .usr_logo { 
+      grid-area: usr_logo;
+      display: flex;
+    }
+    .user_logo_img {
+        width: 10vw;
+        height: 10vh;
+    }
+
+  .song_name {
+       grid-area: song_name;
+       padding: 1vh;
+       font-size: 3vh; 
+    }
+  
+  .no_of_views {
+       grid-area: no_of_views;
+       padding: 1vh;
+       font-size: 3vh; 
+    }
+  
+  .like_plus_button {
+       grid-area: like_plus_button;
+        display: flex;
+    }
+.follower{
+  font-size: 4vh;  
+}
+.likebutton {
+    vertical-align: middle;
+    padding-right: 5vw;
+    width: 10vw;
+    height: 10vh;
+    image-rendering: auto;
+}
+.Third{
+    width: 95vw;
+    height: 35vh;
+}
+#text_stats{
+    color: white;
+    font-size: 3vh;
+   display: flex;
+   align-items: center ;
+}
+
+.grid-container2 {
+    display: grid;
+    grid-template-columns: 40vw 30vw 29vw;
+    grid-template-rows: 10vh 10vh 10vh;
+    grid-template-areas:
+      "country1 like1 dislike1"
+      "country2 like2 dislike2"
+      "country3 like3 dislike3";
+  }
+  .country1 { grid-area: country1; }
+  .like1 { grid-area: like1; }
+  .dislike1 { grid-area: dislike1; }
+  .country2 { grid-area: country2; }
+  .like2 { grid-area: like2; }
+  .dislike2 { grid-area: dislike2; }
+  .country3 { grid-area: country3; }
+  .like3 { grid-area: like3; }
+  .dislike3 { grid-area: dislike3; }
+  .country_name{
+  	width: 20vw;
+  	height: 8vh;
+  	text-align: center;
+  }
+  .like_class{
+    vertical-align: middle;
+    width: 9vw;
+    height: 9vh;
+    image-rendering: auto;
+  }
+  .dislike_class{
+    vertical-align: middle;
+    width: 9vw;
+    height: 9vh;
+    image-rendering: auto;
+  }
