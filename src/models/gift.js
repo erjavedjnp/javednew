@@ -18,4 +18,4 @@ const giftSchema = mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('gift',giftSchema);
+module.exports = mongoose.model('Gift',giftSchema);

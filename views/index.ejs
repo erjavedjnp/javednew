@@ -28,8 +28,12 @@
                         class="login__logo"
                     />
                     <!-- x   -->
-                    <form method="GET" action="feed.html" class="login__form">
+                    
+                    
+                    <form  action="/user/signin" method="POST" class="login__form">
+                        <%- include('./partials/message.ejs')%>
                         <div class="login__input-container">
+                            
                             <input 
                                 type="text"
                                 name="username"
@@ -46,15 +50,15 @@
                                 required
                                 class="login__input" 
                             />
-                            <a href="/forget" class="login__form-link">Forgot?</a>
+                            <a href="/user/forget" class="login__form-link">Forgot?</a>
                         </div>
                         <div class="login__input-container">
-                            <a href="/user/id">
+                           
                             <input
                                 type="submit"
                                 value="Log in"
                                 class="login__input login__input--btn"
-                            /></a>
+                            />
                         </div>
                     </form>
                     
@@ -62,7 +66,7 @@
                 <div class="login__section login__sign-up">
                     <span class="login__text">
                         Don't have an account? 
-                        <a href="/register" class="login__link">
+                        <a href="/user/signup" class="login__link">
                             Sign up
                         </a>
                     </span>

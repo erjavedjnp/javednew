@@ -20,7 +20,7 @@ const storage=multer.diskStorage({
         fileSize:2000000
     },
     fileFilter(req,file,cb){
-        if(!file.originalname.match(/\.(png|jpeg|jpg|gif)$/)){
+        if(!file.originalname.match(/\.(png|jpeg|jpg|gif|JPG|PNG)$/)){
             cb(new Error('File must be an image!!'))   
         }
         cb(undefined,true)
@@ -38,24 +38,27 @@ app.use(express.json())
 
 // GET Routes
 
-router.get('/',(req,res)=>{
+router.get('/',async(req,res)=>{
     var query = { isfeatured : true };
-    const products = Products.find(query)
-    const stores = Stores.find(query)
+    const products =await  Products.find(query)
+    const stores =await  Stores.find(query)
     res.render('platform',{products:products, stores:stores})
+    
 });
 
-router.get('/stores',(req,res)=>{
-    const stores = Stores.find()
-    res.render('stores',{stores:stores})
+router.get('/stores',async(req,res)=>{
+    const stores = await Stores.find()
+    res.render('screen34',{stores:stores})
+    
 });
+
 
 router.get('/addstore',(req,res)=>{
     res.render('form',{})
 });
 
 router.get('/addproduct',(req,res)=>{
-    res.render('addproduct',{})
+    res.render('form',{})
 });
 
 // POST Routes
