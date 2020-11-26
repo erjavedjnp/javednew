@@ -87,7 +87,11 @@ const userSchema = new mongoose.Schema({
 		  type: mongoose.Schema.Types.ObjectId,
 		  ref: "Post"
 		}
-	  ]
+	  ],
+	  dating : {
+		  type: mongoose.Schema.Types.ObjectId,
+		  ref: "Dating"
+	  }
 });
 
 userSchema.methods.generatingauthtoken=async function(){

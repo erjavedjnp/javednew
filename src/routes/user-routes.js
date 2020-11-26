@@ -9,7 +9,7 @@ const Comment = require("../models/comment")
 const cloudinary = require('./cloudnary')
 const multer = require('multer');
 const fs = require("fs");
-
+const auth = require("../authentication/user/auth")
 
 
 app.use(express.json())
@@ -30,7 +30,7 @@ router.get("/" ,(rq,res) =>{
 })
 
 //create users 
-/* router.post("/users", upload.single("file") ,async (req,res,next) =>{
+ router.post("/users", upload.single("file") ,async (req,res,next) =>{
   const {username,password,name,bio} = req.body;
 
   const uploader = async (path) => await cloudinary.uploads(path, "Files")
@@ -51,24 +51,24 @@ router.get("/" ,(rq,res) =>{
   })
   newUser.save(); 
   res.json({message: "success", user : newUser}) 
-}) */
+}) 
 
 // get users by userId
-router.get("/users/:user_id", async (req, res) => {
+router.get("/users/", auth, async (req, res) => {
   let newUser = {};
 
-  newUser = (await User.findById(req.params.user_id)).populate("posts")
+  newUser = (await User.findById(req.user._id)).populate("posts")
 
-  let posts = await Post.find().populate("comments").where("author.id").equals(req.params.user_id)
+  let posts = await Post.find().populate("comments").where("author.id").equals(req.user._id)
   
   res.json({user: newUser, posts: posts.map(post => post)})
     console.log(newUser)
 });
 
 // create post 
-router.post("/posts/:userid" ,upload.array("file"), async (req,res,next) =>{
+router.post("/posts/" ,auth,upload.array("file"), async (req,res,next) =>{
   
-  let userfound = await User.findById(req.params.userid)
+  let userfound = await User.findById(req.user._id)
   const {description,tags} = req.body
 
   const uploader = async (path) => await cloudinary.uploads(path, "Files")
@@ -104,8 +104,8 @@ router.post("/posts/:userid" ,upload.array("file"), async (req,res,next) =>{
 
 
 // edit userprofile
-router.patch("/users/:userid", upload.single("file") ,async (req,res,next) =>{
-  const user = await User.findById(req.params.userid)
+router.patch("/users/", auth, upload.single("file") ,async (req,res,next) =>{
+  const user = await User.findById(req.user._id)
 
   const {username, bio} = req.body
 
@@ -158,16 +158,16 @@ router.post('/follow', async (req, res, next) => {
       switch(action) {
           case 'follow':
               await Promise.all([ 
-                  users.findByIdAndUpdate(follower, { $push: { following: following }}),
-                  users.findByIdAndUpdate(following, { $push: { followers: follower }})
+                  User.findByIdAndUpdate(follower, { $push: { following: following }}),
+                  User.findByIdAndUpdate(following, { $push: { followers: follower }})
               
               ]);
           break;
 
           case 'unfollow':
               await Promise.all([ 
-                  users.findByIdAndUpdate(follower, { $pull: { following: following }}),
-                  users.findByIdAndUpdate(following, { $pull: { followers: follower }})
+                  User.findByIdAndUpdate(follower, { $pull: { following: following }}),
+                  User.findByIdAndUpdate(following, { $pull: { followers: follower }})
               
               ]); 
           break;

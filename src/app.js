@@ -6,6 +6,7 @@ const session=require('express-session')
 const flash=require('connect-flash')
 const eventroutes = require("./routes/event-routes")
 const userroutes = require ("./routes/user-routes")
+const datingroutes = require('./routes/dating-routes')
 
 
 //FOR POSTMAN
@@ -49,11 +50,12 @@ app.get("/",(req,res)=>{
 
 
 app.use('/user',require('./routes/user/login'))
-app.use('/post',require('./routes/user/post'))
+//app.use('/post',require('./routes/user/post'))
 
 
 app.use("/events", eventroutes);
 app.use("/userprofile", userroutes)
+app.use("/datingprofile" , datingroutes)
 
 
 
