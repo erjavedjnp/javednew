@@ -185,6 +185,7 @@ router.get("/mailverification", async (req, res) => {
 
 router.post("/signup",async(req,res)=>{ 
 	try{
+		console.log("i m here");
 		const email=await User.findOne({email:req.body.email})
 		const username=await User.findOne({username:req.body.username})
 		console.log('yes')
