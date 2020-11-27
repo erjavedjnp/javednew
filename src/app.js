@@ -58,6 +58,7 @@ app.use('/user',require('./routes/user/login'));
 app.use('/user',require('./routes/user/post'));
 app.use('/platform',require('./routes/platform-routes'));
 app.use('/comfortzone',require('./routes/comfort-zone'));
+app.use('/chorus',require('./routes/chorus-routes'));
 app.use("/events", eventroutes);
 app.use("/userprofile", userroutes)
 
