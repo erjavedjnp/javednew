@@ -3,6 +3,7 @@ const app =  express();
 const multer = require('multer')
 const router = express.Router();
 const mongoose = require("mongoose");
+const auth=require('./../authentication/user/auth')
 
 const Event = require("../models/events");
 const fs = require('fs')

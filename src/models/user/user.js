@@ -16,10 +16,6 @@ const userSchema = new mongoose.Schema({
 		unique:true,
 		trim:true
 	},
-	biography:{
-		type:String,
-		required:true
-	},
 	email:{
 		type:String,
 		required:true,
@@ -68,6 +64,12 @@ const userSchema = new mongoose.Schema({
 	country:{
 		type:String,
 	},
+	chorus: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Chorus"
+        }
+      ],
 	isAdmin:Boolean,
 });
 

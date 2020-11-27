@@ -5,7 +5,7 @@ const multer=require('multer')
 
 router.get('/timeline',async(req,res)=>{
     try{
-        res.render('timeline.ejs')
+        res.render('screen15.ejs')
         // console.log('yes')
         // const posts=new Posts(req.body)
         // posts.save()
@@ -34,41 +34,27 @@ const storage=multer.diskStorage({
 
 const upload=multer({
     // dest:'name',
-    storage
+    storage,
+    limits:{
+        fileSize:1000000
+      }
     // fileFilter(req,res,cal)
 })
 
-router.post('/post',upload.array('avatar'),async(req,res)=>{
-    try{
-        for(var i=0;i<req.files.length;i++)
-        {
-            if(req.files[i].originalname.match(/\.(png|jpeg|jpg|gif)$/))
-            {
-                var avatar=req.files[i].filename
-            }
-            else if(req.files[i].originalname.match(/\.(mp3)$/))
-            {
-                var audio=req.files[i].filename
-            }
-            else
-            {
-                var video=req.files[i].filename
-            }            
-        }
-        const new_post={
-            ...req.body,
-            avatar,
-            audio,
-            video
-        }
-        const post=new Posts(new_post)
-        await post.save()
-        res.redirect('/user/timeline')
-        
-    }catch(e){
-        console.log(e)
-        res.send(e)
-    }
-})
+router.post("/upload", upload.single("profile"),(req,res)=>{
+    var imagename=req.file.filename;
+    res.json({
+      sucess:1,
+      profile_url:`http://localhost:3000/profile/${req.file.filename}`
+    })
+   /* var imagedetail=newusermodel({
+      imagename:imagename
+    });*/
+    //imagedetail.save(function(err,doc){
+      //if(err) throw err;
+      //res.send('sucess');
+    //})
+  });
+    
 
 module.exports=router

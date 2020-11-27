@@ -57,6 +57,7 @@ app.get("/",(req,res)=>{
 app.use('/user',require('./routes/user/login'));
 app.use('/user',require('./routes/user/post'));
 app.use('/platform',require('./routes/platform-routes'));
+//app.use('/chorus',require('./routes/chorus/post'));
 app.use("/events", eventroutes);
 app.use("/userprofile", userroutes)
 

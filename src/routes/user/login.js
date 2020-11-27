@@ -13,6 +13,7 @@ const jwt=require('jsonwebtoken');
 const user = require("../../models/user/user.js");
 //const homeController = require("../../controllers/user/home.js");
 const uploadController = require("../../controllers/user/upload.js");
+const videouploadController = require("../../controllers/user/upload_video.js");
 
 
 router.get('/profile',async(req,res)=>{
@@ -45,15 +46,101 @@ router.get("/forget",(req,res)=>{
 
 
 
-//try it
-router.get("/photoupload",(req,res)=>{
+// //<-------------->for photo upload<---------------->
+//get route for photo upload
+/*router.get("/photoupload",auth, async(req,res)=>{
 	res.render("index1.ejs")
+})*/
+router.get("/photoupload",auth, async(req, res)=>{
+    res.render('index1.ejs', {
+        user: req.user
+    });
+});
+//post route for image upload
+router.post("/upload" ,auth,uploadController.uploadFiles);
+// //<-------------->for photo upload<---------------->
+
+// //<-------------->for video upload<---------------->
+router.get("/videoupload",auth, async(req, res)=>{
+    res.render('screen12.ejs', {
+        user: req.user
+    });
+});
+/*router.get("/videoupload",auth, async(req, res)=>{
+    user.find({}, function(err, docs){
+    if(err) res.json(err);
+    else res.render('screen12', {users: docs});
+    });
+	});*/
+	//get route for video upload
+router.get("/videoupload1",auth, async(req,res)=>{
+	res.render("for_video.ejs")
 })
-
-router.post("/upload", uploadController.uploadFiles);
-
-
-
+//post route for video upload
+router.post("/upload1" ,auth,videouploadController.uploadFiles);
+//router.get('/video',function(req,res){
+//	res.send('you are done');
+//})
+// //<-------------->for video upload<----------------> assets\featured.mp4C:\Users\LENOVO\Documents\Wrkspace\finalised_branch_to_work\assets\featured.mp4
+router.get('/video', auth,async(req, res) =>{
+	const path = 'C:/Users/LENOVO/Documents/Wrkspace/finalised_branch_to_work/assets/featured.mp4'
+	const stat = fs.statSync(path)
+	const fileSize = stat.size
+	const range = req.headers.range
+	
+	if (range) {
+	  const parts = range.replace(/bytes=/, "").split("-")
+	  const start = parseInt(parts[0], 10)
+	  const end = parts[1]
+		? parseInt(parts[1], 10)
+		: fileSize-1
+  
+	  if(start >= fileSize) {
+		res.status(416).send('Requested range not satisfiable\n'+start+' >= '+fileSize);
+		return
+	  }
+	 
+	  const chunksize = (end-start)+1
+	  const file = fs.createReadStream(path, {start, end})
+	  const head = {
+		'Content-Range': `bytes ${start}-${end}/${fileSize}`,
+		'Accept-Ranges': 'bytes',
+		'Content-Length': chunksize,
+		'Content-Type': 'video/mp4',
+	  }
+  
+	  res.writeHead(206, head)
+	  file.pipe(res)
+	} else {
+	  const head = {
+		'Content-Length': fileSize,
+		'Content-Type': 'video/mp4',
+	  }
+	  res.writeHead(200, head)
+	  fs.createReadStream(path).pipe(res)
+	}
+  })
+  // //<-------------->TO READ leader board<---------------->
+  router.get("/leaders",auth, async(req, res)=>{
+    res.render('screen14.ejs', {
+		user: req.user
+		
+	});
+	//console.log(user.name)
+});
+// //<-------------->TO READ leader board<---------------->
+router.get('/usersList', function(req, res) {
+	User.find({}, function(err, users) {
+	  var userMap = {};
+  
+	  users.forEach(function(user) {
+		userMap[user._id] = user;
+	  });
+  
+	  res.send(userMap);  
+	}).sort( { age : -1 } );
+  });
+  //db.users.find({ }).sort( { age : -1, posts: 1 } )
 // //<-------------->TO READ THE USER PROFILE<---------------->
 router.get('/id',auth,async(req,res)=>{
 	res.render('id.ejs')
@@ -263,7 +350,7 @@ router.post('/forget-password',async(req,res)=>{
 			resetpassword(req.body.email);
 			message='Check you emailid and reset your password.'
 		}
-		res.redirect('/user/reset');
+		res.render("forget.ejs")
 		console.log('reset link send');
 	}catch(e){
 		//res.render('message-reset.ejs',{message:null,error:'Server error'})
