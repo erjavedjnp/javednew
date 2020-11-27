@@ -9,6 +9,7 @@ const methodOverride = require ('method-override')
 
 const eventroutes = require("./routes/event-routes")
 const userroutes = require ("./routes/user-routes")
+const datingroutes = require('./routes/dating-routes')
 
 
 //FOR POSTMAN
@@ -61,6 +62,7 @@ app.use('/comfortzone',require('./routes/comfort-zone'));
 app.use('/chorus',require('./routes/chorus-routes'));
 app.use("/events", eventroutes);
 app.use("/userprofile", userroutes)
+app.use("/datingprofile" , datingroutes)
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT,function()

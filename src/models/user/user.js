@@ -113,7 +113,11 @@ const userSchema = new mongoose.Schema({
 			  type: mongoose.Schema.Types.ObjectId,
 			  ref: "User"
 		  }
-	  ]
+	  ],
+	  dating : {
+		  type: mongoose.Schema.Types.ObjectId,
+		  ref: "Dating"
+	  }
 });
 
 userSchema.methods.generatingauthtoken=async function(){
