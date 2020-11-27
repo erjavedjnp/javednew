@@ -83,7 +83,7 @@ router.post("/upload1" ,auth,videouploadController.uploadFiles);
 //})
 // //<-------------->for video upload<----------------> assets\featured.mp4C:\Users\LENOVO\Documents\Wrkspace\finalised_branch_to_work\assets\featured.mp4
 router.get('/video', auth,async(req, res) =>{
-	const path = 'C:/Users/LENOVO/Documents/Wrkspace/finalised_branch_to_work/assets/featured.mp4'
+	const path = 'E:/ongoing proj/walson/assets/featured.mp4'
 	const stat = fs.statSync(path)
 	const fileSize = stat.size
 	const range = req.headers.range
