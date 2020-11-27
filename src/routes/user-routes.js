@@ -9,6 +9,7 @@ const Comment = require("../models/comment")
 const cloudinary = require('./cloudnary')
 const multer = require('multer');
 const fs = require("fs");
+const auth = require("../authentication/user/auth.js")
 
 
 

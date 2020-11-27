@@ -3,7 +3,6 @@ const validator =require('validator')
 const bcrypt=require('bcryptjs')
 const jwt=require('jsonwebtoken')
 
-
 const userSchema = new mongoose.Schema({
 	fullname:{
 		type:String,
@@ -48,12 +47,32 @@ const userSchema = new mongoose.Schema({
 	avatar:{
 		type:String
 	},
+	avatar:{
+		type:String
+	},
+	avatarId: String,
 	tokens:[{
 		token:{
 			type:String,
 			required:true
 		}
 	}],
+	mytop8: [{
+		type:mongoose.Schema.ObjectId,
+		ref:"User" 
+	  }],
+	  notification: [{
+		type:mongoose.Schema.ObjectId,
+		ref:"Notifications" 
+	  }],
+	  posts: [{
+		type:mongoose.Schema.ObjectId,
+		ref:"Posts" 
+	  }],
+	  story : [{
+		  type:mongoose.Schema.ObjectId,
+		  ref:"Story"
+	  }],
 	mailverified:{
 		type:Boolean,
 		default:false
@@ -71,6 +90,30 @@ const userSchema = new mongoose.Schema({
         }
       ],
 	isAdmin:Boolean,
+	followers: [
+		{
+		  type: mongoose.Schema.Types.ObjectId,
+		  ref: "User"
+		}
+	  ],
+	  following: [
+		{
+		  type: mongoose.Schema.Types.ObjectId,
+		  ref: "User"
+		}
+	  ],
+	  posts: [
+		{
+		  type: mongoose.Schema.Types.ObjectId,
+		  ref: "Post"
+		}
+	  ],
+	  recentsearches : [
+		  {
+			  type: mongoose.Schema.Types.ObjectId,
+			  ref: "User"
+		  }
+	  ]
 });
 
 userSchema.methods.generatingauthtoken=async function(){
