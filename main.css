@@ -1,0 +1,114 @@
+body{
+	background-color: rgb(8, 74, 112);
+	 margin-top: 40px;
+	 display:block;
+}
+
+h1{
+	color:rgb(255, 217, 0);
+	font-family: sans-serif;
+}
+
+#new{
+	background-color:rgb(255, 217, 0);
+	text-decoration-color: black;
+	transition: 0.6s;
+}
+
+#join{
+	background-color: rgb(255, 217, 0);
+	text-decoration-color: black;
+	transition: 0.6s;
+}
+
+h3{
+	color:rgb(255, 217, 0);
+}
+
+h4{
+	color:rgb(255, 217, 0);
+}
+
+ol{
+	color:rgb(255, 217, 0);
+	font-family: Helvetica;
+	letter-spacing: 0.1em;
+	font-size: medium;
+}
+.tile{
+	width: 96px;
+	height: 96px;
+	font-size: 35px;
+	font-family: Helvetica;
+	margin:0px;
+	padding:0px;
+	float:left;
+	margin-right:-24px;
+	margin-bottom:-15px;
+  font-weight: 200;
+	}
+
+.gameBoard{
+	display: none;
+	font-size: 20px;
+	color:rgb(255, 217, 0);
+  
+}
+
+.center{
+	margin: 0 auto;
+	color:rgb(255, 217, 0);
+
+}
+
+
+
+
+
+.tile{
+	 color:rgb(255, 217, 0);
+	 
+}
+
+.center {
+	width:180px;
+}
+
+#button_00{
+	border-top-style: hidden;
+	border-left-style: hidden;
+}
+
+#button_01{
+	border-top-style: hidden;
+}
+
+#button_02{
+	border-top-style: hidden;
+	border-right-style: hidden;
+}
+
+#button_10{
+	border-left-style: hidden;
+}
+
+#button_12{
+	border-right-style: hidden;
+}
+
+#button_20{
+	border-bottom-style: hidden;
+	border-left-style: hidden;
+}
+
+#button_21{
+	border-bottom-style: hidden;
+}
+
+#button_22{
+	border-bottom-style: hidden;
+	border-right-style: hidden;
+}
+
+
+
