@@ -1,0 +1,392 @@
+.screen9-body{
+    background-color: #f3c33e;
+    height: fit-content;
+    width: 1100px;
+    overflow-y: scroll;
+}
+.svg-iconarrow {
+    width: 2em;
+    height: 2em;
+    margin-left: 900px;
+    margin-top: -50px;
+  }
+  .svg-iconarrow path,
+  .svg-iconarrow polygon,
+  .svg-iconarrow rect {
+    fill: black;
+  }
+  
+  .svg-iconarrow circle {
+    stroke: black;
+    stroke-width: 1;
+  }
+
+  
+
+  .svg-icon {
+    width: 3em;
+    height: 3em;
+    margin-left: 900px;
+  }
+  
+  .svg-icon path,
+  .svg-icon polygon,
+  .svg-icon rect {
+    fill:  #f3c33e;
+  }
+  
+  .svg-icon circle {
+    stroke:  #f3c33e;
+    stroke-width: 1;
+  }
+
+ 
+  .svg-iconbackarrow {
+    width: 2em;
+    height: 2em;
+
+    position: relative;
+    bottom: 90%;
+  }
+  
+  .svg-iconbackarrow path,
+  .svg-iconbackarrow polygon,
+  .svg-iconbackarrow rect {
+    fill:black;
+  }
+  
+  .svg-iconbackarrow circle {
+    stroke: black;
+    stroke-width: 1;
+  }
+
+  .svg-iconprofile {
+    width: 2em;
+    height: 2em;
+    margin-left: 1300px;
+  }
+  
+  .svg-iconprofile path,
+  .svg-iconprofile polygon,
+  .svg-iconprofile rect {
+    fill: black;
+  }
+  
+  .svg-iconprofile circle {
+    stroke: black;
+    stroke-width: 1;
+  }
+
+  .logo{
+    position: relative;
+    height: 160px;
+    width: 175px;
+    z-index: 1;
+    left: 630px;
+    top: 50px;
+    margin-left: 3%;
+
+    
+}
+
+.inbox{
+    font-size: 25px;
+    font-weight: 600;
+    margin-left: 67%;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    
+}
+.inbox2{
+  font-size: 25px;
+  font-weight: 600;
+  margin-left: 66%;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  
+}
+
+.data{
+    color: white;
+    font-size: 30px;
+    font-weight: 500;
+    margin-left:40% ;
+    margin-bottom: 2%;
+    width: 70%;
+}
+
+.icon-9{
+    color: black;
+    margin-right: 2%;
+}
+.icon-logo{
+  width: 50px;
+  height: 50px;
+  margin-right: 1%;
+}
+.collapsible {
+    background-color:  white;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 20px;
+    border-radius: 20px 20px 20px 20px;
+  }
+  
+  .active, .collapsible:hover {
+    background-color:  #eee;
+  }
+  
+  .content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    font-size: 1.0rem;
+    background-color:  #fff;
+    color: black;
+    border-radius: 20px 20px 20px 20px;
+    font-weight: 400;
+  
+  }
+  .mail{
+    margin-left: 5%;
+  }
+  .input-field{
+    padding-top: 5px;
+  margin: 5px 10px 10px 5px;
+  
+  }
+
+  .input-field-text{
+   
+    width: 50%;
+    text-decoration: none;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid black;
+    
+
+  }
+
+  .submit-btn{
+    float: right;
+    width: 20%;
+    margin-bottom: 10px;
+    border-radius: 10px 10px 10px 10px;
+    background-color:#f3c33e ;
+    color: white;
+    
+    padding: 4px;
+  }
+
+  .tabContent{
+    padding: 15px;
+    font-size: 16px;
+  }
+
+  .user-img{
+      border-radius: 50%;
+      margin-right: 20px;
+  }
+  .icon-user{
+   float: right;
+   
+   color: #f3c33e;
+  
+  
+  }
+
+  .icon-right{
+      float: right;
+  }
+  .wall{
+    margin: auto;
+    height: 330px;
+    width: 95em;
+    
+    position: relative;
+   
+    position: relative;
+    top: -30px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+  }
+  .head-tag{
+      color: white;
+      position: absolute;
+      top: 50%;
+      left: 10%;
+  }
+  .vl {
+    border-left: 6px solid white;
+    height: 50px;
+  }
+  .middiv{
+    display: flex;
+    margin-left:410px ;
+    position: relative;
+    top: 5px;
+    left: 20%;
+    
+}
+.middiv div{
+    margin: 20px;
+    text-align: center;
+
+}
+.icon-search{
+    color:#f3c33e ;
+    font-size: 35px;
+position: absolute;
+top: 380px;
+left: 90%;
+}
+  @media (max-width:400px)
+  {
+    .data{
+      color: white;
+      font-size: 20px;
+      font-weight: 500;
+      margin-left:2% ;
+      margin-bottom: 2%;
+      width: 30%;
+      
+  }
+  .chatdiv{
+      margin-top: 10%;
+  }
+  .logo{
+    position: relative;
+    height: 135px;
+    width: 150px;
+    z-index: 1;
+    left: 48px;
+    top: 38px;
+    margin-left: 4%;
+
+    
+}
+.icon-search{
+    color:#f3c33e ;
+    font-size: 28px;
+position: absolute;
+top: 265px;
+left: 77%;
+}
+.head-tag{
+    color: white;
+    position: absolute;
+    top: 41%;
+     font-size: small;
+    left: 5%;
+}
+
+.head-tag-text{
+    font-size: 30px;
+}
+.wall{
+    margin: auto;
+    height: 200px;
+    width: 21.5em;
+    
+    position: relative;
+    z-index: -1;
+    position: relative;
+    top: -30px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+  }
+  .middiv{
+    display:flex;
+    font-size: 10px;
+    
+    position: absolute;
+    top: 45%;
+    left: -100%;
+   
+    
+}
+
+.font1{
+    font-size: 20px;
+}
+.font2{
+    font-size: 15px;
+}
+.tabContent{
+  padding: 15px;
+  font-size: 12px;
+}
+.icon-logo{
+  width: 40px;
+  height: 38px;
+}
+.icon-logo1{
+  width: 40px;
+  height: 38px;
+  background-color: yellow;
+}
+.inbox{
+  font-size: 14px;
+  font-weight: 700;
+  margin-left: 2%;
+  padding-top: 10px;
+  padding-bottom: 2px;
+  
+}
+.inbox2{
+  font-size: 14px;
+  font-weight: 700;
+  margin-left: 2%;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  
+}
+.collapsible {
+  background-color:  white;
+  color: black;
+  cursor: pointer;
+  padding: 10px;
+  width: 323px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  font-weight: 500;
+  
+}
+.active, .collapsible:hover {
+  background-color:  #eee;
+}
+
+.content {
+ 
+  display: none;
+  
+  font-size: 0.8rem;
+  color:black;
+  background-color:  #fff;
+  border-radius: 20px 20px 20px 20px;
+width: 323px;
+font-weight: 400;
+}
+.screen9-body{
+  background-color: #f3c33e;
+  height: fit-content;
+  width: 100%;
+  overflow-y: scroll;
+}
+.mail{
+  margin-left: 14%;
+}
+.icon-9{
+  color: black;
+  margin-right: 7%;
+  margin-left: 2%;
+}
+  }
