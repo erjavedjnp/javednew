@@ -68,7 +68,7 @@ background-color: #ffb3079c;
 
 .bottom-left {
   position: absolute;
-  bottom: 65px;
+  bottom: 250px;
   left: 66px;
     color: white;
 }
@@ -105,13 +105,13 @@ background-color: #ffb3079c;
 .bottom-right {
  
   position: absolute;
-  bottom: 65px;
+  bottom: 250px;
   right: 66px;
     color: yellow
 }
 .trophy{
     position: absolute;
-  bottom: 225px;
+  bottom: 450px;
   right: 66px;
     color: yellow
 }

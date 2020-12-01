@@ -12,50 +12,40 @@ background-color: #ffb3079c;
 	width: 100%;
 	border-radius: 50px 50px 0px 0px;
 	position: relative;
-	height: 250px;
+	height: 150px;
 	border: none;
    
 }
 .form_horizontal{
           font-family: 'loto',sans-serif;
 		  text-align: center;
-		  margin: 70px;
 		  
-}
-.bottom-left{
-	margin: 0px 0px 20px 40px;
-}
-.bell{
-margin: 0px 0px 20px 40px;	
 }
 .logo{
 	height: 150px;
 	width: 150px;
 	border-radius: 50%;
 	border: none;
-    
+    position: relative;
 }
 .ProfilePic{
-	height: 300px;
-	width: 300px;
+	height: 200px;
+	width: 200px;
 	border-radius: 50%;
 	border: 5px solid #fff;
 	margin-left: 10px;
 	margin-top: 10px;
 	
- 
-}
-img{
-	margin: 50px;
+   
 }
 
-.container-fluid {
+.container {
   position: relative;
   text-align: center;
   color: white;
 
 }
-/*@media only screen and (max-width: 400px){
+@media only screen and (max-width: 400px){
 	
 .container {
   position: relative;
@@ -71,7 +61,7 @@ img{
 	{
 
 	}
-}*/
+}
 
 .bottom-left {
   position: absolute;
@@ -127,49 +117,4 @@ img{
 	padding: 10px 2static0px;
 	border: none;
 	text-transform: uppercase;
-}
-
-
-/*@media(max-width:1024px){   <------- ipad-pro ------->
-	
-}
-
-@media(max-width:991px){    <------ ipad -------->
-	
-}
-
-@media(max-width:767px){   <------ mobile -------->
-
-
-}*/
-
-@media(max-width:640px){ 
-			.banner img{
-				height: 70px;
-			}
-			.top-right {
-				  position: absolute;
-				  top: 0%;
-				  right: 35%;
-				}
-				body{
-					background-color: red;
-				}
-
-}
-
-@media(max-width:480px){ 
-
-}
-
-@media(max-width:576px){ 
-
-}
-
-@media(max-width:360px){ 
-
-}
-
-@media(max-width:320px){ 
-
 }
