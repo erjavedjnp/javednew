@@ -198,6 +198,9 @@ router.get('/setting',auth,async(req,res)=>{
 router.get('/notification',auth,async(req,res)=>{
 	res.render('notification.ejs')
 })
+router.get('/livemap',auth,async(req,res)=>{
+	res.render('screen18.ejs')
+})
 // USER profile
 
 //<------------>TO LOGOUT THE USER<---------------->

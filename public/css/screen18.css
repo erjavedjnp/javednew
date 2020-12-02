@@ -1,134 +1,402 @@
 body{
-    background-color: rgb(248, 204, 16);
-}
-#parent{
-    display: grid;
-    grid-template-columns: 10vw 60vw 29vw;
-    grid-template-rows: 6vh 6vh 6vh;
-
-}
-.back_button{
-    grid-column: 1/2;
-    grid-row:1/2;
-    justify-self: auto;
-}
-.back_button_img{
-    padding-left: 2vmin;
-    padding-top: 2vmin;
-    max-width: 6vw;
-    max-height: 3vh;
-}
-.app_logo{
-    grid-column: 2/4;
-    grid-row: 1/3;
+    margin: 0;
+    background:  linear-gradient(to bottom,#f1b22a,#f1b22a,#f1b22a,#f1b22a);
     
 }
-.app_logo_img{
-    max-width: 15vw;
-    max-height: 15vh;
-    padding-left: 35vw;
+
+.main{
+     
+    width: 1200px;
+    height: 1200px;
 }
 
-.two{
-    grid-row: 2/4;
-    grid-column: 1/4;
-    z-index: -1;
-    background-image: url('social_gathering.jpg');
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-
-}
-#user_name{
-    padding-top: 4vh;
-    padding-left: 10vw;
-    font-size: 4vh;
-}
-.grid-container {
-    display: grid;
-    grid-template-columns: 10vw 70vw 19vw;
-    grid-template-rows: 5vh 5vh;
-    grid-template-areas:
-      "usr_logo song_name like_plus_button"
-      "usr_logo no_of_views like_plus_button";
-  }
-  .usr_logo { 
-      grid-area: usr_logo;
-      display: flex;
-    }
-    .user_logo_img {
-        width: 10vw;
-        height: 10vh;
-    }
-
-  .song_name {
-       grid-area: song_name;
-       padding: 1vh;
-       font-size: 3vh; 
-    }
+.top_div{
   
-  .no_of_views {
-       grid-area: no_of_views;
-       padding: 1vh;
-       font-size: 3vh; 
-    }
+    width: 100%;
+    height: 40%;
+    overflow: hidden;
+   
+    
+}
+
+
+.logo{
+    position: absolute;
+    height: 140px;
   
-  .like_plus_button {
-       grid-area: like_plus_button;
-        display: flex;
-    }
-.follower{
-  font-size: 4vh;  
+    top: 10px;
+    left:600px;
+
+    z-index: 10;
 }
-.likebutton {
-    vertical-align: middle;
-    padding-right: 5vw;
-    width: 10vw;
-    height: 10vh;
-    image-rendering: auto;
+
+.wall{
+    height: 60%;
+    width: 80%;
+    margin-top:0;
+    z-index: 6;
+    position: absolute;
+    left:150px;
+    top: 80px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
 }
-.Third{
-    width: 95vw;
-    height: 35vh;
-}
-#text_stats{
+
+
+
+.top_div h1{
+   z-index: 20;
+    position: absolute;
+    margin-left: 200px;
+    margin-top: 320px;
     color: white;
-    font-size: 3vh;
-   display: flex;
-   align-items: center ;
+}
+.description{
+    display:flex;
+    flex:1;
+    color: whitesmoke;
+    align-items: center;
+    
+  
+}
+.dp{
+    
+    padding-left: 11vw;
+    
+}
+.detail{
+    padding-left: 1vw;
+    
+}
+.likes{
+    padding-left: 45vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  .map_div{
+      display:flex;
+      flex-direction: column;
+      align-items: center;
+      
+      width:100%;
+      height: 30%;
+     
+      margin-left: 40px;
+      padding-left: 40px;
+  }
+  .heading{
+ 
+      color: black;
+      justify-content: center;
+  }
+ 
+  .world_map{
+      margin-top: 10px;
+      width:80%;
+      height: 80%;
+  }
+  .pins{
+      position: absolute;
+      
+
+  }
+  .pin1{
+    position: absolute;
+      right:225px;
+      top:100px;
+      display: flex;
+      flex-direction: column;
+      color: cornsilk;
+      font-size:x-small;
+      
+  }
+  .pin2{
+    position: absolute;
+      left:100px;
+      top:125px;
+      display: flex;
+      flex-direction: column;
+      color: cornsilk;
+      font-size:x-small;
+      
+  }
+  .pin3{
+    position: absolute;
+    left:10px;
+    top:80px;
+    display: flex;
+      flex-direction: column;
+      color: cornsilk;
+      font-size:x-small;
+      
+  }
+  .pin4{
+    position: absolute;
+      right:150px;
+    top:200px;
+    display: flex;
+    flex-direction: column;
+    color: cornsilk;
+    font-size:x-small;
+  }
+  .pin5{
+    position: absolute;
+  left:1px;
+    top:150px;
+    display: flex;
+      flex-direction: column;
+      color: cornsilk;
+      font-size:x-small;
+      
+      
+  }
+  .stat_div{
+    display:flex;
+    flex-direction: column;
+   padding-left: 15vw;
+   
+    
+   
+   
+   
+   
+  }
+  .header{
+      color:whitesmoke;
+  }
+  .stats{
+      display:flex;
+     align-items: center;
+     flex:1;
+     color:whitesmoke;
+     
+  }
+  .country{
+      display: flex;
+      flex:0.6;
+      color:black;
+  }
+  .info{
+      display:flex;
+      align-items: center;
+      flex:0.4;
+      justify-content: space-between;
+      
+  }
+
+
+.svg-iconArrow {
+    width: 2em;
+    height: 2em;
+    margin-top: 30px;
+    margin-left: 50px;
+  }
+  
+  .svg-iconArrow path,
+  .svg-iconArrow polygon,
+  .svg-iconArrow rect {
+    fill: black;
+  }
+  
+  .svg-iconArrow circle {
+    stroke:black;
+    stroke-width: 1;
+  }
+
+
+
+
+  
+  @media(max-width:500px){
+     
+      .main {
+        height:220vh;
+        
+        width: 100%;
+        
+    }
+    .top_div{
+        width:100%;
+        height:25%;
+      
+        
+    }
+   
+   
+    
+    .logo{
+        position: absolute;
+        left: 120px;
+       
+    }
+    .wall{
+        left:0;
+        
+        width: 100%;
+        height: 40%;
+      
+        
+    }
+
+.top_div h1{
+   
+    margin-left: 3vw;
+    margin-top: 30vh;
+
 }
 
-.grid-container2 {
-    display: grid;
-    grid-template-columns: 40vw 30vw 29vw;
-    grid-template-rows: 10vh 10vh 10vh;
-    grid-template-areas:
-      "country1 like1 dislike1"
-      "country2 like2 dislike2"
-      "country3 like3 dislike3";
-  }
-  .country1 { grid-area: country1; }
-  .like1 { grid-area: like1; }
-  .dislike1 { grid-area: dislike1; }
-  .country2 { grid-area: country2; }
-  .like2 { grid-area: like2; }
-  .dislike2 { grid-area: dislike2; }
-  .country3 { grid-area: country3; }
-  .like3 { grid-area: like3; }
-  .dislike3 { grid-area: dislike3; }
-  .country_name{
-  	width: 20vw;
-  	height: 8vh;
-  	text-align: center;
-  }
-  .like_class{
-    vertical-align: middle;
-    width: 9vw;
-    height: 9vh;
-    image-rendering: auto;
-  }
-  .dislike_class{
-    vertical-align: middle;
-    width: 9vw;
-    height: 9vh;
-    image-rendering: auto;
+    
+ 
+
+      .svg-iconArrow{
+          margin-left: 5px;
+          margin-top: 10px;
+      }
+      
+      .svg-iconArrow{
+          margin-top: 30px;
+      }
+      .description{
+        left:0;
+        margin-top: 0px;
+        width: 100%;
+        height: fit-content;
+        align-items: flex-start;
+      
+        justify-content: center;
+        align-items: center;
+        
+        
+      
+    }
+    .dp{
+        
+        padding-left: 1vw;
+        
+    }
+    .detail{
+        padding-left: 1vw;
+        font-size: x-small;
+        
+    }
+    .description h2{
+        font-size: small;
+    }
+    .likes{
+        padding-left: 30vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .avatar {
+        vertical-align: middle;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+      }
+      .map_div{
+          display:flex;
+          flex-direction: column;
+          align-items: center;
+          
+          width:100%;
+          height: 30%;
+         
+          margin-left: 2vw;
+          padding-left: 1vw;
+      }
+      .heading{
+     
+          color: black;
+          justify-content: center;
+      }
+     
+      .world_map{
+          margin-top: 2vh;;
+          width:80%;
+          height: 80%;
+      }
+      .pins{
+          position: absolute;
+          
+    
+      }
+      .pin1{
+     
+          right:50px;
+          top:100px;
+         
+          
+      }
+      .pin2{
+       
+          left:15px;
+          top:125px;
+        
+         
+          
+      }
+      .pin3{
+       
+        left:-30px;
+        top:80px;
+      
+          
+      }
+      .pin4{
+      
+          right:30px;
+        top:200px;
+       
+      }
+      .pin5{
+      
+  left:-20px;
+        top:150px;
+        
+          
+          
+      }
+      .stat_div{
+     
+       padding-left: 5vw;
+       width:100%;
+       height:14%;
+       font-size: x-small;
+     
+       
+        
+       
+       
+       
+       
+      }
+      .header{
+         font-size: large;
+      }
+      
+      .country{
+          font-size: small;
+      }
+
+         
+      .info{
+         font-size: small;
+          
+      }
+    .info h2{
+        font-size: small;
+    }
+    
+
+
+   
+     
   }
