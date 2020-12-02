@@ -1,15 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewpoint" content="width-device-width, initial-scale-1">
-    <link rel="stylesheet" type="text/css" href="/css/Screen12.css">   
-    <link rel="stylesheet" type="text/css" href="/css/slide.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <style type="text/css">
-    	.column {
+    <meta name="viewpoint" content="width-device-width, initial-scale-1" />
+    <link rel="stylesheet" type="text/css" href="/css/Screen12.css" />
+    <link rel="stylesheet" type="text/css" href="/css/slide.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- jQuery and JS bundle w/ Popper.js -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+      crossorigin="anonymous"
+    ></script>
+<style type="text/css">
+.column {
   float: left;
   width: 25%;
   padding: 10px;
@@ -124,8 +149,8 @@
 </head>
 <body style="background-color: goldenrod;">
 
-<div class="container">
-  <img src="/images/shutterstock.png" alt="" class="banner" style="margin-top: 100px; height: 350px;">
+<div style="margin-top:50px" class="">
+  <img src="/images/shutterstock.png" alt="" class="banner" style="margin-top: 100px; height: 400px;">
   <div class="bottom-left"><H2><b>CHORUS</b></H2></div>
   <div class="bottom-right"><a href="/user/search"><i style="font-size:44px" class="fa">&#xf002;</i></a></div>
   <div class="trophy"><a href="/user/leaders"><i class="fa fa-trophy" style="font-size:46px"></i></a></div>
@@ -139,20 +164,312 @@
   <div class="user"><a href="groups.html"><i style="font-size:29px; color: black;" class="fa">&#xf0c0;</i></a></div>
   </div>
     
-    <div class="container">
+    <!--<div class="container">
       <div class="users">
             <table>
                 <tr>
-           <td><img src="/images/user5.jpg" style="width: 70%;border-radius: 50%; padding-left:10%;padding-right: 10%"></td>
-           <td><img src="/images/user2.jpg" style="width: 70%;border-radius: 50%;padding-left:10%;padding-right: 10%"></td>
-           <td><img src="/images/user4.jpg" style="width: 70%;border-radius: 50%;padding-left:10%;padding-right: 10%"></td>
-           <td><img src="/images/user1.jpg" style="width: 70%;border-radius: 50%;padding-left:10%;padding-right: 10%"></td>
-           <td><img src="/images/user5.jpg" style="width: 70%;border-radius: 50%;padding-left:10%;padding-right: 10%"></td>
+           <td><img src="images/user5.jpg" style="width: 70%;border-radius: 50%; padding-left:10%;padding-right: 10%"></td>
+           <td><img src="images/user2.jpg" style="width: 70%;border-radius: 50%;padding-left:10%;padding-right: 10%"></td>
+           <td><img src="images/user4.jpg" style="width: 70%;border-radius: 50%;padding-left:10%;padding-right: 10%"></td>
+           <td><img src="images/user1.jpg" style="width: 70%;border-radius: 50%;padding-left:10%;padding-right: 10%"></td>
+           <td><img src="images/user5.jpg" style="width: 70%;border-radius: 50%;padding-left:10%;padding-right: 10%"></td>
                </tr>
              </table>
         </div>
-    </div>
+    </div>-->
     
+ <div
+      id="multi-item-example"
+      class="carousel slide carousel-multi-item"
+      data-ride="carousel"
+      style="margin-top:-80px"
+    >
+      <!--Controls-->
+      
+      <!--/.Controls-->
+<!-- -->
+      <!--Indicators-->
+      <ol class="carousel-indicators">
+        <li
+          data-target="#multi-item-example"
+          data-slide-to="0"
+          class="active"
+        ></li>
+        <li data-target="#multi-item-example" data-slide-to="1"></li>
+        <li data-target="#multi-item-example" data-slide-to="2"></li>
+      </ol>
+      <!--/.Indicators-->
+
+      <!--Slides-->
+      <div class="carousel-inner" role="listbox">
+        <!--First slide-->
+        <div class="carousel-item active">
+          <div class="row">
+            <div class="col-md-2">
+              <div class="mb-2">
+                <img
+                  src="/images/user5.jpg"
+                  style="
+                    width: 90%;
+                    border-radius: 50%;
+                    padding-left: 10%;
+                    padding-right: 10%;
+                  "
+                />
+              </div>
+            </div>
+
+            <div class="col-md-2 clearfix d-none d-md-block">
+              <div class="mb-2">
+                <img
+                  src="/images/user5.jpg"
+                  style="
+                    width: 90%;
+                    border-radius: 50%;
+                    padding-left: 10%;
+                    padding-right: 10%;
+                  "
+                />
+              </div>
+            </div>
+
+            <div class="col-md-2 clearfix d-none d-md-block">
+              <div class="mb-2">
+                <img
+                  src="/images/user5.jpg"
+                  style="
+                    width: 90%;
+                    border-radius: 50%;
+                    padding-left: 10%;
+                    padding-right: 10%;
+                  "
+                />
+              </div>
+            </div>
+            <div class="col-md-2 clearfix d-none d-md-block">
+              <div class="mb-2">
+                <img
+                  src="/images/user5.jpg"
+                  style="
+                    width: 90%;
+                    border-radius: 50%;
+                    padding-left: 10%;
+                    padding-right: 10%;
+                  "
+                />
+              </div>
+            </div>
+
+            <div class="col-md-2 clearfix d-none d-md-block">
+              <div class="mb-2">
+                <img
+                  src="/images/user5.jpg"
+                  style="
+                    width: 90%;
+                    border-radius: 50%;
+                    padding-left: 10%;
+                    padding-right: 10%;
+                  "
+                />
+              </div>
+            </div>
+            <div class="col-md-2 clearfix d-none d-md-block">
+              <div class="mb-2">
+                <img
+                  src="/images/user5.jpg"
+                  style="
+                    width: 90%;
+                    border-radius: 50%;
+                    padding-left: 10%;
+                    padding-right: 10%;
+                  "
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/.First slide-->
+
+        <!--Second slide-->
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-md-2">
+              <div class="mb-2">
+                <img
+                  src="/images/user5.jpg"
+                  style="
+                    width: 90%;
+                    border-radius: 50%;
+                    padding-left: 10%;
+                    padding-right: 10%;
+                  "
+                />
+              </div>
+            </div>
+
+            <div class="col-md-2 clearfix d-none d-md-block">
+              <div class="mb-2">
+                <img
+                  src="/images/user5.jpg"
+                  style="
+                    width: 90%;
+                    border-radius: 50%;
+                    padding-left: 10%;
+                    padding-right: 10%;
+                  "
+                />
+              </div>
+            </div>
+
+            <div class="col-md-2 clearfix d-none d-md-block">
+              <div class="mb-2">
+                <img
+                  src="/images/user5.jpg"
+                  style="
+                    width: 90%;
+                    border-radius: 50%;
+                    padding-left: 10%;
+                    padding-right: 10%;
+                  "
+                />
+              </div>
+            </div>
+            <div class="col-md-2 clearfix d-none d-md-block">
+              <div class="mb-2">
+                <img
+                  src="/images/user5.jpg"
+                  style="
+                    width: 90%;
+                    border-radius: 50%;
+                    padding-left: 10%;
+                    padding-right: 10%;
+                  "
+                />
+              </div>
+            </div>
+
+            <div class="col-md-2 clearfix d-none d-md-block">
+              <div class="mb-2">
+                <img
+                  src="/images/user5.jpg"
+                  style="
+                    width: 90%;
+                    border-radius: 50%;
+                    padding-left: 10%;
+                    padding-right: 10%;
+                  "
+                />
+              </div>
+            </div>
+            <div class="col-md-2 clearfix d-none d-md-block">
+              <div class="mb-2">
+                <img
+                  src="/images/user5.jpg"
+                  style="
+                    width: 90%;
+                    border-radius: 50%;
+                    padding-left: 10%;
+                    padding-right: 10%;
+                  "
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/.Second slide-->
+
+        <!--Third slide-->
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-md-2">
+              <div class="mb-2">
+                <img
+                  src="/images/user5.jpg"
+                  style="
+                    width: 90%;
+                    border-radius: 50%;
+                    padding-left: 10%;
+                    padding-right: 10%;
+                  "
+                />
+              </div>
+            </div>
+
+            <div class="col-md-2 clearfix d-none d-md-block">
+              <div class="mb-2">
+                <img
+                  src="/images/user5.jpg"
+                  style="
+                    width: 90%;
+                    border-radius: 50%;
+                    padding-left: 10%;
+                    padding-right: 10%;
+                  "
+                />
+              </div>
+            </div>
+
+            <div class="col-md-2 clearfix d-none d-md-block">
+              <div class="mb-2">
+                <img
+                  src="/images/user5.jpg"
+                  style="
+                    width: 90%;
+                    border-radius: 50%;
+                    padding-left: 10%;
+                    padding-right: 10%;
+                  "
+                />
+              </div>
+            </div>
+            <div class="col-md-2 clearfix d-none d-md-block">
+              <div class="mb-2">
+                <img
+                  src="/images/user5.jpg"
+                  style="
+                    width:90%;
+                    border-radius: 50%;
+                    padding-left: 10%;
+                    padding-right: 10%;
+                  "
+                />
+              </div>
+            </div>
+
+            <div class="col-md-2 clearfix d-none d-md-block">
+              <div class="mb-2">
+                <img
+                  src="/images/user5.jpg"
+                  style="
+                    width: 90%;
+                    border-radius: 50%;
+                    padding-left: 10%;
+                    padding-right: 10%;
+                  "
+                />
+              </div>
+            </div>
+            <div class="col-md-2 clearfix d-none d-md-block">
+              <div class="mb-2">
+                <img
+                  src="/images/user5.jpg"
+                  style="
+                    width: 90%;
+                    border-radius: 50%;
+                    padding-left: 10%;
+                    padding-right: 10%;
+                  "
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/.Third slide-->
+      </div>
+      <!--/.Slides-->
+    </div>
+    <!--/.Carousel Wrapper-->
+
 
 
 
@@ -172,16 +489,15 @@
 <a href="/user/videoupload1"><img src="/images/Sing.jpg" alt="ABC"  style="width:100%; height: 90%;  border-radius: 15px; box-shadow: 10px 10px grey;"></a>
   <div id="imgtext"></div>
    <div class="bottom-left"><H2><b>4U2NVY Competion</b></H2>
-    <a href="/user/vote"><p style="float: left;">Vote Now!</p></a> 
+    <a href="/user/vote"><p style="float: left;">Vote Now!</p></a>
     <br>
     <br>
-    <i style="font-size:30px; color: yellow; float: left;" class="fa">&#xf004; 1125</i>
+    <i style="font-size:30px; color: yellow; float: left; margin-right: 20px;" class="fa">&#xf004; 1125</i>
     <i style="font-size:30px; color: white; float: left;" class="fa">&#xf075; 348</i>
   </div>
   <div class="bottom" > <img src="/images/user3.jpg" style="border-radius: 50%;float: left;"><H2><b>JOHN SMITH</b></H2>
-    <p style="float: right; margin-right: 10%;">12 Min Ago</p>
+    <!--<p style="float: right; margin-right: 10%;">12 Min Ago</p>-->
 </div>
-
     </div> 
     
    
@@ -214,7 +530,7 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-   <script type="/text/javascript" src="/js/slide.js"></script>
+   <!-- <script type="text/javascript" src="js\slide.js"></script> -->
    
 </body>
 </html>

@@ -91,6 +91,10 @@ router.get('/videoupload', function(req, res) {
 router.get("/videoupload1",auth, async(req,res)=>{
 	res.render("for_video.ejs")
 })
+
+router.get("/test",auth, async(req,res)=>{
+	res.render("12.ejs")
+})
 //post route for video upload
 router.post("/upload1" ,auth,videouploadController.uploadFiles);
 //router.get('/video',function(req,res){
@@ -135,6 +139,10 @@ router.get('/video', auth,async(req, res) =>{
 	  fs.createReadStream(path).pipe(res)
 	}
   })
+  router.get('/live',auth,async(req,res)=>{
+	res.render('live1.ejs')
+})
+
   // //<-------------->TO READ leader board<---------------->
   router.get("/leaders",auth, async(req, res)=>{
     res.render('screen14.ejs', {
@@ -174,6 +182,23 @@ router.get('/id',auth,async(req,res)=>{
 	res.render('id.ejs')
 })
 
+//<------------> USER profile<---------------->
+router.get('/main',auth,async(req,res)=>{
+	res.render('timeline.ejs')
+})
+router.get('/photos',auth,async(req,res)=>{
+	res.render('photos.ejs')
+})
+router.get('/videos',auth,async(req,res)=>{
+	res.render('videos.ejs')
+})
+router.get('/setting',auth,async(req,res)=>{
+	res.render('setting.ejs')
+})
+router.get('/notification',auth,async(req,res)=>{
+	res.render('notification.ejs')
+})
+// USER profile
 
 //<------------>TO LOGOUT THE USER<---------------->
 router.get('/logout',auth,async(req,res)=>{

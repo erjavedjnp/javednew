@@ -9,7 +9,8 @@ const uploadFiles = async (req, res) => {
       return res.send(`You must select at least 1 file.`);
     }
 
-    return res.redirect(`/user/video`);
+    //return res.redirect(`/user/video`);
+    return res.redirect(`/user/live`);
 
    
   } catch (error) {
