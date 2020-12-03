@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewpoint" content="width-device-width, initial-scale-1">
+    <title>Screen 26</title>
+    <link rel="stylesheet" type="text/css" href="css\Screen26.css">   
+    <link rel="stylesheet" type="text/css" href="css\slide.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style type="text/css">
+    	.column {
+  float: left;
+  width: 25%;
+  padding: 10px;
+}
+
+.bottom-left {
+  position: absolute;
+  top: 120px;
+  left: 16px;
+}
+
+/* Style the images inside the grid */
+.column img {
+  opacity: 1; 
+  background-color: #ffb3079c;
+ border-radius: 15px;
+}
+
+/* Clear floats after the columns */
+.row {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The expanding image container */
+.show.container {
+  position: absolute;
+  display: none;
+}
+
+.show{
+	height: 200px;
+	text-decoration-style: center;
+}
+
+/* Expanding image text */
+#imgtext {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: white;
+  font-size: 20px;
+}
+
+/* Closable button inside the expanded image */
+.closebtn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+.text-block {
+  position: absolute;
+  bottom: 30px;
+  right: 0;
+  padding-left: 10px;
+  color: white;
+  text-align: left;
+}
+
+.top{
+  position: absolute;
+  top: 45px;
+  float: right;
+  margin-right: 4%;
+  padding-right: 10px;
+  background-color: #ffb3079c;
+  padding-left: 10px;
+  color: black;
+  text-align: left;
+  font-size: 18px;
+  border-radius: 15px;
+}
+
+.topleft{
+  position: absolute;
+  top: 40px;
+  float: left;
+  margin-left: 2%;
+ 
+  padding-left: 10px;
+  color: white;
+  text-align: left;
+  font-size: 18px;
+}
+@media (min-width: 1200px)
+.container {
+    width: 100%;
+}
+    </style>
+    
+
+</head>
+<body style="background-color: #ffb3079c; width: 100%;">
+
+<div class="container" style="width: 100%;">
+  <img src="images\logo1.jpeg" alt="Snow" class="banner" style="margin-top: 100px; height: 200px;">
+  <div class="bottom-left"><H2><b>4U2NVY TV</b></H2></div>
+  <div class="bottom-right"><i style="font-size:24px" class="fa">&#xf002;</i></div>
+  <div class="top-left">
+    <div class="angle-lft">
+        <i style="font-size:24px; color: black;" class="fa">&#xf0c9;</i>
+    </div>
+
+</div>
+  <div class="top-right"><img src="images\logo.png" class="logo" alt="logo" /></div>
+  <div class="user"><a href="groups.html"> <i style="font-size:29px; color: black;" class="fa">&#xf0c0;</i></a></div>
+  
+</div>
+
+
+<!-- The four columns -->
+<div class="container" style="width: 100%;">
+	<div style="float: left; margin-left: 2%; color: white;">
+  <h2><b>Feature Live</b></h2>
+  
+</div>
+<br>
+<br>
+<br>
+<br>
+<div class="row">
+  <div class="column">
+  	<div class="top" style="border-color: #ffb3079c; top: 110px;"> LIVE </div>
+    <img src="images\logo4.jpeg" alt="ABC" style="width:100%;" >
+<div class="text-block">
+    <h4>ABC</h4>
+    
+  </div>
+  </div>
+  <div class="column"> 
+  <div class="top" style="border-color: #ffb3079c; top: 110px;"> LIVE </div>
+    <img src="images\logo3.jpeg" alt="EFG" style="width:100%" >
+
+    <div class="text-block">
+    <h4>EFG</h4>
+  </div>
+  
+  </div>
+  <div class="column"><div class="top" style="border-color: #ffb3079c; top: 110px;"> LIVE </div>
+    <img src="images\logo2.jpeg" alt="XYZ" style="width:100%;" >
+    <div class="text-block">
+    <h4>XYZ</h4>
+    
+  </div>
+  </div>
+  <div class="column"><div class="top" style="border-color: #ffb3079c; top: 110px;"> LIVE </div>
+    <img src="images\logo4.jpeg" alt="ABC" style="width:100%" >
+    <div class="text-block">
+    <h4>ABC</h4>
+    
+  </div>
+  </div>
+</div>
+</div>
+
+<div class="show">
+<div class="container" style="height: 600px; width: 100%;">
+	<div class="topleft">
+    <h4>ABC</h4>
+    
+  </div>
+<div class="top" style="border-color: #ffb3079c; top: 110px;"> LIVE </div>
+  <img src="images\logo4.jpeg" alt="ABC"  style="width:100%; height: 100%;  border-radius: 15px;">
+  <div id="imgtext"></div>
+</div>
+    </div> 
+             
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script type="text/javascript" src="js\slide.js"></script>
+   
+</body>
+</html>
