@@ -57,9 +57,9 @@ router.get("/" ,(rq,res) =>{
 router.get("/users/", auth, async (req, res) => {
   let newUser = {};
 
-  newUser = (await User.findById(req.user._id)).populate("posts")
+  newUser = (await User.findById(req.user.id)).populate("posts")
 
-  let posts = await Post.find().populate("comments").where("author.id").equals(req.user._id)
+  let posts = await Post.find().populate("comments").where("author.id").equals(req.user.id)
   
   res.json({user: newUser, posts: posts.map(post => post)})
     console.log(newUser)
@@ -122,7 +122,7 @@ router.patch("/users/", auth, upload.single("file") ,async (req,res,next) =>{
 
   
   user.username = username
-  user.biography = biography
+  user.biography = bio
   await user.save();
   res.json({message: "success", user: user})
 })

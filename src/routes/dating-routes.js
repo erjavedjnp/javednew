@@ -18,15 +18,20 @@ var storage = multer.diskStorage({
   
   var upload = multer({ storage: storage }); 
 
+router.get("/" ,(req,res,next) =>{
+  res.render("screen22.ejs")
+})  
+
 router.post("/profile/",auth, async (req,res,next) =>{
+  console.log("post")
   const userid = req.user._id;
-  const {action} = req.body
-  switch(action){
-      case "existing":
+ 
+          console.log("exist")
           const user =  (await User.findById(userid))
           
           const newdating = new Dating({
             fullname : user.fullname,
+            username : user.username,
             shotbio : user.biography,
             gender: user.gender,
             age: user.age,
@@ -35,17 +40,19 @@ router.post("/profile/",auth, async (req,res,next) =>{
             avatar : user.avatar
           })
 
-          newdating.save();
+        await  newdating.save();
           user.dating = newdating.id;
-          user.save();
+        await  user.save();
+          console.log(user)
+         // res.json({user: newdating})
+          res.redirect("/datingprofile/matchingprofiles")
+          
+      
+  
+})
 
-          res.json({user: newdating})
-          //redirect to the dating form and fill the fields which are already provided in user model
-          break;
-       case "new" : 
-        res.redirect('/create-new-profile')   
-        break;
-  }
+router.get("/newprofile" , (req,res,next) =>{
+  res.send("hello")
 })
 
 router.post("/newprofile/:userid",upload.array("image") , async(req,res,next) =>{
@@ -116,13 +123,13 @@ router.get("/matchingprofiles/" ,auth, async(req,res,next) =>{
 ]}))
     console.log(matches) */
 
-    
+    res.render("screen23.ejs")
 
    
 })
 
 
-router.post("/profile/like/:userid" ,auth, async(req,res,next) =>{
+router.post("/like/:userid" ,auth, async(req,res,next) =>{
   const user =  (await Dating.findById(req.user.dating))
   const likeuser =  (await Dating.findById(req.params.userid))
 
@@ -164,21 +171,33 @@ router.post("/profile/dislike/:userid" ,auth, async(req,res,next) =>{
 })
 
 router.get("/allmatched/", auth, async (req,res,next) =>{
-  const user =  (await Dating.findById(req.user.dating)).populate("allmatched")
+  const user =  (await Dating.findById(req.user.dating))
  const allmatched = user.allmatched
 let matched = []
- for(const all of allmatched){
-   const user = await Dating.findById(all)
-   matched.push(user)
-   
- }
-  console.log(matched)
-
+if(allmatched.length > 0){
+  for(const all of allmatched){
+    const user = await Dating.findById(all)
+    matched.push(user)
+    
+  }
+}
+ 
+ console.log(matched)
+  res.render("screen25.ejs", {
+    matched : matched
+  })
   
   
 })
 
 
-
+router.get("/match/:id" , async(req,res,next) =>{
+  const loggeduser = await Dating.findById(req.user.dating)
+  const matcheduser = await Dating.findById(req.params.id)
+  res.render("screen24.ejs" , {
+    loggeduser : loggeduser,
+    matcheduser : matcheduser
+  })
+})
 
 module.exports = router

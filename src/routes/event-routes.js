@@ -16,7 +16,7 @@ router.get("/", (req,res,next) =>{
     Event.find({} ,(err,events) =>{
         
          
-            res.render("events" ,{
+            res.render("events.ejs" ,{
                 events: events
             })
         

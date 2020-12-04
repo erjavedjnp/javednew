@@ -5,6 +5,9 @@ const datingSchema = new mongoose.Schema({
     fullname : {
         type: String
     },
+    username : {
+        type: String
+    },
     shotbio : {
         type: String
     },

@@ -57,11 +57,7 @@ background-color: #ffb3079c;
 
 
 
-@media(max-width: 400px){
-	{
 
-	}
-}
 
 .bottom-left {
   position: absolute;
@@ -118,3 +114,20 @@ background-color: #ffb3079c;
 	border: none;
 	text-transform: uppercase;
 }
+
+.btn {
+  border: none;
+  background:#ffb3079c;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+}
+/* Gray */
+.success {
+  color: black;
+}
+.success:hover {
+  background:#ffb3079c ;
+}
+
