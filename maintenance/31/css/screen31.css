@@ -1,0 +1,522 @@
+.screen9-body{
+    background-color: #f3c33e;
+    height: fit-content;
+    width: 1100px;
+    overflow-y: scroll;
+}
+.svg-iconarrow {
+    width: 2em;
+    height: 2em;
+    margin-left: 900px;
+    margin-top: -50px;
+  }
+  .svg-iconarrow path,
+  .svg-iconarrow polygon,
+  .svg-iconarrow rect {
+    fill: black;
+  }
+  
+  .svg-iconarrow circle {
+    stroke: black;
+    stroke-width: 1;
+  }
+
+  
+
+  .svg-icon {
+    width: 3em;
+    height: 3em;
+    margin-left: 900px;
+  }
+  
+  .svg-icon path,
+  .svg-icon polygon,
+  .svg-icon rect {
+    fill:  #f3c33e;
+  }
+  
+  .svg-icon circle {
+    stroke:  #f3c33e;
+    stroke-width: 1;
+  }
+
+ 
+  .svg-iconbackarrow {
+    width: 2em;
+    height: 2em;
+
+    position: relative;
+    bottom: 90%;
+  }
+  
+  .svg-iconbackarrow path,
+  .svg-iconbackarrow polygon,
+  .svg-iconbackarrow rect {
+    fill:black;
+  }
+  
+  .svg-iconbackarrow circle {
+    stroke: black;
+    stroke-width: 1;
+  }
+
+  .svg-iconprofile {
+    width: 2em;
+    height: 2em;
+    margin-left: 1300px;
+  }
+  
+  .svg-iconprofile path,
+  .svg-iconprofile polygon,
+  .svg-iconprofile rect {
+    fill: black;
+  }
+  
+  .svg-iconprofile circle {
+    stroke: black;
+    stroke-width: 1;
+  }
+
+  .logo{
+    position: relative;
+    height: 160px;
+    width: 175px;
+    z-index: 1;
+    left: 630px;
+    top: 20px;
+    margin-left: 3%;
+
+    
+}
+
+.inbox{
+    font-size: 25px;
+    font-weight: 600;
+    margin-left: 64%;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    
+}
+.inbox2{
+  font-size: 25px;
+  font-weight: 600;
+  margin-left: 66%;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  
+}
+
+.data{
+    color: white;
+    font-size: 30px;
+    font-weight: 500;
+    margin-left:40% ;
+    margin-bottom: 2%;
+    width: 70%;
+}
+
+.icon-9{
+    color: black;
+    margin-right: 2%;
+}
+.icon-logo{
+  width: 50px;
+  height: 50px;
+  margin-right: 1%;
+}
+.collapsible {
+    background-color:  #f5ba17;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 20px;
+    border-radius: 20px 20px 20px 20px;
+  }
+  
+  .active, .collapsible:hover {
+    background-color:  #f5ba17;
+  }
+  
+  .content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    font-size: 1.0rem;
+    background-color:  #fff;
+    color: black;
+    border-radius: 20px 20px 20px 20px;
+  
+  }
+  .mail{
+    margin-left: 5%;
+  }
+  .input-field{
+    padding-top: 5px;
+  margin: 5px 10px 10px 5px;
+  
+  }
+
+  .input-field-text{
+   
+    width: 50%;
+    text-decoration: none;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid black;
+    
+
+  }
+
+  .submit-btn{
+    float: right;
+    width: 20%;
+    margin-bottom: 10px;
+    border-radius: 10px 10px 10px 10px;
+    background-color:#f3c33e ;
+    color: white;
+    
+    padding: 4px;
+  }
+
+  .tabContent{
+    padding: 15px;
+    font-size: 16px;
+  }
+
+ 
+::-webkit-scrollbar{
+  display: none;
+}
+
+.chat-container{
+ 
+  min-width: 1200px;
+  max-width: 1450px;
+  height: 60vh;
+  width: 100%;
+  background: #eec451;
+  min-height: 80vh;
+ overflow-y: scroll;
+  margin-left: 200px;
+}
+
+.div-content{
+background-color: rgba(0, 0, 0, 0.082);
+color: white;
+}
+
+.message-container {
+  max-height: 600px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 25px 25px 0 25px;
+}
+
+.message-container h3 {
+  color: var(--light-gray);
+  border-bottom: 1px solid var(--light-gray);
+  text-align: center;
+  line-height: 0.1rem;
+  margin: 10px 0 30px;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.message-container h3 span {
+  padding: 0 15px;
+  background-color: #fff;
+}
+
+.message-container div.sent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.message-container div:not(.sent) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.message-container div:last-child {
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.message-container .hour {
+  color: var(--dark-gray);
+}
+
+.message-container p {
+  position: relative;
+}
+
+/* BUBBLE ARROW SENT */
+.sent p:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -6px;
+  width: 0px;
+  height: 0px;
+  border-top: 0px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right: 10px solid var(--send-color);
+}
+
+/* BUBBLE ARROW RECEIVED */
+.received p:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -6px;
+  width: 0px;
+  height: 0px;
+  border-top: 10px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 10px solid var(--received-color);
+}
+
+.sent-bubble {
+  background-color: white;
+  color: black;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.received-bubble {
+  background-color: #131312;
+  color: white;
+  border-radius: 20px 20px 20px 20px;
+}
+
+
+
+.sent-bubble,
+.received-bubble,
+.blocked-bubble {
+  max-width: 70%;
+  padding: 10px;
+  margin: 10px 0 20px;
+  text-align: left;
+}
+
+.sent-bubble {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.received-bubble {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
+.blocked-bubble {
+  border-radius: 3px;
+}
+
+
+.search-div{
+  width: 1200px;
+  margin-left: 200px;
+  background-color: #cf9e18 ;
+  padding: 15px;
+  
+}
+.comment-input{
+  width: 1000px;
+  padding: 5px;
+  border-radius: 20px;
+  padding-left: 30px;
+  margin-left: 50px;
+}
+.send-icons{
+  color: #131312;
+  margin-left: 20px;
+  font-size: 30px;
+}
+
+.emoji-icon{
+  position: absolute;
+  left: 80%;
+  bottom: 20%;
+  font-size: 23px;
+ background-color: yellow;
+ color: black;
+ border-radius: 50%;
+ 
+  
+}
+.mic-icon{
+  position: absolute;
+  left: 83%;
+  bottom: 20%;
+  font-size: 25px;
+  color: black;
+}
+
+.attachment-icon{
+  position: absolute;
+  left: 86%;
+  bottom: 20%;
+  font-size: 25px;
+  color: black;
+}
+
+  @media (max-width:400px)
+  {
+    .data{
+      color: white;
+      font-size: 20px;
+      font-weight: 500;
+      margin-left:0% ;
+      margin-bottom: 1%;
+      width: 30%;
+  }
+  .logo{
+    position: relative;
+    height: 130px;
+    width: 150px;
+    z-index: 1;
+    left: 40px;
+    top: 20px;
+    margin-left: 4%;
+
+    
+}
+.tabContent{
+  padding: 15px;
+  font-size: 12px;
+}
+.icon-logo{
+  width: 40px;
+  height: 38px;
+}
+.icon-logo1{
+  width: 40px;
+  height: 38px;
+  background-color: yellow;
+}
+.inbox{
+  font-size: 20px;
+  font-weight: 700;
+ 
+  padding-top: 10px;
+  padding-bottom: 2px;
+ margin-left: 25%;
+
+  
+}
+.inbox2{
+  font-size: 14px;
+  font-weight: 700;
+  margin-left: 2%;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  
+}
+.collapsible {
+  background-color:  #f3c33e;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  width: 340px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  font-weight: 500;
+  
+}
+.active, .collapsible:hover {
+  background-color:  #f5ba17;
+}
+
+.content {
+ 
+  display: none;
+  
+  font-size: 0.8rem;
+  color:black;
+  background-color:  #fff;
+  border-radius: 20px 20px 20px 20px;
+width: 350px;
+}
+.screen9-body{
+  background-color: #f3c33e;
+  height: fit-content;
+  width: 100%;
+  overflow-y: scroll;
+}
+.mail{
+  margin-left: 14%;
+}
+.icon-9{
+  color: black;
+  margin-right: 7%;
+  margin-left: 2%;
+}
+.chat-container{
+ 
+  min-width: 350px;
+  max-width: 40px;
+  height: 50vh;
+  width: 100%;
+  background: #eec451;
+  min-height: 60vh;
+ overflow-y: scroll;
+  margin-left: 0px;
+}
+.search-div{
+  width: 350px;
+  margin-left: 0px;
+  background-color: #cf9e18 ;
+  padding: 15px;
+  
+}
+.comment-input{
+  width: 240px;
+  padding: 5px;
+  border-radius: 20px;
+  padding-left: 10px;
+  margin-left: 5px;
+}
+.send-icons{
+  color: #131312;
+  margin-left: 10px;
+  font-size: 20px;
+}
+.emoji-icon{
+  position: absolute;
+  left: 54%;
+  bottom: 20%;
+  font-size: 23px;
+ background-color: yellow;
+ color: black;
+ 
+  
+}
+.mic-icon{
+  position: absolute;
+  left: 61%;
+  bottom: 20%;
+  font-size: 23px;
+  color: black;
+}
+
+.attachment-icon{
+  position: absolute;
+  left: 67%;
+  bottom: 20%;
+  font-size: 25px;
+  color: black;
+}
+
+  }
