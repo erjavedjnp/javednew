@@ -10,7 +10,30 @@
 
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+	/* On screens that are 992px wide or less, the background color is blue */
+/*@media screen and (min-width: 992px) {
+  .ProfilePic {
+    margin-left: 660px;
+  }
+}*/
 
+/* On screens that are 600px wide or less, the background color is olive */
+
+  .AddProfile{
+  	height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+  @media screen and (max-width: 600px) {
+   .AddProfile {
+    margin-left: 350px;
+  }
+}
+</style>
 </head>
 <body style="background-color: goldenrod">
 <div class="container" style="width: 100%;">
@@ -37,8 +60,8 @@
 <h3 style="color: black; margin-top: 40px;"><b>User Existing Profile</b></h3><br>
 <br>
 <!-- <img src="images\add.jpg" class="ProfilePic" alt="ProfilePic"> -->
-  
-<button class="ProfilePic"><i style='font-size:74px' class='fas'>&#xf067;</i></button>                 
+  <div class="AddProfile" style="background-color: white; margin-left: 660px;">
+<a href="#" ><i style='font-size:74px; color: black; margin-top: 55px;' class='fas'>&#xf067;</i></a></div>               
                     <h3 style="color: black; margin-top: 40px;"><b>Add New Profile</b></h3>
                     
                                              
