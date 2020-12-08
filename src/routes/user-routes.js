@@ -8,6 +8,7 @@ const Post = require("../models/user/post");
 const likes = require("../models/user/likes");
 const dislikes = require("../models/user/dislikes");
 const Comment = require("../models/user/Comment")
+const Follow = require("../models/user/followModel")
 const cloudinary = require('./cloudnary')
 const multer = require('multer');
 const fs = require("fs");
@@ -17,44 +18,27 @@ const auth = require("../authentication/user/auth.js")
 
 app.use(express.json())
 
-var storage = multer.diskStorage({ 
+
+//storage engine
+const storage=multer.diskStorage({
   destination: (req, file, cb) => { 
-      cb(null,path.join(__dirname ,'..','/src/uploads')) 
-  }, 
-  filename: (req, file, cb) => { 
-      cb(null, file.originalname) 
-  } 
-}); 
-
-var upload = multer({ storage: storage }); 
-
+    cb(null,path.join(__dirname ,'..','/src/uploads')) 
+}, 
+  filename:(req,file,cb)=>{
+      return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
+  }
+});
+const upload = multer({
+  storage:storage,
+  limits:{
+    fileSize:1000000
+  }
+});
 router.get("/" ,(req,res) =>{
-  res.render('form2')
+  res.render('/userprofile/users')
 })
 
-//create users 
-//  router.post("/users", upload.single("file") ,async (req,res,next) =>{
-//   const {username,password,name,bio} = req.body;
 
-//   const uploader = async (path) => await cloudinary.uploads(path, "Files")
-//     let url ;
-//     const file = req.file
-//     const {path} = file
-//     const newPath = await uploader(path)
-//     url = newPath
-
-//   console.log(url)
-//     const newUser = new User({
-//     username,
-//     password,
-//     avatar : url.url,
-//     avatarId : url.id,
-//     name,
-//     bio
-//   })
-//   newUser.save(); 
-//   res.json({message: "success", user : newUser}) 
-// }) 
 
 // get users by userId
 router.get("/users", auth, async (req, res) => {
@@ -64,29 +48,18 @@ router.get("/users", auth, async (req, res) => {
 
   let posts = await Post.find().populate("comments").where("author.id").equals(req.user._id)
   //console.log(newUser)
-  //console.log(posts)
+  console.log(posts)
  // res.render('timeline',{user: newUser, posts: posts.map(post => post)})
- res.render('timeline',{users: newUser})
+ res.render('timeline',{users: newUser, posts: posts.map(post => post)})
 });
 
-// create post 
-router.post("/posts/" ,auth,upload.array("file"), async (req,res,next) =>{
-  
+router.post("/posts", auth,upload.single("file"), async(req,res,next)=>{
+  let urls = [];
+  var imagename=req.file.filename;
+  urls.push( imagename)
   let userfound = await User.findById(req.user._id)
   const {description,tags} = req.body
-
-  const uploader = async (path) => await cloudinary.uploads(path, "Files")
-  let urls = [];
-  const files = req.files
-  for(const file of files){
-    const {path} = file
-  const newPath = await uploader(path)
-  urls.push(newPath)
-  // fs.unlinkSync(path)
-  }
   
-  
-  //console.log(userfound)
   const newPost = new Post({
     image: urls,
     
@@ -102,39 +75,17 @@ router.post("/posts/" ,auth,upload.array("file"), async (req,res,next) =>{
   await userfound.posts.push(newPost)
   userfound.save();
   
-  res.json({post: newPost})
-  //console.log(userfound)
-})
-//my post
-/*router.post("/myposts/" ,auth,upload.array("file"), async (req,res,next) =>{
-  
-  let userfound = await User.findById(req.user._id)
-  const {description,tags} = req.body
+  //res.json({post: newPost})
+  /*res.json({
+    sucess:1,
+    profile_url:`http://localhost:3000/file/${req.file.filename}`
+  })*/
+ 
+  console.log(newPost._id)
+  //console.log({post: newPost})
+  res.redirect('/userprofile/users')
+});
 
-  const uploader = async (path) => await cloudinary.uploads(path, "Files")
-  let urls = [];
-  const files = req.files
-  for(const file of files){
-    const {path} = file
-  const newPath = await uploader(path)
-  urls.push(newPath)
-  // fs.unlinkSync(path)
-  }
-  
-  const newPost = new Post()
-  newPost.image=req.body.image;
-  newPost.description=req.body.description;
-  newPost.author=req.body.author;
-  newPost.tags=req.body.tags;
-  //console.log(userfound)
-  
-  newPost.save();
-  await userfound.posts.push(newPost)
-  userfound.save();
-  
-  res.json({post: newPost})
-})*/
-  //console.log(use
 
 // edit userprofile
 router.patch("/users/", auth, upload.single("file") ,async (req,res,next) =>{
@@ -193,7 +144,8 @@ router.get("/:postId/comment", async (req, res) => {
 //likes post routes
 router.post("/:postId/likes",async (req, res) => {
   //Find a POst
-  //const user = await User.findById(req.user._id)
+  //let user = await User.findById(req.user._id)
+  
   const post = await Post.findOne({ _id: req.params.postId });
 //I have to use auth with user id to pass direct loggedin user
   //Create a Comment
@@ -279,5 +231,6 @@ router.post('/follow', async (req, res, next) => {
       res.json({ done: false });
   }
 });
+
 
 module.exports = router

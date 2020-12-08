@@ -127,7 +127,7 @@ const storage = new GridFsStorage({
   return res.json(files);
 });*/
   
-    res.redirect('/userimage/ttt');
+    res.redirect('/userprofile/users');
   });
   
   // @route GET /files

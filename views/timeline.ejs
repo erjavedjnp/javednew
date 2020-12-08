@@ -257,7 +257,7 @@
 								<a class="share-to" href="#" title=""><i class="lni lni-share-alt"></i> share</a>
 								<div class="new-comment">
 									<!-- comment section section -->
-									<form action="/userprofile/5fcefeec4a342e0bf0857265/comment"method="post">
+									<form action="/userprofile/5fcf6b967c3bf71b30f31313/comment"method="post">
 										<input type="text" name="content" placeholder="write comment">
 										<button type="submit"><i class="lni lni-pointer"></i></button>
 									</form>
@@ -706,13 +706,13 @@
 			</form>
 		</div>
 	</div><!-- search -->
-
+	
 	<div class="create-new">
 		<div class="post-form">
 			<h5>Create New Post</h5>
 			<span class="close-btn"><i class="lni lni-cross-circle"></i></span>
-			<form action="/userimage/upload" method="POST" enctype="multipart/form-data" >
-			<textarea placeholder="write something"></textarea>
+			<form method="POST" action="/userprofile/posts" enctype="multipart/form-data">
+			<textarea name="description" placeholder="write something"></textarea>
 				<div class="attachments">
 					<ul>
 						<li>
