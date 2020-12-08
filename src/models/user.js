@@ -41,6 +41,7 @@ var userSchema = new mongoose.Schema(
       required:true
 
     },
+    avatar,
     userinfo: {
       type: String,
       trim: true

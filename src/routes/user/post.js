@@ -5,7 +5,7 @@ const multer=require('multer')
 
 router.get('/timeline',async(req,res)=>{
     try{
-        res.render('screen15.ejs')
+        res.render('timeline.ejs')
         // console.log('yes')
         // const posts=new Posts(req.body)
         // posts.save()

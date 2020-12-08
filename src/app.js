@@ -10,6 +10,8 @@ const methodOverride = require ('method-override')
 const eventroutes = require("./routes/event-routes")
 const userroutes = require ("./routes/user-routes")
 const datingroutes = require('./routes/dating-routes')
+const userimage = require ("./routes/user/image")
+//const userimage2 = require ("./routes/user/image2")
 
 
 //FOR POSTMAN
@@ -57,6 +59,7 @@ app.get("/",(req,res)=>{
 
 app.use('/user',require('./routes/user/login'));
 app.use('/user',require('./routes/user/post'));
+//app.use('/user',require('./routes/user/image'));
 //app.use('/',require('./routes/user/chorus'));
 app.use('/platform',require('./routes/platform-routes'));
 app.use('/comfortzone',require('./routes/comfort-zone'));
@@ -65,6 +68,8 @@ app.use('/chorus',require('./routes/chorus-routes'));
 app.use("/events", eventroutes);
 app.use("/userprofile", userroutes)
 app.use("/datingprofile" , datingroutes)
+app.use("/userimage" , userimage)
+//app.use("/userimage2" , userimage2)
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT,function()

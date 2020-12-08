@@ -47,9 +47,6 @@ const userSchema = new mongoose.Schema({
 	avatar:{
 		type:String
 	},
-	avatar:{
-		type:String
-	},
 	avatarId: String,
 	tokens:[{
 		token:{
@@ -65,13 +62,12 @@ const userSchema = new mongoose.Schema({
 		type:mongoose.Schema.ObjectId,
 		ref:"Notifications" 
 	  }],
-	  posts: [{
-		type:mongoose.Schema.ObjectId,
-		ref:"Posts" 
-	  }],
 	  story : [{
 		  type:mongoose.Schema.ObjectId,
 		  ref:"Story"
+	  }],
+	  imagearray :[{
+		type:Object
 	  }],
 	mailverified:{
 		type:Boolean,
@@ -83,6 +79,11 @@ const userSchema = new mongoose.Schema({
 	country:{
 		type:String,
 	},
+	image: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+        }
+      ],
 	chorus: [
         {
           type: mongoose.Schema.Types.ObjectId,

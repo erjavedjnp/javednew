@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/color.css">
 </head>
+
 <body class="full-page" style="background-color:yellow;">
 <div class="row no-gutters vh-100 loader-screen">
     <div class="col align-self-center text-white text-center">
@@ -38,8 +39,8 @@
 
 	<div class="bottom-header">
 		<ul class="menu-left">
-			<li><a class="ico-hover" href="newsfeed.html" title=""><i class="lni lni-home"></i></a></li>
-			<li><a class="ico-hover" href="notifications.html" title=""><i class="lni lni-alarm"></i></a><span>3</span></li>
+			<li><a class="ico-hover" href="#" title=""><i class="lni lni-home"></i></a></li>
+			<li><a class="ico-hover" href="/user/notification" title=""><i class="lni lni-alarm"></i></a><span>3</span></li>
 		</ul>
 		<div id="nav-icon2" class="menu-button">
 			<span></span>
@@ -50,98 +51,115 @@
 			<span></span>
 		</div>
 		<ul class="menu-right">
-			<li><a class="ico-hover" href="messages.html" title=""><i class="lni lni-comments"></i></a></li>
-			<li class=""><a class="ico-hover" href="timeline.html" title=""><i class="lni lni-user"></i></a></li>
+			<li><a class="" href="/user/message" title=""><i class="lni lni-comments"></i></a></li>
+			<li class=""><a class="" href="/user/main" title=""><i class="lni lni-user"></i></a></li>
 		</ul>
 	</div>
 	
 	<nav>
 	  <ul class="menu">
-		  <li data-text="Home"><a href="/user/main" title=""><i><img src="/images/svg/home.png" alt=""></i><span>Home</span></a></li>
-		  <li data-text="Home"><a href="/user/main" title=""><i><img src="/images/svg/user.png" alt=""></i><span>My Profile</span></a></li>
+		  <li data-text="Home"><a href="/user/id" title=""><i><img src="/images/svg/home.png" alt=""></i><span>Home</span></a></li>
+		  <li data-text="Home"><a href="/userprofile/users" title=""><i><img src="/images/svg/user.png" alt=""></i><span>My Profile</span></a></li>
 		  <li data-text="Home"><a href="/user/photos" title=""><i><img src="/images/svg/photos.png" alt=""></i><span>Photos</span></a></li>
 		  <li data-text="Home"><a href="/user/videos" title=""><i><img src="/images/svg/video.png" alt=""></i><span>Videos</span></a></li>
-		  <li data-text="Home"><a href="#" title=""><i><img src="/images/svg/groups.png" alt=""></i><span>Groups</span></a></li>
-		  <li data-text="Home"><a href="#" title=""><i><img src="/images/svg/pages.png" alt=""></i><span>Pages</span></a></li>
+		  <li data-text="Home"><a href="/user/videoupload" title=""><i><img src="/images/svg/groups.png" alt=""></i><span>Chorus</span></a></li>
 		  <li data-text="Home"><a href="/user/notification" title=""><i><img src="/images/svg/about.png" alt=""></i><span>Notifications</span></a></li>
 		  <li data-text="Home"><a href="/user/message" title=""><i><img src="/images/svg/inbox.png" alt=""></i><span>Messages</span></a></li>
 		  <li data-text="Home"><a href="/user/followers" title=""><i><img src="/images/svg/users.png" alt=""></i><span>Followers</span></a></li>
-		  <li data-text="Home"><a href="#" title=""><i><img src="/images/svg/news.png" alt=""></i><span>Blog Posts</span></a></li>
 		  <li data-text="Home"><a href="/platform" title=""><i><img src="/images/svg/market.png" alt=""></i><span>Platform</span></a></li>
 		  <li data-text="Home"><a href="/tv" title=""><i><img src="/images/svg/film.png" alt=""></i><span>TV</span></a></li>
-		  <li data-text="Home"><a href="/events" title=""><i><img src="/images/svg/event.png" alt=""></i><span>Events</span></a></li>
-		  <li data-text="Home"><a href="/user/nearby" title=""><i><img src="/images/svg/nearby.png" alt=""></i><span>Nearby</span></a></li>
+		  <li data-text="Home"><a href="#" title=""><i><img src="/images/svg/event.png" alt=""></i><span>Events</span></a></li>
+		  <li data-text="Home"><a href="#" title=""><i><img src="/images/svg/nearby.png" alt=""></i><span>Nearby</span></a></li>
 		  <li data-text="Home"><a href="/user/setting" title=""><i><img src="/images/svg/setting.png" alt=""></i><span>Settings</span></a></li>
 	  </ul>
 	</nav><!-- compact nav menu -->
-	
+	<!-- mai99n profile section -->
 	<section>
+		
 		<div class="gap no-gap">
+			
 			<div class="profile-pic">
-				<img src="/images/resources/Solid Black JPG.jpg"" alt="">
+				
+				<img src="/images/resources/Solid Black JPG.jpg" alt="">
+				
 				<div class="user-dp">
+					
 					<figure>
 						<img src="/images/resources/user3.jpg" alt="">
 						<span class="status greenbg"></span>
 					</figure>
-					<h5>Welson 4U2NVY</h5>
+					<% if( users){ %>
+						
+						<h5><%= users.fullname %> </h5>
+							
+							
+						
+						<% } %>
 					<ul>
-						<li><a class="redbg" href="about.html" title="Profile"><i class="lni lni-user"></i></a></li>
-						<li><a class="bluebg" href="settings.html" title="Edit Profile"><i class="lni lni-pencil"></i></a></li>
+						<li><a class="redbg" href="/userprofile/users" title="Profile"><i class="lni lni-user"></i></a></li>
+						<li><a class="bluebg" href="/user/setting" title="Edit Profile"><i class="lni lni-pencil"></i></a></li>
 						<li><a class="yellowbg" href="#" title="Follow"><i class="lni lni-star"></i></a></li>
 					</ul>
+					
 				</div>
+				
 			</div>
+	
 		</div>
+	
 	</section>
+	<!-- scroll section section -->
 	<section>
 		<div class="gap no-gap">
 			<div class="profile-info">
+				<% if( users){ %>
 				<ul>
-					<li title="followers"><i class="lni lni-star"></i><ins>1.5k</ins></li>
-					<li title="following"><i class="lni lni-users"></i><ins>223</ins></li>
-					<li title="Likes"><i class="lni lni-heart"></i><ins>665</ins></li>
-					<li title="Posts"><i class="lni lni-postcard"></i><ins>103</ins></li>
+					<li title="followers"><i class="lni lni-star"></i><ins><%= users.followers %></ins></li>
+					<li title="following"><i class="lni lni-users"></i><ins><%= users.followings %></ins></li>
+					<li title="Likes"><i class="lni lni-heart"></i><ins><%=users.posts.likes %></ins></li>
+					<li title="Posts"><i class="lni lni-postcard"></i><ins><%= users.posts.likes %></ins></li>
 				</ul>
+				<% } %>
 			</div>
 		</div>
 	</section>
-	
+	<!-- scroll section section -->
 	<section>
 		<div class="gap no-top overlap">
 			<div class="page-caro">
 				<div class="link-item">
-					<a href="Date&match.html" title="">
+					<a href="#" title="">
 						<i class="lni lni-user"></i>
 						<p>Date & Match</p>
 					</a>
 				</div>
 				<div class="link-item">
-					<a href="timeline.html" title="">
+					<a href="/userprofile/users" title="">
 						<i class="lni lni-keyboard"></i>
 						<p>Timeline</p>
 					</a>
 				</div>
 				<div class="link-item">
-					<a href="followers.html" title="">
+					<a href="/user/followers" title="">
 						<i class="lni lni-emoji-smile"></i>
 						<p>Followers</p>
 					</a>
 				</div>
+				<!-- 
 				<div class="link-item">
 					<a href="group.html" title="">
 						<i class="lni lni-network"></i>
 						<p>Groups</p>
 					</a>
-				</div>
+				</div>-->
 				<div class="link-item">
-					<a href="photos.html" title="">
+					<a href="/user/photos" title="">
 						<i class="lni lni-gallery"></i>
 						<p>Photos</p>
 					</a>
 				</div>
 				<div class="link-item">
-					<a href="videos.html" title="">
+					<a href="/user/videos" title="">
 						<i class="lni lni-play"></i>
 						<p>Videos</p>
 					</a>
@@ -149,7 +167,7 @@
 			</div>
 		</div>
 	</section>
-
+<!-- 
 	<section>
 		<div class="gap no-gap">
 			<div class="container">
@@ -168,8 +186,8 @@
 				</div>
 			</div>
 		</div>
-	</section><!-- share section -->
-
+	</section> share section -->
+<!-- posts section section -->
 	<section>
 		<div class="gap">
 			<div class="container">
@@ -238,10 +256,12 @@
 								<a class="comment-to" href="#" title=""><i class="lni lni-comments"></i> comment</a>
 								<a class="share-to" href="#" title=""><i class="lni lni-share-alt"></i> share</a>
 								<div class="new-comment">
-									<form method="post">
-										<input type="text" placeholder="write comment">
+									<!-- comment section section -->
+									<form action="/userprofile/5fcefeec4a342e0bf0857265/comment"method="post">
+										<input type="text" name="content" placeholder="write comment">
 										<button type="submit"><i class="lni lni-pointer"></i></button>
 									</form>
+									<!-- comment section section -->
 								</div>
 								<div class="box">
 									<div class="Emojis">
@@ -266,6 +286,7 @@
 									</div>
 								  </div>
 							</div>
+							<!-- comment section section -->
 							<div class="comments-area">
 								<ul>
 									<li>
@@ -273,6 +294,7 @@
 										<div class="commenter">
 											<h5><a href="#" title="">Jack Carter</a></h5>
 											<span>2 hours ago</span>
+											
 											<p>
 												i think that some how, we learn who we really are and then live with that decision, great post!
 											</p>
@@ -294,6 +316,7 @@
 									</li>
 								</ul>
 							</div>
+							<!-- comment section section -->
 						</div><!-- with image -->
 						<div class="user-post">
 							<figure><img src="/images/resources/user3.jpg" alt=""></figure>
@@ -629,19 +652,17 @@
 			<figure><img src="/images/resources/user3.jpg" alt=""><span class="status status greenbg"></span></figure>
 			<div class="user-options">
 				<h5>Welson 4U2NVY</h5>
-				<a href="about.html" title="">view profile</a>
+				<a href="/userprofile/users" title="">view profile</a>
 			</div>
 		</div>
 		<ul>
-			<li><a href="messages.html" title=""><i class="lni lni-inbox"></i>inbox</a></li>
-			<li><a href="notifications.html" title=""><i class="lni lni-alarm"></i>Notifications</a></li>
-			<li><a href="settings.html" title=""><i class="lni lni-pencil-alt"></i>Edit Profile</a></li>
-			<li><a href="lock-screen.html" title=""><i class="lni lni-key"></i>Lock screen</a></li>
-			<li><a href="settings.html" title=""><i class="lni lni-control-panel"></i>setting</a></li>
-			<li><a href="privacy.html" title=""><i class="lni lni-sort-amount-asc"></i>Privacy & Help</a></li>
-			<li><a href="create-new.html" title=""><i class="lni lni-pencil"></i>Create Page</a></li>
-			<li><a href="create-new.html" title=""><i class="lni lni-cloud-network"></i>Create Group</a></li>
-			<li><a href="#" title=""><i class="lni lni-power-switch"></i>Logout</a></li>
+			<li><a href="#" title=""><i class="lni lni-inbox"></i>inbox</a></li>
+			<li><a href="#" title=""><i class="lni lni-alarm"></i>Notifications</a></li>
+			<li><a href="/user/setting" title=""><i class="lni lni-pencil-alt"></i>Edit Profile</a></li>
+			<li><a href="#" title=""><i class="lni lni-key"></i>Lock screen</a></li>
+			<li><a href="/user/setting" title=""><i class="lni lni-control-panel"></i>setting</a></li>
+			<li><a href="#" title=""><i class="lni lni-sort-amount-asc"></i>Privacy & Help</a></li>
+			<li><a href="/user/logout" title=""><i class="lni lni-power-switch"></i>Logout</a></li>
 		</ul>
 		<div class="night-mode">
 			<i class="lni lni-night"></i>Night Mode 
@@ -655,7 +676,7 @@
 		<div class="search-area">
 			<h5 class="main-title">Search By</h5>
 			<form method="post">
-				<input type="text" placeholder="Search #tag, People, Groups, etc..">
+				<input type="text" placeholder="Search #tag, People, etc..">
 				<div class="filter-search">
 					<div>
 						<i class="lni lni-users"></i>
@@ -667,26 +688,14 @@
 						<input type="checkbox" id="nearby">
   						<label for="nearby">Nearby</label>
 					</div>
-					<div>
-						<i class="lni lni-calendar"></i>
-						<input type="checkbox" id="event">
-  						<label for="event">Events</label>
-					</div>
+					
 					<div>
 						<i class="lni lni-save"></i>
 						<input type="checkbox" id="saved">
   						<label for="saved">Saved Posts</label>
 					</div>
-					<div>
-						<i class="lni lni-network"></i>
-						<input type="checkbox" id="group">
-  						<label for="group">Groups</label>
-					</div>
-					<div>
-						<i class="lni lni-add-files"></i>
-						<input type="checkbox" id="pages">
-  						<label for="pages">Pages</label>
-					</div>
+					
+					
 					<div>
 						<i class="lni lni-map-marker"></i>
 						<input type="checkbox" id="loc">
@@ -702,32 +711,32 @@
 		<div class="post-form">
 			<h5>Create New Post</h5>
 			<span class="close-btn"><i class="lni lni-cross-circle"></i></span>
-			<form>
+			<form action="/userimage/upload" method="POST" enctype="multipart/form-data" >
 			<textarea placeholder="write something"></textarea>
 				<div class="attachments">
 					<ul>
 						<li>
 							<i class="lni lni-music"></i>
 							<label class="fileContainer">
-								<input type="file">
+								<input type="file" name="file" id="file" class="custom-file-input">
 							</label>
 						</li>
 						<li>
 							<i class="lni lni-image"></i>
 							<label class="fileContainer">
-								<input type="file">
+								<input type="file" name="file" id="file" class="custom-file-input">
 							</label>
 						</li>
 						<li>
 							<i class="lni lni-video"></i>
 							<label class="fileContainer">
-								<input type="file">
+								<input type="file" name="file" id="file" class="custom-file-input">
 							</label>
 						</li>
 						<li>
 							<i class="lni lni-emoji-smile"></i>
 							<label class="fileContainer">
-								<input type="file">
+								<input type="file" name="file" id="file" class="custom-file-input">
 							</label>
 						</li>
 						<li class="more-alt">

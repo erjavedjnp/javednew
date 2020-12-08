@@ -5,7 +5,9 @@ const mongoose = require("mongoose");
 const path = require('path')
 const User = require("../models/user/user")
 const Post = require("../models/user/post");
-const Comment = require("../models/comment")
+const likes = require("../models/user/likes");
+const dislikes = require("../models/user/dislikes");
+const Comment = require("../models/user/Comment")
 const cloudinary = require('./cloudnary')
 const multer = require('multer');
 const fs = require("fs");
@@ -17,7 +19,7 @@ app.use(express.json())
 
 var storage = multer.diskStorage({ 
   destination: (req, file, cb) => { 
-      cb(null,path.join(__dirname ,'..','/uploads')) 
+      cb(null,path.join(__dirname ,'..','/src/uploads')) 
   }, 
   filename: (req, file, cb) => { 
       cb(null, file.originalname) 
@@ -26,8 +28,8 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage }); 
 
-router.get("/" ,(rq,res) =>{
-  res.render("image")
+router.get("/" ,(req,res) =>{
+  res.render('form2')
 })
 
 //create users 
@@ -55,15 +57,16 @@ router.get("/" ,(rq,res) =>{
 // }) 
 
 // get users by userId
-router.get("/users/", auth, async (req, res) => {
+router.get("/users", auth, async (req, res) => {
   let newUser = {};
 
   newUser = (await User.findById(req.user._id)).populate("posts")
 
   let posts = await Post.find().populate("comments").where("author.id").equals(req.user._id)
-  
-  res.json({user: newUser, posts: posts.map(post => post)})
-    console.log(newUser)
+  //console.log(newUser)
+  //console.log(posts)
+ // res.render('timeline',{user: newUser, posts: posts.map(post => post)})
+ res.render('timeline',{users: newUser})
 });
 
 // create post 
@@ -79,11 +82,11 @@ router.post("/posts/" ,auth,upload.array("file"), async (req,res,next) =>{
     const {path} = file
   const newPath = await uploader(path)
   urls.push(newPath)
-  fs.unlinkSync(path)
+  // fs.unlinkSync(path)
   }
   
   
-  console.log(userfound)
+  //console.log(userfound)
   const newPost = new Post({
     image: urls,
     
@@ -100,9 +103,38 @@ router.post("/posts/" ,auth,upload.array("file"), async (req,res,next) =>{
   userfound.save();
   
   res.json({post: newPost})
+  //console.log(userfound)
 })
+//my post
+/*router.post("/myposts/" ,auth,upload.array("file"), async (req,res,next) =>{
+  
+  let userfound = await User.findById(req.user._id)
+  const {description,tags} = req.body
 
-
+  const uploader = async (path) => await cloudinary.uploads(path, "Files")
+  let urls = [];
+  const files = req.files
+  for(const file of files){
+    const {path} = file
+  const newPath = await uploader(path)
+  urls.push(newPath)
+  // fs.unlinkSync(path)
+  }
+  
+  const newPost = new Post()
+  newPost.image=req.body.image;
+  newPost.description=req.body.description;
+  newPost.author=req.body.author;
+  newPost.tags=req.body.tags;
+  //console.log(userfound)
+  
+  newPost.save();
+  await userfound.posts.push(newPost)
+  userfound.save();
+  
+  res.json({post: newPost})
+})*/
+  //console.log(use
 
 // edit userprofile
 router.patch("/users/", auth, upload.single("file") ,async (req,res,next) =>{
@@ -130,27 +162,91 @@ router.patch("/users/", auth, upload.single("file") ,async (req,res,next) =>{
 
 // comments
 
-router.post("/comments/:postId" , async(req,res,next) =>{
-  const post = await Post.findById(req.params.postId)
+router.post("/:postId/comment", async (req, res) => {
+  //Find a POst
+  const post = await Post.findOne({ _id: req.params.postId });
+
+  //Create a Comment
+  const comment = new Comment();
+  comment.content = req.body.content;
+  comment.post = post._id;
+  await comment.save();
+
+  // Associate Post with comment
+  post.comments.push(comment._id);
+  await post.save();
+  console.log(comment.content)
+  res.send(comment);
+  //res.render('timeline',{comment:comment.content})
+});
+
+//Read a Comment
+
+router.get("/:postId/comment", async (req, res) => {
+  const post = await Post.findOne({ _id: req.params.postId }).populate(
+    "comments"
+  );
   
-  const {comment} = req.body
-  
-  const newComment = new Comment({
-    comment,
-    author:{
-      id : post.author.id,
-      username: post.author.username,
+  res.send(post);
+  //res.render('timeline',{users: newUser})
+});
+//likes post routes
+router.post("/:postId/likes",async (req, res) => {
+  //Find a POst
+  //const user = await User.findById(req.user._id)
+  const post = await Post.findOne({ _id: req.params.postId });
+//I have to use auth with user id to pass direct loggedin user
+  //Create a Comment
+  const likes1 = new likes();
+  likes1.like = req.body.like;
+  //likes.like.push(user._id);
+  likes1.post = post._id;
+  await likes1.save();
 
-    },
-    post : req.params.postId
-  })
-  await newComment.save()
-  post.comments.push(newComment)
-  await post.save()
-  res.json({comments : newComment})
+  // Associate Post with comment
+  post.likes.push(likes1.id);
+  await post.save();
 
-})
+  res.send(likes1);
+});
 
+
+//likes get routes
+router.get("/:postId/likes", async (req, res) => {
+  const post = await Post.findOne({ _id: req.params.postId }).populate(
+    "likes"
+  );
+  res.send(post);
+});
+
+//likes post routes
+router.post("/:postId/dislikes",async (req, res) => {
+  //Find a POst
+  //const user = await User.findById(req.user._id)
+  const post = await Post.findOne({ _id: req.params.postId });
+//I have to use auth with user id to pass direct loggedin user
+  //Create a Comment
+  const likes1 = new dislikes();
+  likes1.dislike = req.body.dislike;
+  //likes.like.push(user._id);
+  likes1.post = post._id;
+  await likes1.save();
+
+  // Associate Post with comment
+  post.dislikes.push(likes1.id);
+  await post.save();
+
+  res.send(likes1);
+});
+
+
+//likes get routes
+router.get("/:postId/dislikes", async (req, res) => {
+  const post = await Post.findOne({ _id: req.params.postId }).populate(
+    "dislikes"
+  );
+  res.send(post);
+});
 //following followers
 
 router.post('/follow', async (req, res, next) => {

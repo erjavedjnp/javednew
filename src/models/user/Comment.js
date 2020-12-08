@@ -7,8 +7,10 @@ const comment_schema = new mongoose.Schema({
   },
   post: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "ChorusPost"
+    ref: "Post",
+    required: "Post is Required Field"
   }
 });
 
 module.exports = mongoose.model("Comment", comment_schema);
+

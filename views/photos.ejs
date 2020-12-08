@@ -57,8 +57,8 @@
 
 	<nav>
 		<ul class="menu">
-			<li data-text="Home"><a href="/user/main" title=""><i><img src="/images/svg/home.png" alt=""></i><span>Home</span></a></li>
-			<li data-text="Home"><a href="/user/main" title=""><i><img src="/images/svg/user.png" alt=""></i><span>My Profile</span></a></li>
+			<li data-text="Home"><a href="/userprofile/users" title=""><i><img src="/images/svg/home.png" alt=""></i><span>Home</span></a></li>
+			<li data-text="Home"><a href="/userprofile/users" title=""><i><img src="/images/svg/user.png" alt=""></i><span>My Profile</span></a></li>
 			<li data-text="Home"><a href="/user/photos" title=""><i><img src="/images/svg/photos.png" alt=""></i><span>Photos</span></a></li>
 			<li data-text="Home"><a href="/user/videos" title=""><i><img src="/images/svg/video.png" alt=""></i><span>Videos</span></a></li>
 			<li data-text="Home"><a href="#" title=""><i><img src="/images/svg/groups.png" alt=""></i><span>Groups</span></a></li>
@@ -103,11 +103,28 @@
 						<div class="row merged-5">
 							<div class="col-lg-12 col-12">
 								<div class="pic">
-									<a href="/images/resources/photo-big.jpg" class="html5lightbox" data-group="set2" title=""><img src="/images/resources/photo-big.jpg" alt=""></a>
+									<hr>
+									<% if(files){ %>
+									  <% files.forEach(function(file) { %>
+										<div class="card card-body mb-3">
+										  <% if(file.isImage) { %>
+											
+											<a href = "/images/resources/Solid Black JPG.jpg" class="html5lightbox" data-group="set2" title=""><img src="image/<%= file.filename %>" alt=""></a>
 									<ul class="reactions">
-										<li><i class="lni lni-thumbs-up"></i> 5</li>
+										<li><i class="lni lni-thumbs-up"></i> 15</li>
 										<li><i class="lni lni-comments"></i> 6</li>
 									</ul>
+											<% } else { %>
+											  <%= file.filename %>
+												<% } %>
+												  <form method="POST" action="/userimage/files/<%= file._id %>?_method=DELETE">
+													<button class="btn btn-danger btn-block mt-4">Delete</button>
+												  </form>
+										</div>
+										<% }) %>
+										  <% } else { %>
+											<p>No files to show</p>
+											<% } %>
 								</div>
 							</div>
 							<div class="col-lg-4 col-4">

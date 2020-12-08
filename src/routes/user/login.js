@@ -183,9 +183,7 @@ router.get('/id',auth,async(req,res)=>{
 })
 
 //<------------> USER profile<---------------->
-router.get('/main',auth,async(req,res)=>{
-	res.render('timeline.ejs')
-})
+
 router.get('/photos',auth,async(req,res)=>{
 	res.render('photos.ejs')
 })
@@ -201,6 +199,12 @@ router.get('/notification',auth,async(req,res)=>{
 router.get('/livemap',auth,async(req,res)=>{
 	res.render('screen18.ejs')
 })
+router.get('/followers',auth,async(req,res)=>{
+	res.render('followers.ejs')
+})
+
+
+
 // USER profile
 
 //<------------>TO LOGOUT THE USER<---------------->

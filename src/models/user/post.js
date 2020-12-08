@@ -18,13 +18,20 @@ let postSchema = new mongoose.Schema({
   likes: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User"
+      ref: "likes"
+    }
+  ],
+  dislikes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "likes"
     }
   ],
   comments: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Comment"
+      ref: "Comment",
+      required: "Comment is Required"
     }
   ]
 },{collection: 'Post'});
