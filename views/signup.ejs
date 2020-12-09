@@ -16,14 +16,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-offset-4 col-md-4 col-sm-offset-3 col-sm-6">
-                <form class="form_horizontal" action="/user/signup" method="POST">
+                <form class="form_horizontal" action="/user/signup"  enctype="multipart/form-data" method="POST">
                     <div class="avatar-wrapper">
 	                <img class="profile-pic" src=""/>
 	                <div class="upload-button">
 		<i class="fa fa-arrow-circle-up" aria-hidden="true" ></i>
-        
+       
 	</div>
-              <input class="file-upload" type="file" accept="image/*" style="display: none" />         
+              <input class="file-upload" type="file" name="picture" accept="image/*" style="display: none" />         
 	
 </div>
                      <h3 class="title">Upload Image</h3>

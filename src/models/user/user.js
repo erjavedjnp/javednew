@@ -83,6 +83,11 @@ const userSchema = new mongoose.Schema({
         {
           type: mongoose.Schema.Types.ObjectId,
         }
+	  ],
+	  test: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+        }
       ],
 	chorus: [
         {

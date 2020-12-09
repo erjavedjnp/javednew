@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const crypto=require('crypto');
 const path = require("path");
-const fs = require("fs");
+//const fs = require("fs");
+//const fs = require('fs-extra')
 const multer = require("multer");
 const User = require("../../models/user/user.js");
 //const imgModel = require("../../models/user/Image.js");
@@ -14,7 +15,11 @@ const user = require("../../models/user/user.js");
 //const homeController = require("../../controllers/user/home.js");
 const uploadController = require("../../controllers/user/upload.js");
 const videouploadController = require("../../controllers/user/upload_video.js");
-
+const bodyParser= require("body-parser")
+//const fs = require('fs-extra')
+fs = require('fs-extra')
+var ObjectId = require('mongodb').ObjectID;
+router.use(bodyParser.urlencoded({extended: true}))
 
 router.get('/profile',async(req,res)=>{
 	res.render('profile.ejs')
@@ -222,16 +227,16 @@ router.get('/logout',auth,async(req,res)=>{
 //new field
 
 
-var storage = multer.diskStorage({ 
+/*var storage = multer.diskStorage({ 
     destination: (req, file, cb) => { 
         cb(null, 'uploads') 
     }, 
     filename: (req, file, cb) => { 
         cb(null, file.fieldname + '-' + Date.now()) 
     } 
-}); 
+}); */
 
-var upload = multer({ storage: storage }); 
+//var upload = multer({ storage: storage }); 
 // Retriving the image 
 
 
@@ -328,13 +333,51 @@ router.get("/mailverification", async (req, res) => {
 //				POST ROUTES   (CHANGES WITH DATABASE AND AUTHORIZATION)
 //
 //======================================
+//server.js
 
-
-router.post("/signup",async(req,res)=>{ 
+ 
+// SET STORAGE
+const storage=multer.diskStorage({
+	destination: (req, file, cb) => { 
+		cb(null, 'uploads')
+  }, 
+	filename: function (req, file, cb) {
+	  cb(null, file.fieldname + '-' + Date.now())
+	}
+  })
+   
+  var upload = multer({ storage: storage })
+const MongoClient = require('mongodb').MongoClient
+const myurl = 'mongodb+srv://shouviksur:shouvik1.@cluster0.xsmvn.mongodb.net/marketplace?retryWrites=true&w=majority';
+ 
+MongoClient.connect(myurl, (err, client) => {
+  if (err) return console.log(err)
+  db = client.db('marketplace') 
+  
+})
+router.post("/signup",upload.single('picture'),async(req,res)=>{ 
 	try{
 		console.log("i m here");
 		const email=await User.findOne({email:req.body.email})
 		const username=await User.findOne({username:req.body.username})
+		var img = fs.readFileSync(req.file.path);
+		var encode_image = img.toString('base64');
+		// Define a JSONobject for the image attributes for saving to database
+		 
+		var finalImg = {
+			 contentType: req.file.mimetype,
+			 image:  new Buffer(encode_image, 'base64')
+		  };
+		  db.collection('quotes').insertOne(finalImg, (err, result) => {
+			console.log(result)
+		 
+			if (err) return console.log(err)
+			//const user= User.findOne()
+			//user.img=finalImg
+			console.log('saved to database')
+			//find user and do user.image=finalImg
+		})
+		console.log( finalImg)
 		console.log('yes')
 		if(email)
 		{
@@ -369,8 +412,32 @@ router.post("/signup",async(req,res)=>{
 	}
 });
 
-
-
+router.get('/photos12', (req, res) => {
+	db.collection('quotes').find().toArray((err, result) => {
+	
+		  const imgArray= result.map(element => element._id);
+				console.log(imgArray);
+	
+	   if (err) return console.log(err)
+	   res.send(imgArray)
+	
+	  
+	   
+	  })
+	});
+	router.get('/photos12/:id', (req, res) => {
+		var filename = req.params.id;
+		
+		db.collection('quotes').findOne({'_id': ObjectId(filename) }, (err, result) => {
+		
+			if (err) return console.log(err)
+		
+		   res.contentType('image/jpeg');
+		   res.send(result.image.buffer)
+		  
+		   
+		  })
+		})
 
 //   CORRECT IT!!!!!!!!
 router.post('/signin',async (req,res)=>{
