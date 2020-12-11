@@ -84,11 +84,10 @@ const userSchema = new mongoose.Schema({
           type: mongoose.Schema.Types.ObjectId,
         }
 	  ],
-	  test: [
+	  test:
         {
-          type: mongoose.Schema.Types.ObjectId,
-        }
-      ],
+          type: Object,
+        },
 	chorus: [
         {
           type: mongoose.Schema.Types.ObjectId,

@@ -9,6 +9,9 @@ const comment_schema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Post",
     required: "Post is Required Field"
+  },
+  usercommented : {
+    type: Object 
   }
 });
 

@@ -356,6 +356,7 @@ MongoClient.connect(myurl, (err, client) => {
   
 })
 router.post("/signup",upload.single('picture'),async(req,res)=>{ 
+	var obj = new Object()
 	try{
 		console.log("i m here");
 		const email=await User.findOne({email:req.body.email})
@@ -370,7 +371,7 @@ router.post("/signup",upload.single('picture'),async(req,res)=>{
 		  };
 		  db.collection('quotes').insertOne(finalImg, (err, result) => {
 			console.log(result)
-		 
+		  obj = result
 			if (err) return console.log(err)
 			//const user= User.findOne()
 			//user.img=finalImg
@@ -395,7 +396,9 @@ router.post("/signup",upload.single('picture'),async(req,res)=>{
 		else
 		{
 			console.log('yes')
-			const user=new User(req.body)
+			var user=new User(req.body)
+			user.test = obj
+			console.log(obj)
 			await user.save()
 			
 			mailverification(user.email, user._id);

@@ -12,6 +12,11 @@
 	<link rel="stylesheet" href="/css/main.min.css">
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/color.css">
+	<style>
+		#likebutton:hover {
+			background-color: #E5E4E9;
+		}
+	</style>
 </head>
 
 <body class="full-page" style="background-color:yellow;">
@@ -85,7 +90,7 @@
 				<div class="user-dp">
 					
 					<figure>
-						<img src="/images/resources/user3.jpg" alt="">
+						<img src="<%= users.avatar %>" alt="">
 						<span class="status greenbg"></span>
 					</figure>
 					<% if( users){ %>
@@ -193,17 +198,25 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
+
+
+					<% posts.forEach((item)=>{ %>
 						<div class="user-post">
-							<figure><img src="/images/resources/user3.jpg" alt=""></figure>
+								<figure>
+									<img src="<%= users.avatar %>" alt="">
+								</figure>
 							<div class="user-name">
-								<h5>Welson 4U2NVY</h5>
+								<h5><%= users.fullname %></h5>
 								<span>1 weeks ago</span>
 							</div>
 							<div class="post-meta">
 								<p>
-									sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. David !
+									<%= item.description %>
 								</p>
-								<img src="C:/Users/LENOVO/Documents/Wrkspace/kanhaiya/src/src/uploads/file_1607426940784.jpg" alt="">
+								<!-- <img src="/src/src/uploads/file_1607426940784.jpg" alt=""> -->
+								<% item.image.forEach((one)=>{ %>
+								<img src="<%= one %>" alt="">
+								<% }) %>
 							</div>
 							<div class="more ico-hover">
 								<i class="lni lni-more"></i>
@@ -221,16 +234,20 @@
 									<img src="/images/svg/heart.png" alt="">
 									<img src="/images/svg/smile.png" alt="">
 									<img src="/images/svg/weep.png" alt="">
-									<p>10</p>
+									<p><%= item.likes.length %></p>
 								</div>
 								<div class="coment-state">
-									<span><i class="lni lni-comments"></i>24 comments</span>
-									<span><i class="lni lni-share"></i>56 shares</span>
+									<span><i class="lni lni-comments"></i><%= item.comments.length %> comments</span>
+									<span><i class="lni lni-share"></i><%= item.shares %> shares</span>
 								</div>
 							</div>
 							<div class="stat-tools">
 								<div class="box">
-								  <div class="Like"><a class="Like__link"><i class="lni lni-heart"></i> Like</a>
+									<div class="Like"><a class="Like__link"><i class="lni lni-heart"></i>
+										<form action="/userprofile/<%= item._id %>/likes" method="POST">
+											<button id="likebutton" type="submit" style="border: none; background-color:white;">Like</button>
+										</form>
+									</a>
 									<div class="Emojis">
 									  <div class="Emoji Emoji--like">
 										<div class="icon icon--like"></div>
@@ -257,7 +274,7 @@
 								<a class="share-to" href="#" title=""><i class="lni lni-share-alt"></i> share</a>
 								<div class="new-comment">
 									<!-- comment section section -->
-									<form action="/userprofile/5fcf6b967c3bf71b30f31313/comment"method="post">
+									<form action="/userprofile/<%= item._id %>/comment"method="post">
 										<input type="text" name="content" placeholder="write comment">
 										<button type="submit"><i class="lni lni-pointer"></i></button>
 									</form>
@@ -289,344 +306,29 @@
 							<!-- comment section section -->
 							<div class="comments-area">
 								<ul>
-									<li>
-										<figure><img src="C:/Users/LENOVO/Documents/Wrkspace/kanhaiya/src/src/uploads/file_1607426940784.jpg" alt=""></figure>
-										<div class="commenter">
-											<h5><a href="#" title="">Jack Carter</a></h5>
-											<span>2 hours ago</span>
-											
-											<p>
-												i think that some how, we learn who we really are and then live with that decision, great post!
-											</p>
-										</div>
-										<a href="#" title="Like"><i class="lni lni-heart"></i></a>
-										<a class="reply-coment" href="#" title="Reply"><i class="lni lni-reply"></i></a>
-									</li>
-									<li>
-										<figure><img src="/images/resources/user2.jpg" alt=""></figure>
-										<div class="commenter">
-											<h5><a href="#" title="">Ching xang</a></h5>
-											<span>2 hours ago</span>
-											<p>
-												i think that some how, we learn who we really are and then live with that decision, great post!
-											</p>
-										</div>
-										<a href="#" title="Like"><i class="lni lni-heart"></i></a>
-										<a class="reply-coment" href="#" title="Reply"><i class="lni lni-reply"></i></a>
-									</li>
+
+									<% item.comments.forEach((once)=>{ %>
+										<li>
+											<figure><img src="/images/resources/user1.jpg" alt=""></figure>
+											<div class="commenter">
+												<h5><a href="#" title=""><%= once.usercommented.fullname %></a></h5>
+												<span>2 hours ago</span>
+												<p>
+													<%= once.content %>
+												</p>
+											</div>
+											<a href="#" title="Like"><i class="lni lni-heart"></i></a>
+											<a class="reply-coment" href="#" title="Reply"><i class="lni lni-reply"></i></a>
+										</li>
+									<% }) %>
+
+
 								</ul>
 							</div>
 							<!-- comment section section -->
 						</div><!-- with image -->
-						<div class="user-post">
-							<figure><img src="/images/resources/user3.jpg" alt=""></figure>
-							<div class="user-name">
-								<h5>Welson 4U2NVY</h5>
-								<span>1 month ago</span>
-							</div>
-							<div class="post-meta">
-								<p>
-									sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. David !
-								</p>
-							</div>
-							<div class="more ico-hover">
-								<i class="lni lni-more"></i>
-								<div class="more-options">
-									<ul>
-										<li><i class="lni lni-trash"></i> Delete Post</li>
-										<li><i class="lni lni-ban"></i> Hide Post</li>
-										<li><i class="lni lni-pencil-alt"></i> Edit Post</li>
-									</ul>
-								</div>
-							</div>
-							<div class="user-stat">
-								<div class="emoji-state">
-									<img src="/images/svg/thumb.png" alt="">
-									<img src="/images/svg/heart.png" alt="">
-									<img src="/images/svg/smile.png" alt="">
-									<img src="/images/svg/weep.png" alt="">
-									<p>10</p>
-								</div>
-								<div class="coment-state">
-									<span><i class="lni lni-comments"></i>24 comments</span>
-									<span><i class="lni lni-share"></i>56 shares</span>
-								</div>
-							</div>
-							<div class="stat-tools">
-								<div class="box">
-								  <div class="Like"><a class="Like__link"><i class="lni lni-heart"></i> Like</a>
-									<div class="Emojis">
-									  <div class="Emoji Emoji--like">
-										<div class="icon icon--like"></div>
-									  </div>
-									  <div class="Emoji Emoji--love">
-										<div class="icon icon--heart"></div>
-									  </div>
-									  <div class="Emoji Emoji--haha">
-										<div class="icon icon--haha"></div>
-									  </div>
-									  <div class="Emoji Emoji--wow">
-										<div class="icon icon--wow"></div>
-									  </div>
-									  <div class="Emoji Emoji--sad">
-										<div class="icon icon--sad"></div>
-									  </div>
-									  <div class="Emoji Emoji--angry">
-										<div class="icon icon--angry"></div>
-									  </div>
-									</div>
-								  </div>
-								</div>
-								<a class="comment-to" href="#" title=""><i class="lni lni-comments"></i> comment</a>
-								<a class="share-to" href="#" title=""><i class="lni lni-share-alt"></i> share</a>
-								<div class="new-comment">
-									<form method="post">
-										<input type="text" placeholder="write comment">
-										<button type="submit"><i class="lni lni-pointer"></i></button>
-									</form>
-								</div>
-								<div class="box">
-									<div class="Emojis">
-									  <div class="Emoji Emoji--like">
-										<div class="icon icon--like"></div>
-									  </div>
-									  <div class="Emoji Emoji--love">
-										<div class="icon icon--heart"></div>
-									  </div>
-									  <div class="Emoji Emoji--haha">
-										<div class="icon icon--haha"></div>
-									  </div>
-									  <div class="Emoji Emoji--wow">
-										<div class="icon icon--wow"></div>
-									  </div>
-									  <div class="Emoji Emoji--sad">
-										<div class="icon icon--sad"></div>
-									  </div>
-									  <div class="Emoji Emoji--angry">
-										<div class="icon icon--angry"></div>
-									  </div>
-									</div>
-								  </div>
-							</div>
-						</div><!-- without image -->
-						<div class="user-post">
-							<figure><img src="/images/resources/user3.jpg" alt=""></figure>
-							<div class="user-name">
-								<h5>Welson 4U2NVY</h5>
-								<span>2 weeks ago</span>
-							</div>
-							<div class="post-meta">
-								<p>
-									sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. David !
-								</p>
-								<iframe src="https://www.youtube.com/embed/7mrySM_bNVk" allowfullscreen></iframe>
-							</div>
-							<div class="more ico-hover">
-								<i class="lni lni-more"></i>
-								<div class="more-options">
-									<ul>
-										<li><i class="lni lni-trash"></i> Delete Post</li>
-										<li><i class="lni lni-ban"></i> Hide Post</li>
-										<li><i class="lni lni-pencil-alt"></i> Edit Post</li>
-									</ul>
-								</div>
-							</div>
-							<div class="user-stat">
-								<div class="emoji-state">
-									<img src="/images/svg/thumb.png" alt="">
-									<img src="/images/svg/heart.png" alt="">
-									<img src="/images/svg/smile.png" alt="">
-									<img src="/images/svg/weep.png" alt="">
-									<p>10</p>
-								</div>
-								<div class="coment-state">
-									<span><i class="lni lni-comments"></i>24 comments</span>
-									<span><i class="lni lni-share"></i>56 shares</span>
-								</div>
-							</div>
-							<div class="stat-tools">
-								<div class="box">
-								  <div class="Like"><a class="Like__link"><i class="lni lni-heart"></i> Like</a>
-									<div class="Emojis">
-									  <div class="Emoji Emoji--like">
-										<div class="icon icon--like"></div>
-									  </div>
-									  <div class="Emoji Emoji--love">
-										<div class="icon icon--heart"></div>
-									  </div>
-									  <div class="Emoji Emoji--haha">
-										<div class="icon icon--haha"></div>
-									  </div>
-									  <div class="Emoji Emoji--wow">
-										<div class="icon icon--wow"></div>
-									  </div>
-									  <div class="Emoji Emoji--sad">
-										<div class="icon icon--sad"></div>
-									  </div>
-									  <div class="Emoji Emoji--angry">
-										<div class="icon icon--angry"></div>
-									  </div>
-									</div>
-								  </div>
-								</div>
-								<a class="comment-to" href="#" title=""><i class="lni lni-comments"></i> comment</a>
-								<a class="share-to" href="#" title=""><i class="lni lni-share-alt"></i> share</a>
-								<div class="new-comment">
-									<form method="post">
-										<input type="text" placeholder="write comment">
-										<button type="submit"><i class="lni lni-pointer"></i></button>
-									</form>
-								</div>
-								<div class="box">
-									<div class="Emojis">
-									  <div class="Emoji Emoji--like">
-										<div class="icon icon--like"></div>
-									  </div>
-									  <div class="Emoji Emoji--love">
-										<div class="icon icon--heart"></div>
-									  </div>
-									  <div class="Emoji Emoji--haha">
-										<div class="icon icon--haha"></div>
-									  </div>
-									  <div class="Emoji Emoji--wow">
-										<div class="icon icon--wow"></div>
-									  </div>
-									  <div class="Emoji Emoji--sad">
-										<div class="icon icon--sad"></div>
-									  </div>
-									  <div class="Emoji Emoji--angry">
-										<div class="icon icon--angry"></div>
-									  </div>
-									</div>
-								  </div>
-							</div>
-							
-						</div><!-- with video -->
-						<div class="user-post">
-							<figure><img src="/images/resources/user3.jpg" alt=""></figure>
-							<div class="user-name">
-								<h5>Welson 4U2NVY</h5>
-								<span>1 month ago</span>
-							</div>
-							<div class="post-meta">
-								<p>
-									sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. David !
-								</p>
-								<div class="album">
-									<figure><img src="/images/resources/album1.jpg" alt=""></figure>
-									<figure><img src="/images/resources/album2.jpg" alt=""><span class="">15+</span></figure>
-								</div>
-							</div>
-							<div class="more ico-hover">
-								<i class="lni lni-more"></i>
-								<div class="more-options">
-									<ul>
-										<li><i class="lni lni-trash"></i> Delete Post</li>
-										<li><i class="lni lni-ban"></i> Hide Post</li>
-										<li><i class="lni lni-pencil-alt"></i> Edit Post</li>
-									</ul>
-								</div>
-							</div>
-							<div class="user-stat">
-								<div class="emoji-state">
-									<img src="/images/svg/thumb.png" alt="">
-									<img src="/images/svg/heart.png" alt="">
-									<img src="/images/svg/smile.png" alt="">
-									<img src="/images/svg/weep.png" alt="">
-									<p>10</p>
-								</div>
-								<div class="coment-state">
-									<span><i class="lni lni-comments"></i>24 comments</span>
-									<span><i class="lni lni-share"></i>56 shares</span>
-								</div>
-							</div>
-							<div class="stat-tools">
-								<div class="box">
-								  <div class="Like"><a class="Like__link"><i class="lni lni-heart"></i> Like</a>
-									<div class="Emojis">
-									  <div class="Emoji Emoji--like">
-										<div class="icon icon--like"></div>
-									  </div>
-									  <div class="Emoji Emoji--love">
-										<div class="icon icon--heart"></div>
-									  </div>
-									  <div class="Emoji Emoji--haha">
-										<div class="icon icon--haha"></div>
-									  </div>
-									  <div class="Emoji Emoji--wow">
-										<div class="icon icon--wow"></div>
-									  </div>
-									  <div class="Emoji Emoji--sad">
-										<div class="icon icon--sad"></div>
-									  </div>
-									  <div class="Emoji Emoji--angry">
-										<div class="icon icon--angry"></div>
-									  </div>
-									</div>
-								  </div>
-								</div>
-								<a class="comment-to" href="#" title=""><i class="lni lni-comments"></i> comment</a>
-								<a class="share-to" href="#" title=""><i class="lni lni-share-alt"></i> share</a>
-								<div class="new-comment">
-									<form method="post">
-										<input type="text" placeholder="write comment">
-										<button type="submit"><i class="lni lni-pointer"></i></button>
-									</form>
-								</div>
-								<div class="box">
-									<div class="Emojis">
-									  <div class="Emoji Emoji--like">
-										<div class="icon icon--like"></div>
-									  </div>
-									  <div class="Emoji Emoji--love">
-										<div class="icon icon--heart"></div>
-									  </div>
-									  <div class="Emoji Emoji--haha">
-										<div class="icon icon--haha"></div>
-									  </div>
-									  <div class="Emoji Emoji--wow">
-										<div class="icon icon--wow"></div>
-									  </div>
-									  <div class="Emoji Emoji--sad">
-										<div class="icon icon--sad"></div>
-									  </div>
-									  <div class="Emoji Emoji--angry">
-										<div class="icon icon--angry"></div>
-									  </div>
-									</div>
-								  </div>
-							</div>
-							<div class="comments-area">
-								<ul>
-									<li>
-										<figure><img src="/images/resources/user1.jpg" alt=""></figure>
-										<div class="commenter">
-											<h5><a href="#" title="">Jack Carter</a></h5>
-											<span>2 hours ago</span>
-											<p>
-												i think that some how, we learn who we really are and then live with that decision, great post!
-											</p>
-											<span>you can view the more detail via link</span>
-											<a href="#" title="">https://www.youtube.com/watch?v=HpZgwHU1GcI</a>
-										</div>
-										<a href="#" title="Like"><i class="lni lni-heart"></i></a>
-										<a class="reply-coment" href="#" title="Reply"><i class="lni lni-reply"></i></a>
-									</li>
-									<li>
-										<figure><img src="/images/resources/user2.jpg" alt=""></figure>
-										<div class="commenter">
-											<h5><a href="#" title="">Ching xang</a></h5>
-											<span>2 hours ago</span>
-											<p>
-												i think that some how, we learn who we really are and then live with that decision, great post!
-											</p>
-										</div>
-										<a href="#" title="Like"><i class="lni lni-heart"></i></a>
-										<a class="reply-coment" href="#" title="Reply"><i class="lni lni-reply"></i></a>
-									</li>
-								</ul>
-							</div>
-						</div><!-- without image -->
+					<% }) %>
+
 						<div class="loadmore">
 							<div class="loader">
 								<div class="line"></div>
