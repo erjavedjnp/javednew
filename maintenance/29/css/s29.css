@@ -79,10 +79,10 @@
 
   .logo{
     position: relative;
-    height: 160px;
-    width: 175px;
+    height: 140px;
+    width: 155px;
     z-index: 1;
-    left: 630px;
+    left: 570px;
     top: 50px;
     margin-left: 3%;
 
@@ -124,6 +124,10 @@
   height: 50px;
   margin-right: 1%;
 }
+.chatdiv{
+  margin-right: 150px;
+}
+
 .collapsible {
     background-color:  white;
     color: black;
@@ -148,7 +152,7 @@
     font-size: 1.0rem;
     background-color:  #fff;
     color: black;
-    border-radius: 20px 20px 20px 20px;
+    border-radius: 0px 0px 20px 20px;
     font-weight: 400;
   
   }
@@ -195,6 +199,7 @@
   }
   .icon-user{
    float: right;
+   margin-top: 10px;
    
    color: #f3c33e;
   
@@ -203,11 +208,12 @@
 
   .icon-right{
       float: right;
+      margin-bottom: 10px;
   }
   .wall{
     margin: auto;
     height: 330px;
-    width: 95em;
+    width: 1350px;
     
     position: relative;
    
@@ -231,7 +237,7 @@
     margin-left:410px ;
     position: relative;
     top: 5px;
-    left: 20%;
+    left: 15%;
     
 }
 .middiv div{

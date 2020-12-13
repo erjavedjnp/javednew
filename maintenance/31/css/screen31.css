@@ -79,8 +79,8 @@
 
   .logo{
     position: relative;
-    height: 160px;
-    width: 175px;
+    height: 110px;
+    width: 120px;
     z-index: 1;
     left: 630px;
     top: 20px;
@@ -90,7 +90,7 @@
 }
 
 .inbox{
-    font-size: 25px;
+    font-size: 19px;
     font-weight: 600;
     margin-left: 64%;
     padding-top: 20px;
@@ -197,10 +197,10 @@
  
   min-width: 1200px;
   max-width: 1450px;
-  height: 60vh;
+  height: 50vh;
   width: 100%;
   background: #eec451;
-  min-height: 80vh;
+  min-height: 68vh;
  overflow-y: scroll;
   margin-left: 200px;
 }
@@ -332,7 +332,8 @@ color: white;
 }
 .comment-input{
   width: 1000px;
-  padding: 5px;
+  
+  padding : 9px;
   border-radius: 20px;
   padding-left: 30px;
   margin-left: 50px;
@@ -346,10 +347,10 @@ color: white;
 .emoji-icon{
   position: absolute;
   left: 80%;
-  bottom: 20%;
+  bottom: 15%;
   font-size: 23px;
- background-color: yellow;
- color: black;
+ background-color: rgb(53, 53, 5);
+ color: yellow;
  border-radius: 50%;
  
   
@@ -357,7 +358,7 @@ color: white;
 .mic-icon{
   position: absolute;
   left: 83%;
-  bottom: 20%;
+  bottom: 15%;
   font-size: 25px;
   color: black;
 }
@@ -365,11 +366,41 @@ color: white;
 .attachment-icon{
   position: absolute;
   left: 86%;
-  bottom: 20%;
+  bottom: 12%;
   font-size: 25px;
   color: black;
 }
+.filter-card{
+  padding-top: 10px;
+  margin-left: 20px;
+}
 
+.accordion {
+  background-color: transparent;
+  color: #000;
+  cursor: pointer;
+  padding: 0px;
+  width: 3%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 25px;
+  transition: 0.4s;
+  float: right;
+ 
+}
+
+.active, .accordion:hover {
+  background-color:transparent; 
+}
+
+.panel {
+  padding: 10px;
+  display: none;
+  background-color: #eec451;
+  overflow: hidden;
+ 
+}
   @media (max-width:400px)
   {
     .data{

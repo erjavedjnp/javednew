@@ -76,7 +76,8 @@
         <div class="col-lg-12 col-sm-12">
            <a href="#" style="text-decoration: none;"><i class="fa fa-smile emoji-icon" ></i></a> 
            <a href="#" style="text-decoration: none;"> <i class="fa fa-microphone mic-icon" ></i></a>
-            <a href="#" style="text-decoration: none;"><i class="fa fa-paperclip attachment-icon" ></i></a>
+           <button class="accordion btn attachment-icon" ><i class="fa fa-paperclip "  ></i></button>
+            <div class="panel "><div class="row"><div class="card p-2 col-2"></div><div class="card filter-card col-2"></div><div class="card p-2 filter-card col-2"></div><div class="card p-2 filter-card col-2"></div></div></div>
             <input type="text" placeholder="Write a Comment..." class="comment-input">
             <a href="#"><i class="fa fa-send send-icons" ></i></a>
         </div>
@@ -88,5 +89,21 @@
 
 </div>
                  </div>
+                 <script>
+                   var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+                 </script>
                  </body>
                  </html>
