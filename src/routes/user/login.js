@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const crypto=require('crypto');
+var formidable = require('formidable');
 const path = require("path");
 //const fs = require("fs");
 //const fs = require('fs-extra')
@@ -542,6 +543,65 @@ router.post("/reset-password", async (req, res) => {
 		res.send('oops')
 	}
   });
+//Routes for Profile Picture
+router.get("/postme" ,(req,res) =>{
+	res.render('uploadYourpic')
+  })
+router.post('/postme',auth, function(req, res) {
+	var form =new formidable.IncomingForm();
+	form.parse(req);
+	let reqPath= path.join(__dirname, '../../../');
+	let newfilename;
+	form.on('fileBegin', function(name, file){
+		file.path = reqPath+ 'public/upload/'+ req.user.username + file.name;
+		newfilename= req.user.username+ file.name;
+	});
+	form.on('file', function(name, file) {
+		User.findOneAndUpdate({
+			username: req.user.username
+		},
+		{
+			'userImage': newfilename
+		},
+		function(err, result){
+			if(err) {
+				console.log(err);
+			}
+		});
+	});
+	req.flash('success_msg', 'Your profile picture has been uploaded');
+	res.redirect('/user/id');
+}); 
+
+router.get("/postvideo" ,(req,res) =>{
+	res.render('uploadYourvideo')
+  })
+router.post('/postvideo',auth, function(req, res) {
+	var form =new formidable.IncomingForm();
+	form.parse(req);
+	let reqPath= path.join(__dirname, '../../../');
+	let newfilename;
+	form.on('fileBegin', function(name, file){
+		file.path = reqPath+  'public/upload1/'+ req.user.username + file.name;
+		newfilename= req.user.username+ file.name;
+	});
+	form.on('file', function(name, file) {
+		User.findOneAndUpdate({
+			username: req.user.username
+		},
+		
+	    {
+			'userVideo': newfilename
+		},
+		function(err, result){
+			if(err) {
+				console.log(err);
+			}
+		});
+	});
+	req.flash('success_msg', 'Your video has been uploaded');
+	res.redirect('/userprofile/users');
+});
 
 
 module.exports = router;

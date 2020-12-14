@@ -90,7 +90,9 @@
 				<div class="user-dp">
 					
 					<figure>
-						<img src="<%= users.avatar %>" alt="">
+						<% if( users){ %>
+						<img src="/upload/<%= users.userImage %>" alt="">
+						<% } %>
 						<span class="status greenbg"></span>
 					</figure>
 					<% if( users){ %>
@@ -325,10 +327,23 @@
 
 								</ul>
 							</div>
+							
 							<!-- comment section section -->
 						</div><!-- with image -->
 					<% }) %>
-
+					<div class="post-meta">
+						<p>
+							sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. David !
+						</p>
+						
+							<% if( users){ %>
+								<video width = "500" height = "250" controls>
+									<source src="/upload1/<%= users.userVideo %>" type = "video/mp4">
+									This browser doesn't support video tag.
+								 </video>
+						<% } %>
+					</div>
+					
 						<div class="loadmore">
 							<div class="loader">
 								<div class="line"></div>

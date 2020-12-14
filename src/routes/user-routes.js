@@ -92,7 +92,8 @@ router.post("/posts", auth,upload.single("file"), async(req,res,next)=>{
   let userfound = await User.findById(req.user._id)
   const {description,imgurl,tags} = req.body
   cloudinary.uploader.upload(req.file.path,async(error,result)=>{
-    console.log(result);
+    console.log(error)
+    console.log(result)
     const newpost = new Post({
       description,
       author:{
@@ -269,5 +270,22 @@ router.post('/follow', async (req, res, next) => {
   }
 });
 
+//get user by username
+router.get("/user/:username", function (request, result) {
+	User.findOne({
+		"username": request.params.username
+	}, function (error, user) {
+		if (user == null) {
+			result.send({
+				"status": "error",
+				"message": "User does not exists"
+			});
+		} else {
+			result.render("timeline", {
+				users: user
+			});
+		}
+	});
+});
 
 module.exports = router

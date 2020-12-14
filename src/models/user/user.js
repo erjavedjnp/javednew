@@ -15,6 +15,10 @@ const userSchema = new mongoose.Schema({
 		unique:true,
 		trim:true
 	},
+	 userImage : {
+		type:String,
+		default:'def.jpg'
+	},
 	email:{
 		type:String,
 		required:true,
@@ -78,6 +82,9 @@ const userSchema = new mongoose.Schema({
 	},
 	country:{
 		type:String,
+	},
+	userVideo : {
+		type:String
 	},
 	image: [
         {

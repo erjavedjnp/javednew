@@ -173,12 +173,11 @@
 										<div class="change-photo">
 											<figure><img src="/images/resources/user1.jpg" alt=""></figure>
 											<div class="edit-img">
-												<form class="edit-phto">
+												<form class="edit-phto" method="POST" action="/user/postme" enctype="multipart/form-data">
 
-													<label class="fileContainer">
-														<i class="fa fa-camera-retro"></i>
-														Chage DP
-													<input type="file">
+												
+													<input type="file" name="upload" placeholder="choose picture">
+													<input type="submit" name="Update">
 													</label>
 												</form>
 											</div>
