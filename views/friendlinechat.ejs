@@ -194,7 +194,7 @@ var dataformsg = '<div class="received"> '+
 	 //console.log(formdata)
 	  $.ajax({
 	   url: '/friendline/chatwithanyone',
-	   async: false, 
+	   async: true, 
 	   //dataType: "jsonp",
 	   method:'post',
 	   data: {message:msgdata, socketlistenid : socketlistenid, senderid : senderid},
