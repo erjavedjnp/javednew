@@ -8,10 +8,34 @@
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+	/* On screens that are 992px wide or less, the background color is blue */
+/*@media screen and (min-width: 992px) {
+  .ProfilePic {
+    margin-left: 660px;
+  }
+}*/
 
+/* On screens that are 600px wide or less, the background color is olive */
+
+  .AddProfile{
+  	height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+  @media screen and (max-width: 600px) {
+   .AddProfile {
+    margin-left: 350px;
+  }
+}
+</style>
 </head>
-<body style="background-color: #ffb3079c">
+<body style="background-color: goldenrod">
 <div class="container" style="width: 100%;">
   <img src="/images/Header.jpg" alt="Snow" class="banner" style="margin-top: 100px; height: 290px;">
   <div class="bottom-left"><H2><b>4U2DATE<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>ME</b></H2></div>
@@ -30,21 +54,19 @@
             
                 <form class="form_horizontal" method="POST" action="/datingprofile/profile">
                 
-
-<img src="/images/user.jpg" class="ProfilePic" alt="ProfilePic">
+<button class="ProfilePic" style="margin-top: 55px;"><i style='font-size:64px' class='fas'>&#xf406;</i></button>
+<!-- <img src="images\user.jpg" class="ProfilePic" alt="ProfilePic">
+ --><br>
+<h3 style="color: black; margin-top: 40px;"><b>User Existing Profile</b></h3><br>
 <br>
-<button class="btn success" type="submit" ><h4 style="color: black;">  <b>User Existing Profile</b></h4><br> </button>
-                </form>
-<br>
-
-<img src="/images/add.jpg" class="ProfilePic" alt="ProfilePic">
-                   <br>
-                 <a href="/datingprofile/newprofile" >  <h4 style="color: black;"><input name="action" value="new" style="display: none;"><b>Add New Profile</b></h4> </a> 
-
-                  
+<!-- <img src="images\add.jpg" class="ProfilePic" alt="ProfilePic"> -->
+  <div class="AddProfile" style="background-color: white; margin-left: 660px;">
+<a href="/datingprofile/newprofile" ><i style='font-size:74px; color: black; margin-top: 55px;' class='fas'>&#xf067;</i></a></div>               
+                    <h3 style="color: black; margin-top: 40px;"><b>Add New Profile</b></h3>
+                    
                                              
                    
-              
+                </form>
 
 </body>
 </html>

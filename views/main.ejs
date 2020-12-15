@@ -1,0 +1,98 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" type="text/css" href="/css/slide.css">
+<link rel="stylesheet" type="text/css" href="/css/Screen24.css"> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<script>
+$(document).ready(function(){
+  $(".buddy").on("swiperight",function(){
+    $(this).addClass('rotate-left').delay(700).fadeOut(1);
+    $('.buddy').find('.status').remove();
+
+    $(this).append('<div class="status like">Like!</div>');      
+    if ( $(this).is(':last-child') ) {
+      $('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
+     } else {
+        $(this).next().removeClass('rotate-left rotate-right').fadeIn(400);
+     }
+     
+  });  
+  $(".buddy" ).on("swiperight",function() {
+      $("#myform").submit();
+      event.preventDefault();
+    });
+ $(".buddy").on("swipeleft",function(){
+  $(this).addClass('rotate-right').delay(700).fadeOut(1);
+  $('.buddy').find('.status').remove();
+  $(this).append('<div class="status dislike">Dislike!</div>');
+
+  if ( $(this).is(':last-child') ) {
+   $('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
+    alert('OUPS');
+   } else {
+      $(this).next().removeClass('rotate-left rotate-right').fadeIn(400);
+  } 
+});
+$(".buddy" ).on("swipeleft",function() {
+      $("#myform2").submit();
+      
+      event.preventDefault();
+    });
+});
+</script>
+
+</head>
+<body>
+  <div class="container-flush">
+    <img src="/images/Header.jpg" alt="Snow" class="banner" style="margin-top: 100px; height: 400px;">
+    <div class="bottom-left"><H2><b>4U2DATE<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>ME</b></H2></div>
+    <div class="top-left">
+      <div class="angle-lft">
+          <i style="font-size:29px; color: black;" class="fa">&#xf100;</i>
+      </div>
+  <div class="bell">
+      <a href="notifications.html"><i class="fa fa-bell fa-2x" aria-hidden="true" style="color: #C49A22;"></i></a>
+  </div>
+  </div>
+    <div class="top-right"><img src="/images/Black%20PNG.png" class="logo" alt="logo" /></div>
+    <div class="user"><a href="groups.html"> <i style="font-size:29px; color: black;" class="fa">&#xf0c0;</i></a></div>
+    <div class="bottom-right"><a href="messages.html"><i class="fa fa-comment" style="font-size:29px; color: #C49A22;"aria-hidden="true"></i></a> </div>
+  </div>
+<div id="container">
+  <% data.forEach(function(data){ %>
+    <div class="buddy" style="display: block;">
+      <div class="avatar">
+        <img src="<%= data.avatar %>" >
+      </div>
+    </div>
+   <!-- <div class="buddy">
+      <div class="avatar">
+        <img src="<%= data.avatar %>" >
+      </div>
+    </div> -->
+    <form id="myform" method="POST" action="/datingprofile/like/<%= data.id %>">
+      <input type="hidden">
+    </form>
+    <form id="myform2" method="POST" action="/datingprofile/dislike/<%= data.id %>">
+      <input type="hidden">
+    </form>
+ <% }) %>
+   
+
+
+<script>
+ 
+</script>
+</body>
+</html>

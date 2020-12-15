@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup2</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/signup2.css">
+</head>
+
+<body>
+    <div class="signup-container d-flex align-items-center justify-content-center">
+        <form class="signup-form text-center" method="POST" action="/datingprofile/create" enctype="multipart/form-data">
+            <div class="avatar-wrapper">
+                <img class="profile-pic" src="" />
+                <div class="upload-button">
+                    <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+
+                </div>
+                <input class="file-upload" type="file" name="image" accept="image/*" style="display: none" />
+            </div>
+            <div class="form-group">
+                <h3 class="title">Upload Image</h3>
+            </div>
+
+            <div class="form-group">
+ 
+                <span class="input-icon "><i class="fa fa-info" aria-hidden="true"></i></span>
+                <input class="form-control" type="text" name="fullname" placeholder="Fullname" value="<%= user.fullname %>" disabled aria-hidden="false">
+            </div>
+            <div class="form-group">
+                <span class="input-icon "><i class="fa fa-user" aria-hidden="true"></i></span>
+                <input class="form-control" type="text" name="shotbio" value="<%= user.shotbio %>" disabled placeholder="short-bio">
+            </div>
+            <div class="form-group">
+                <span class="input-icon "><i class="fa fa-sort" aria-hidden="true"></i></span>
+                <input class="form-control" type="text" name="gender" placeholder="gender">
+            </div>
+            <div class="form-group">
+                <span class="input-icon "><i class="fa fa-child" aria-hidden="true"></i></span>
+                <input class="form-control" type="number" name="age" value="<%= user.age %>" disabled placeholder="Age">
+            </div>
+            <div class="form-group">
+                <span class="input-icon "><i class="fa fa-id-card" aria-hidden="true"></i></span>
+                <input class="form-control" type="text" name="occupation" placeholder="occupation">
+            </div>
+            <div class="form-group">
+                <span class="input-icon "><i class="fa fa-globe" aria-hidden="true"></i></span>
+                <input class="form-control" id="password" type="" name="country" placeholder="country">
+            </div>
+            <div class="form-group">
+                <span class="input-icon "><i class="fa fa-square" aria-hidden="true"></i></span>
+                <input class="form-control"  type="" name="state" placeholder="state">
+            </div>
+            <div class="form-group">
+                <span class="input-icon "><i class="fa fa-globe" aria-hidden="true"></i></span>
+                <input class="form-control" id="password" type="" name="city" placeholder="city">
+            </div>
+            <div class="form-group">
+                <span class="input-icon "><i class="fa fa-info-circle" aria-hidden="true"></i></span>
+                <input class="form-control" id="confirm_password" type="number" name="height" placeholder="height">
+            </div>
+           
+           <!-- multiple photo upload -->
+                    <div class="upload-wrap">
+                        <div class="uploadpreview 01"><input id="01" type="file" accept="image/*"> </div>
+                        
+                      </div>
+                      
+                      <div class="upload-wrap">
+                        <div class="uploadpreview 02"><input id="02" type="file" accept="image/*"></div>
+                        
+                      </div>
+                      
+                      <div class="upload-wrap">
+                        <div class="uploadpreview 03"><input id="03" type="file" accept="image/*"></div>
+                        
+                      </div>
+                      
+                    <div>
+
+            <button class="btn signin" type="submit"><a href="/datingprofile/matchingprofiles/"><i class="fa fa-sign-in"
+                        aria-hidden="true"></i>save Profile</a></button>
+    </div>
+
+    </form>
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="/js/signup2.js"></script>
+</body>
+
+</html>

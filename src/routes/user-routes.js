@@ -9,7 +9,8 @@ const Comment = require("../models/comment")
 const cloudinary = require('./cloudnary')
 const multer = require('multer');
 const fs = require("fs");
-const auth = require("../authentication/user/auth")
+const auth = require("../authentication/user/auth");
+const { route } = require("./dating-routes");
 
 
 app.use(express.json())
@@ -25,9 +26,7 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage }); 
 
-router.get("/" ,(rq,res) =>{
-  res.render("image")
-})
+
 
 //create users 
  router.post("/users", upload.single("file") ,async (req,res,next) =>{
@@ -65,6 +64,10 @@ router.get("/users/", auth, async (req, res) => {
     console.log(newUser)
 });
 
+router.get("/posts" ,(req,res,next) =>{
+  res.render("form.ejs")
+})
+
 // create post 
 router.post("/posts/" ,auth,upload.array("file"), async (req,res,next) =>{
   
@@ -78,7 +81,7 @@ router.post("/posts/" ,auth,upload.array("file"), async (req,res,next) =>{
     const {path} = file
   const newPath = await uploader(path)
   urls.push(newPath)
-  fs.unlinkSync(path)
+  //fs.unlinkSync(path)
   }
   
   
