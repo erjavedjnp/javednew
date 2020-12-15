@@ -17,14 +17,6 @@ router.get('/',auth,async(req,res)=>{
    
 });
  
-router.get('/getallmessagedata',auth,async(req,res)=>{
-   let senderid = req.user._id
-   if(!senderid) return false
-   var databody = req.body
-   console.log(databody)
-   console.log('kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk')
-
-});
 router.get('/:receiveruserid',auth,async(req,res)=>{
    //console.log(req.user._id)
    let senderid = req.user._id
@@ -38,8 +30,8 @@ router.get('/:receiveruserid',auth,async(req,res)=>{
     ] 
  }) 
  .exec();
- console.log('first result')
- console.log(userpersonalget)
+ //console.log('first result')
+ //console.log(userpersonalget)
  if(userpersonalget===null)
  {
     userpersonalget = await Userpersonal.findOne({
@@ -48,53 +40,38 @@ router.get('/:receiveruserid',auth,async(req,res)=>{
           {userid1 : {$eq : receiveruserid} }
        ] 
     })
-    console.log('second result')
-    console.log(userpersonalget)
+    //console.log('second result')
+    //console.log(userpersonalget)
  }
  if(userpersonalget!=null){
-    console.log('user chat exist alredy')
+   // console.log('user chat exist alredy')
     try{
         result = await Userpersonal.findOneAndUpdate()
           . where('_id').equals(userpersonalget._id) 
           .populate('userpersonalmessages')
           .exec();
-         console.log("result is that ",result) 
+         //console.log("result is that ",result) 
          return res.render('friendlinechat',{socketlistenid: result._id,senderid: senderid, receiveruserid: receiveruserid, messagedataall: result.userpersonalmessages})
     }
     catch(err){
        console.log(err)
     }
  } else {
-    console.log('user chat not  exist')
+   // console.log('user chat not  exist')
     userpersonal = new Userpersonal({
       userid1: senderid,
       userid2: receiveruserid 
    })
    let data = await userpersonal.save()
-   console.log(data)
+   //console.log(data)
    return res.render('friendlinechat',{socketlistenid: data._id,senderid: senderid, receiveruserid: receiveruserid, messagedataall: data.userpersonalmessages})
- }
+ } 
 
-  //let findAllUser = await User.find({_id: { $ne: req.user._id } },'fullname') 
-  
-//res.send('ok')
+}); 
 
-});
-/*router.get('/addfriend',auth,async(req,res)=>{
-    //let userfound = await User.findById(req.user._id)
-    let findAllUser = await User.find({_id: { $ne: req.user._id } },'fullname')
-    console.log(findAllUser)
-   // console.log(userfound.fullname)
-    res.render('addfriend',{findAllUser:findAllUser})
- });*/
  router.post('/chatwithanyone',auth,async(req,res)=>{
     let senderid = req.user._id
-    if(!senderid) return false
-    //let userfound = await User.findById(req.user._id)
-    //let findAllUser = await User.find({_id: { $ne: req.user._id } },'fullname')
-   // console.log(findAllUser)
-   // console.log(userfound.fullname)
-    //res.render('addfriend',{findAllUser:findAllUser})
+    if(!senderid) return false 
     var databody = req.body
     let message = databody.message
     let socketlistenid = databody.socketlistenid

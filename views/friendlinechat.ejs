@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <title>Friendline Chat</title>
          <meta name="viewport" content="width=device-width, initial-scale=1">
          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -87,10 +88,11 @@
        
 
 </div>
-                 </div>
-                 <script>
+  </div>
+      <script src="/socket.io/socket.io.js"></script>                 
+  <script>
                    
-                   var acc = document.getElementsByClassName("accordion");
+  var acc = document.getElementsByClassName("accordion");
 var i;
 
 for (i = 0; i < acc.length; i++) {
@@ -108,6 +110,7 @@ for (i = 0; i < acc.length; i++) {
 
 
 $( document ).ready(function() {
+  
   const displaysendermessage=(msgdata)=>{  
 var dataformsg = '<div class="sent"> '+
                          ' <p class="sent-bubble  div-content">'+msgdata+'</p>'+
@@ -145,13 +148,41 @@ var dataformsg = '<div class="received"> '+
   const messageAllData = <%- JSON.stringify(messagedataall) %>  
   const socketlistenid = <%- JSON.stringify(socketlistenid) %>   
   //console.log(messageAllData)
- 
-  for(let i=0;i<messageAllData.length;i++)
-  {
-    console.log(messageAllData[i].message)
-    console.log(messageAllData[i].senderid)
-    ///alert('javed')
   
+  //socketio coding..
+  const socket = io();
+  const sentmessage=(datamsg)=>{
+         // alert(getuser)
+            socket.emit('chat message', {msg:datamsg, socketlistenid:receiverid+senderid });
+           // return false;
+        }
+     
+        socket.on(senderid+receiverid, function(msg){
+          // alert('recieved msg')
+           displayreceivermessage(msg) 
+         // window.scrollTo(0, document.body.scrollHeight);
+        });  
+
+ /* jQuery(function ($) {
+        var socket = io();
+        let sentmessage=(datamsg)=>{
+         // alert(getuser)
+            socket.emit('chat message', {msg:datamsg, id: socketlistenid});
+           // return false;
+        }
+      
+        socket.on(socketlistenid, function(msg){
+           // alert('recieved msg')
+           displayreceivermessage(msg)
+          //$('#messages').append($('<li>').text(msg));
+         // window.scrollTo(0, document.body.scrollHeight);
+        });
+     
+    });*/
+    // sentmessage('usermsg')
+
+  for(let i=0;i<messageAllData.length;i++)
+  {  
       if(messageAllData[i].senderid==senderid)
         { displaysendermessage(messageAllData[i].message)}
         else 
@@ -170,13 +201,15 @@ var dataformsg = '<div class="received"> '+
 	   jsonpCallback: 'callback',
 	   success: (result, status, xhr)=> {
 		   //alert('ss')
-		   console.log(result)
+       console.log(result)
+       sentmessage(msgdata)
+      // sentmessage('usermsg')
 		 //  alert(result.name)
 		  // var ret = jQuery.parseJSON(data);
 		   //$('#lblResponse').html(ret.msg);
 	   },
 	   error: (xhr, status, error)=> {
-		   alert('ff')
+		   alert('failed')
 		   //console.log('Error: ' + error.message);
 		   //$('#lblResponse').html('Error connecting to the server.');
 	   }
@@ -202,6 +235,6 @@ var dataformsg = '<div class="sent"> '+
 }
 
 });
-                 </script>
-                 </body>
-                 </html>
+    </script>
+ </body>
+</html>

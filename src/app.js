@@ -6,6 +6,9 @@ const session=require('express-session')
 const flash=require('connect-flash')
 const methodOverride = require ('method-override')
 
+//socket io configured setting 
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
 
 const eventroutes = require("./routes/event-routes")
 const userroutes = require ("./routes/user-routes")
@@ -73,8 +76,23 @@ app.use("/userimage" , userimage)
 //app.use("/userimage2" , userimage2)
 app.use("/friendline" , friendline) 
 
+//socket io coding
+io.on('connection', (socket) => { 
+    console.log('A new user connected')
+
+    socket.on('chat message', (messages) => {
+		console.log('message: ',messages)
+		//console.log(messages.msg)
+      io.emit(messages.socketlistenid, messages.msg);
+      })
+
+    socket.on('disconnect', () => {
+        console.log('user disconnected')
+      })
+ });
+
 const PORT = process.env.PORT || 3000;
-app.listen(PORT,function()
+server.listen(PORT,function()
 		  {
 	console.log(`Server has started at ${PORT}`);
 });
