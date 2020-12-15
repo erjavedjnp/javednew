@@ -11,6 +11,7 @@ const eventroutes = require("./routes/event-routes")
 const userroutes = require ("./routes/user-routes")
 const datingroutes = require('./routes/dating-routes')
 const userimage = require ("./routes/user/image")
+const friendline = require ("./routes/friendline")
 //const userimage2 = require ("./routes/user/image2")
 
 
@@ -70,6 +71,7 @@ app.use("/userprofile", userroutes)
 app.use("/datingprofile" , datingroutes)
 app.use("/userimage" , userimage)
 //app.use("/userimage2" , userimage2)
+app.use("/friendline" , friendline) 
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT,function()
