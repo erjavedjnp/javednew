@@ -3,17 +3,17 @@ const app =  express();
 const router = express.Router();
 const mongoose = require("mongoose");
 const path = require('path')
-const cloudinary = require("cloudinary").v2;
 const User = require("../models/user/user")
 const Post = require("../models/user/post");
 const likes = require("../models/user/likes");
 const dislikes = require("../models/user/dislikes");
 const Comment = require("../models/user/Comment")
 const Follow = require("../models/user/followModel")
-// const cloudinary = require('./cloudnary')
+const cloudinary = require('./cloudnary')
 const multer = require('multer');
 const fs = require("fs");
 const auth = require("../authentication/user/auth.js")
+
 
 
 
@@ -21,53 +21,25 @@ app.use(express.json())
 
 
 //storage engine
-// const storage=multer.diskStorage({
-//   destination: (req, file, cb) => { 
-//     cb(null,path.join(__dirname ,'..','/src/uploads')) 
-// }, 
-//   filename:(req,file,cb)=>{
-//       return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
-//   }
-// });
-// const upload = multer({
-//   storage:storage,
-//   limits:{
-//     fileSize:1000000
-//   }
-// });
-
-// router.get("/" ,(req,res) =>{
-//   res.render('/userprofile/users')
-// })
-
 const storage=multer.diskStorage({
+  destination: (req, file, cb) => { 
+    cb(null,path.join(__dirname ,'./../../','/public/uploads')) 
+}, 
   filename:(req,file,cb)=>{
-      cb(undefined,Date.now()+'-'+file.originalname)
+      return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
   }
-})
-const upload=multer({
-  storage,
-  limits:{
-      fileSize:2000000
-  },
-  fileFilter(req,file,cb){
-      if(!file.originalname.match(/\.(png|jpeg|jpg|gif|JPG|PNG)$/)){
-          cb(new Error('File must be an image!!'))   
-      }
-      cb(undefined,true)
-  }
-})
-
-
-cloudinary.config({ 
-  cloud_name: 'shuvanshu', 
-  api_key: '438498144725888', 
-  api_secret: 'TutkX5DDT1tSRil5bbo7g-jvg_U' 
 });
+const upload = multer({
+  storage:storage,
+  limits:{
+    fileSize:1000000
+  }
+});
+router.get("/" ,(req,res) =>{
+  res.render('/userprofile/users')
+})
 
-// app.use(express.json())
-
-
+//<img src="/upload/<%= users.userImage %>" alt="">
 
 // get users by userId
 router.get("/users", auth, async (req, res) => {
@@ -75,12 +47,9 @@ router.get("/users", auth, async (req, res) => {
 
   newUser = (await User.findById(req.user._id)).populate("posts")
 
-  // let posts = await Post.find().populate("comments").where("author.id").equals(req.user._id)
- 
-  let posts = await Post.find().populate("comments")
-
+  let posts = await Post.find().populate("comments").where("author.id").equals(req.user._id)
   //console.log(newUser)
-  // console.log(posts)
+  console.log(posts)
  // res.render('timeline',{user: newUser, posts: posts.map(post => post)})
  res.render('timeline',{users: newUser, posts: posts.map(post => post)})
 });
@@ -90,26 +59,22 @@ router.post("/posts", auth,upload.single("file"), async(req,res,next)=>{
   var imagename=req.file.filename;
   urls.push( imagename)
   let userfound = await User.findById(req.user._id)
-  const {description,imgurl,tags} = req.body
-  cloudinary.uploader.upload(req.file.path,async(error,result)=>{
-    console.log(error)
-    console.log(result)
-    const newpost = new Post({
-      description,
-      author:{
-        id: userfound._id,
-        username: userfound.username,
-        avatar  : userfound.avatar
-      },
-      tags,
-      image:result.url
-    })
-    newpost.save()
-    console.log(newpost)
-    await userfound.posts.push(newpost)
-  userfound.save();
-  });
+  const {description,tags} = req.body
   
+  const newPost = new Post({
+    image: urls,
+    
+    description,
+    author:{
+      id: userfound._id,
+      username: userfound.username,
+      avatar  : userfound.avatar
+    },
+    tags
+  })
+  newPost.save();
+  await userfound.posts.push(newPost)
+  userfound.save();
   
   //res.json({post: newPost})
   /*res.json({
@@ -117,12 +82,12 @@ router.post("/posts", auth,upload.single("file"), async(req,res,next)=>{
     profile_url:`http://localhost:3000/file/${req.file.filename}`
   })*/
  
-  // console.log(newpost._id)
+  console.log(newPost._id)
   //console.log({post: newPost})
   res.redirect('/userprofile/users')
 });
-
-
+//my video post
+//my video post
 // edit userprofile
 router.patch("/users/", auth, upload.single("file") ,async (req,res,next) =>{
   const user = await User.findById(req.user._id)
@@ -239,53 +204,7 @@ router.get("/:postId/dislikes", async (req, res) => {
 });
 //following followers
 
-router.post('/follow', async (req, res, next) => {
-  const { follower, following, action } = req.body;
-  try {
-      switch(action) {
-          case 'follow':
-              await Promise.all([ 
-                  User.findByIdAndUpdate(follower, { $push: { following: following }}),
-                  User.findByIdAndUpdate(following, { $push: { followers: follower }})
-              
-              ]);
-          break;
 
-          case 'unfollow':
-              await Promise.all([ 
-                  User.findByIdAndUpdate(follower, { $pull: { following: following }}),
-                  User.findByIdAndUpdate(following, { $pull: { followers: follower }})
-              
-              ]); 
-          break;
 
-          default:
-              break;
-      }
-
-      res.json({ done: true });
-      
-  } catch(err) {
-      res.json({ done: false });
-  }
-});
-
-//get user by username
-router.get("/user/:username", function (request, result) {
-	User.findOne({
-		"username": request.params.username
-	}, function (error, user) {
-		if (user == null) {
-			result.send({
-				"status": "error",
-				"message": "User does not exists"
-			});
-		} else {
-			result.render("timeline", {
-				users: user
-			});
-		}
-	});
-});
 
 module.exports = router

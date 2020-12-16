@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
 	<title>4U2NVY</title>
 	<link rel="stylesheet" href="/css/main.min.css">
 	<link rel="stylesheet" href="/css/style.css">
@@ -70,7 +70,7 @@
 		  <li data-text="Home"><a href="/user/videoupload" title=""><i><img src="/images/svg/groups.png" alt=""></i><span>Chorus</span></a></li>
 		  <li data-text="Home"><a href="/user/notification" title=""><i><img src="/images/svg/about.png" alt=""></i><span>Notifications</span></a></li>
 		  <li data-text="Home"><a href="/user/message" title=""><i><img src="/images/svg/inbox.png" alt=""></i><span>Messages</span></a></li>
-		  
+		  <li data-text="Home"><a href="/user/followers" title=""><i><img src="/images/svg/users.png" alt=""></i><span>Followers</span></a></li>
 		  <li data-text="Home"><a href="/platform" title=""><i><img src="/images/svg/market.png" alt=""></i><span>Platform</span></a></li>
 		  <li data-text="Home"><a href="/tv" title=""><i><img src="/images/svg/film.png" alt=""></i><span>TV</span></a></li>
 		  <li data-text="Home"><a href="#" title=""><i><img src="/images/svg/event.png" alt=""></i><span>Events</span></a></li>
@@ -95,7 +95,6 @@
 						<% } %>
 						<span class="status greenbg"></span>
 					</figure>
-					<i style="font-size:24px; color: gold;" class="fa"></i>
 					<% if( users){ %>
 						
 						<h5><%= users.fullname %> </h5>
@@ -206,7 +205,9 @@
 					<% posts.forEach((item)=>{ %>
 						<div class="user-post">
 								<figure>
-									<img src="<%= users.avatar %>" alt="">
+									<% if( users){ %>
+										<img src="/upload/<%= users.userImage %>" alt="">
+										<% } %>
 								</figure>
 							<div class="user-name">
 								<h5><%= users.fullname %></h5>
@@ -218,7 +219,7 @@
 								</p>
 								<!-- <img src="/src/src/uploads/file_1607426940784.jpg" alt=""> -->
 								<% item.image.forEach((one)=>{ %>
-								<img src="<%= one %>" alt="">
+									<img src="/uploads/<%= one %>" alt="">
 								<% }) %>
 							</div>
 							<div class="more ico-hover">
@@ -312,9 +313,13 @@
 
 									<% item.comments.forEach((once)=>{ %>
 										<li>
-											<figure><img src="/images/resources/user1.jpg" alt=""></figure>
+											<figure>
+												<% if( users){ %>
+													<img src="/upload/<%= users.userImage %>" alt="">
+													<% } %>
+											</figure>
 											<div class="commenter">
-												<h5><a href="#" title=""><%= once.usercommented.fullname %></a></h5>
+												<h5><a href="#" title=""></a></h5>
 												<span>2 hours ago</span>
 												<p>
 													<%= once.content %>
