@@ -53,8 +53,8 @@ $(".buddy" ).on("swipeleft",function() {
 </script>
 
 </head>
-<body>
-  <div class="container-flush">
+<body >
+  <div class="container-flush" style="background-color: #C49A22;">
     <img src="/images/Header.jpg" alt="Snow" class="banner" style="margin-top: 100px; height: 400px;">
     <div class="bottom-left"><H2><b>4U2DATE<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>ME</b></H2></div>
     <div class="top-left">
@@ -69,11 +69,14 @@ $(".buddy" ).on("swipeleft",function() {
     <div class="user"><a href="groups.html"> <i style="font-size:29px; color: black;" class="fa">&#xf0c0;</i></a></div>
     <div class="bottom-right"><a href="messages.html"><i class="fa fa-comment" style="font-size:29px; color: #C49A22;"aria-hidden="true"></i></a> </div>
   </div>
-<div id="container">
+  <div style="background-color: #C49A22;">
+<div id="container" >
   <% data.forEach(function(data){ %>
     <div class="buddy" style="display: block;">
       <div class="avatar">
         <img src="<%= data.avatar %>" >
+        <h3><%= data.fullname %>, <%= data.age %></h3>
+        <h3><%= data.occupation %></h3>
       </div>
     </div>
    <!-- <div class="buddy">
@@ -89,7 +92,7 @@ $(".buddy" ).on("swipeleft",function() {
     </form>
  <% }) %>
    
-
+</div>
 
 <script>
  

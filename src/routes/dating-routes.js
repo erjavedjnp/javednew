@@ -195,7 +195,7 @@ router.get("/matchingprofiles/" ,auth, async(req,res,next) =>{
         res.status(500).send(err)
     }else{
         
-      //  console.log(data)
+        console.log(data)
       res.render("main.ejs", {
         data : data
       })
@@ -233,7 +233,7 @@ router.post("/like/:userid" ,auth, async(req,res,next) =>{
     user.save()
     likeuser.allmatched.push(user.id)
     likeuser.save()
-    console.log("its a match")
+    res.redirect("/datingprofile/allmatched")
   }
   //res.json({user : user , likeduser : likeuser})
   console.log(likeuser)
@@ -265,7 +265,7 @@ if(allmatched.length > 0){
 }
  
  console.log(matched) 
- //const users = await Dating.find({"gender" : "female"})
+ 
   res.render("screen25.ejs", {
     matched : matched
   })
