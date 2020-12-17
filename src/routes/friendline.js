@@ -5,7 +5,39 @@ const User = require("../models/user/user");
 const auth = require("../authentication/user/auth") 
 const Userpersonal = require("../models/user/userMessageSchema")
 const Userpersonalmessage = require("../models/user/userMessageSchemaStore")
+var multer  = require('multer'); 
+var path = require('path')  
 
+const uploadingfiles=async(senderid, message,messagetype,socketlistenid )=>{
+   var usermsg = new Userpersonalmessage({
+      senderid: senderid,
+      message:  message,
+      messagetype: messagetype
+   }) 
+         try{
+            usermsg =await usermsg.save()
+          await  Userpersonal.findOneAndUpdate(
+               { '$push': { 'userpersonalmessages': usermsg._id} }   
+               )
+               . where('_id').equals(socketlistenid)  
+               .exec();  
+         }
+         catch(err){
+            console.log(err)
+         }
+}
+
+var storage =   multer.diskStorage({
+   destination: function (req, file, callback) {
+     callback(null, './public/images/userchat/');
+   },
+   filename: function (req, file, callback) {
+     callback(null, Date.now() + path.extname(file.originalname))
+   }
+ });
+ 
+ const upload = multer({ storage : storage  
+ }).array('userPhoto',5)
 
 
 
@@ -95,5 +127,37 @@ router.get('/:receiveruserid',auth,async(req,res)=>{
     var data = {status : 'ok'}
     res.json(data)
  });
+
+ router.post('/uploadfiles', async(req,res)=>{ 
+    let socketlistenid
+    let senderid
+    let dataobject = {status : 'ok'} 
+   upload(req,res,function(err) { 
+      socketlistenid = req.body.socketlistenid
+      senderid =  req.body.senderid
+     if (req.fileValidationError) {
+       return res.json(req.fileValidationError);
+   }else 
+       if(err) {
+         if (err.code === "LIMIT_UNEXPECTED_FILE") {
+           return res.json({status : "You can upload 5 Maximum number of files"});
+         }
+           return res.json({status : err})
+       } 
+       if(req.files.length>0){
+          var img='image'
+         for(i=1;i<=req.files.length;i++){
+            dataobject[img+i] = req.files[i-1].filename
+           console.log(req.files[i-1].filename)
+           console.log(socketlistenid)
+           uploadingfiles(senderid, req.files[i-1].filename, 2 ,socketlistenid)
+           
+             } 
+               
+               return res.json(dataobject);
+       } else  {return res.json({status : "You must select at least 1 file"}) }
+       
+   });
+});
 
 module.exports = router;
