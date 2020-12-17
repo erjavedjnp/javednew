@@ -29,6 +29,9 @@ const userSchema = new mongoose.Schema({
 			}
 		}
 	},
+	biography :{
+		type : String
+	},
 	age:{
 		type:Number,
 		required:true

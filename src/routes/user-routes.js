@@ -74,13 +74,27 @@ router.post("/posts/:userid" ,upload.array("file"), async (req,res,next) =>{
 
   const uploader = async (path) => await cloudinary.uploads(path, "Files")
   let urls = [];
-  const files = req.files
-  for(const file of files){
-    const {path} = file
-  const newPath = await uploader(path)
-  urls.push(newPath)
-  fs.unlinkSync(path)
-  }
+  var imagename=req.file.filename;
+  urls.push( imagename)
+  let userfound = await User.findById(req.user._id)
+  const {description,imgurl,tags} = req.body
+  cloudinary.uploader.upload(req.file.path,async(error,result)=>{
+    console.log(result)
+    const newpost = new Post({
+      description,
+      author:{
+        id: userfound._id,
+        username: userfound.username,
+        avatar  : userfound.avatar
+      },
+      tags,
+      image:result.url
+    })
+    newpost.save()
+    console.log(newpost)
+    await userfound.posts.push(newpost)
+  userfound.save();
+  });
   
   
   console.log(userfound)
@@ -153,35 +167,6 @@ router.post("/comments/:postId" , async(req,res,next) =>{
 
 //following followers
 
-router.post('/follow', async (req, res, next) => {
-  const { follower, following, action } = req.body;
-  try {
-      switch(action) {
-          case 'follow':
-              await Promise.all([ 
-                  users.findByIdAndUpdate(follower, { $push: { following: following }}),
-                  users.findByIdAndUpdate(following, { $push: { followers: follower }})
-              
-              ]);
-          break;
 
-          case 'unfollow':
-              await Promise.all([ 
-                  users.findByIdAndUpdate(follower, { $pull: { following: following }}),
-                  users.findByIdAndUpdate(following, { $pull: { followers: follower }})
-              
-              ]); 
-          break;
-
-          default:
-              break;
-      }
-
-      res.json({ done: true });
-      
-  } catch(err) {
-      res.json({ done: false });
-  }
-});
 
 module.exports = router

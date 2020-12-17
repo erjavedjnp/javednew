@@ -24,11 +24,11 @@ router.get('/',auth,async(req,res)=>{
     var mytop8 = new Array()
     var mytop8posts = new Array()
     topuser.forEach(async(item)=>{
-        var a = users.findById(item)
+        var a = await users.findById(item)
         mytop8.push(a)
         var post = a.posts 
         post.forEach(async(i) => {
-            var p = posts.findById(i)
+            var p = await posts.findById(i)
             mytop8posts.push(p)  
         })
     })
