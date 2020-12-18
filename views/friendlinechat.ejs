@@ -11,7 +11,9 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fontawesome.com/icons/sliders-v?style=solid">
         <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-        <link rel="stylesheet" href="/css/screen31.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+         <link rel="stylesheet" href="/css/screen31.css">
         <style>
           .element {
   display: inline-flex;
@@ -31,7 +33,9 @@ i:hover {
         </style>
         </head>
         <body class="screen9-body">
+          
             <div>
+              
                 <svg class="svg-iconbackarrow" viewBox="0 0 20 20">
                 
                     <path fill="none" d="M8.388,10.049l4.76-4.873c0.303-0.31,0.297-0.804-0.012-1.105c-0.309-0.304-0.803-0.293-1.105,0.012L6.726,9.516c-0.303,0.31-0.296,0.805,0.012,1.105l5.433,5.307c0.152,0.148,0.35,0.223,0.547,0.223c0.203,0,0.406-0.08,0.559-0.236c0.303-0.309,0.295-0.803-0.012-1.104L8.388,10.049z"></path>
@@ -40,6 +44,7 @@ i:hover {
               <img class="logo" src="/img/Black PNG.png">
                  <div class="inbox">Antonia France  </div>
                 <div class="chat-container">
+                  
                     <div class="message-container" id="messageinputcontainer" >
                      
                        <!----<div class="sent">
@@ -58,25 +63,24 @@ i:hover {
                             <h6 class="hour">10:57</h6>
                           </div>
                           --> 
-                          
+                            
                       </div>
-                </div>
-                
-            
-
+                </div> 
             
 <div class="search-div footer">
     <div class="row">
         <div class="col-lg-12 col-sm-12">
+          
          <form enctype="multipart/form-data" id="uploadForm"   method="post">  
           <p id="selectedfilecountdisplay"></p>
           <a href="#" style="text-decoration: none;"><i class="fa fa-smile emoji-icon" ></i></a> 
           <a href="#" style="text-decoration: none;"> 
             <div class="element"> 
               <i class="cameraiconuploadfileicon fa fa-camera"></i>
+              <input  name="parentpercentage" id="parentpercentage" type="hidden" value=""/>
               <input name="socketlistenid" type="hidden" value="<%= socketlistenid %>"/>
               <input name="senderid" type="hidden" value="<%= senderid %>"/> 
-              <input type="file" class="inputforfile" id="userPhoto" accept="image/*" name="userPhoto" multiple/>
+              <input type="file" class="inputforfile" id="userPhoto" name="userPhoto" multiple/>
             </div> 
           </a> 
           <a href="#" style="text-decoration: none;"> <i class="fa fa-microphone mic-icon" ></i></a>
@@ -95,12 +99,11 @@ i:hover {
 
 </div>
   </div>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+  
       <script src="/socket.io/socket.io.js"></script>                 
   <script>
- 
-    
+    var percentageprogressbarid = 1 
+   
                    
   var acc = document.getElementsByClassName("accordion");
 var i;
@@ -120,6 +123,16 @@ for (i = 0; i < acc.length; i++) {
 
 
 $( document ).ready(function() {
+
+  const fileuploadingprogressbar = (progressid)=>{
+    var dataformsg = ' <div class="received" id="parentprogress'+progressid+'">'+
+                           ' <p class="received-bubble  div-content " style="background-color:green;"> '+
+                               ' File Uploading in progress.....<span id="childprogress'+progressid+'">0%</span> '+
+                           ' </p>'+ 
+                          '</div>';
+          $('#messageinputcontainer').append(dataformsg)         
+          $('#parentpercentage').val(progressid)          
+       }
   
   const displayreceivermessage =(msgdata)=>{  
         var dataformsg = '<div class="sent"> '+
@@ -139,15 +152,13 @@ const displayreceivermessageimage =(msgdata)=>{
         var dataformsg = '<div class="sent"> '+
                                 ' <p class="sent-bubble  div-content"><img src="/images/userchat/'+msgdata+'" height="150px" width="200px" /></p>'+
                       '  </div>';
-        $('#messageinputcontainer').append(dataformsg)   
-        $('#messagetextwrittenid').val('')   
+        $('#messageinputcontainer').append(dataformsg)      
 }
 const displaysendermessageimage =(msgdata)=>{  
       var dataformsg = '<div class="received"> '+
                               ' <p class="received-bubble  div-content"><img src="/images/userchat/'+msgdata+'" height="150px" width="200px" /></p>'+
                     '  </div>';
-      $('#messageinputcontainer').append(dataformsg)   
-      $('#messagetextwrittenid').val('')   
+      $('#messageinputcontainer').append(dataformsg)    
 }
 
   const getallmessagedata=(data)=>{ 
@@ -270,6 +281,9 @@ var dataformsg = '<div class="received"> '+
 
 $('#uploadForm').submit(function() { 
        var count
+       var countprogress = percentageprogressbarid
+       fileuploadingprogressbar(percentageprogressbarid)  
+       percentageprogressbarid++
        var formData = $(this).serialize();
        console.log(formData)
               $(this).ajaxSubmit({
@@ -279,12 +293,18 @@ $('#uploadForm').submit(function() {
                  contentType: false,
                  processData: false,
                  error: function(xhr) {
-              status('Error: ' + xhr.status);
-                  }, 
+                      status('Error: ' + xhr.status);
+                        }, 
+                  uploadProgress: function(event, position, total, percentComplete) {
+                          var percentVal = percentComplete + '%'; 
+                          $('#childprogress'+countprogress).html(percentVal);
+                         },
                   success: function(response) {  
                           //console.log(response);   
                           if(response.status=='ok'){
                             delete response.status
+                            $('#parentprogress'+response.parentpercentage).hide()
+                            delete response.parentpercentage
                             sentmessage({message : response,messagetype : 2})
                             for (count in response) { 
                                  displaysendermessageimage(response[count])
@@ -292,6 +312,8 @@ $('#uploadForm').submit(function() {
                                 };
                            // console.log(response);   
                           } else {
+                            $('#parentprogress'+response.parentpercentage).hide()
+                            console.log(response.status)
                             alert(response.status)
                           }
                   }

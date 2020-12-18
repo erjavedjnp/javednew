@@ -36,7 +36,10 @@ var storage =   multer.diskStorage({
    }
  });
  
- const upload = multer({ storage : storage  
+ const upload = multer({ storage : storage ,
+   limits : { 
+      fileSize: 1024 * 1024 * 20  
+      } 
  }).array('userPhoto',5)
 
 
@@ -131,10 +134,12 @@ router.get('/:receiveruserid',auth,async(req,res)=>{
  router.post('/uploadfiles', async(req,res)=>{ 
     let socketlistenid
     let senderid
+    let parentpercentage
     let dataobject = {status : 'ok'} 
    upload(req,res,function(err) { 
       socketlistenid = req.body.socketlistenid
       senderid =  req.body.senderid
+      parentpercentage = req.body.parentpercentage 
      if (req.fileValidationError) {
        return res.json(req.fileValidationError);
    }else 
@@ -142,7 +147,11 @@ router.get('/:receiveruserid',auth,async(req,res)=>{
          if (err.code === "LIMIT_UNEXPECTED_FILE") {
            return res.json({status : "You can upload 5 Maximum number of files"});
          }
+         if (err.code === "LIMIT_FILE_SIZE") {
+            return res.json({status : "You can upload maximum file size 20 MB ",parentpercentage : parentpercentage});
+          }  
            return res.json({status : err})
+          
        } 
        if(req.files.length>0){
           var img='image'
@@ -153,7 +162,7 @@ router.get('/:receiveruserid',auth,async(req,res)=>{
            uploadingfiles(senderid, req.files[i-1].filename, 2 ,socketlistenid)
            
              } 
-               
+             dataobject['parentpercentage'] = parentpercentage
                return res.json(dataobject);
        } else  {return res.json({status : "You must select at least 1 file"}) }
        
