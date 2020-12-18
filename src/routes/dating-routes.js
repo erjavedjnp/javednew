@@ -29,7 +29,18 @@ router.get("/" ,(req,res,next) =>{
   res.render("screen22.ejs")
 })  
 
-router.post("/profile/",auth, async (req,res,next) =>{
+router.post("/profile" , auth , async(req,res,next) =>{
+  const user = await User.findById(req.user._id);
+  console.log(user)
+  if(user.dating != null){
+    res.redirect("/datingprofile/matchingprofiles")
+  } else{
+    res.redirect("/datingprofile")
+    alert("no user found. Create new user")
+  }
+})
+
+/*router.post("/profile/",auth, async (req,res,next) =>{
   console.log("post")
   const userid = req.user._id;
  
@@ -56,8 +67,8 @@ router.post("/profile/",auth, async (req,res,next) =>{
           
       
   
-})
-
+}) */
+/*
 router.get("/create" , auth, async(req,res,next) =>{
   const user = await Dating.findById(req.user.dating);
 
@@ -90,7 +101,7 @@ router.post("/create" , auth, upload.single("image"), async(req,res,next) =>{
   console.log(user)
 
   res.redirect("/datingprofile/matchingprofiles/")
-})
+}) */
 
 router.get("/newprofile" , (req,res,next) =>{
   res.render("form.ejs")
@@ -165,20 +176,7 @@ router.post("/newprofile/",auth,upload.single("image") , async(req,res,next) =>{
 
 //post route for preference form 
 
-router.get("/preferences" , auth,async (req,res,next) =>{
-   //create a form for interests, preferances etc.
-  
-  /*const { age, gender,genderpref , q1} = req.body
-  let score = q1
 
-  const user = await Dating.findById(req.user.dating)
-  user.age = age,
-  user.gender = gender
-  user.genderpref = genderpref
-  user.score = score
-  user.save(); */
-  res.render("sc.ejs")
-})
 
 router.get("/matchingprofiles/" ,auth, async(req,res,next) =>{  
  await Dating.find({
