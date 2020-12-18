@@ -63,6 +63,7 @@ app.use('/user',require('./routes/user/post'));
 //app.use('/',require('./routes/user/chorus'));
 app.use('/platform',require('./routes/platform-routes'));
 app.use('/comfortzone',require('./routes/comfort-zone'));
+app.use('/friendline',require('./routes/friendline'));
 app.use('/chorus',require('./routes/chorus-routes'));
 //app.use('/main_chorus',require('./routes/main_chorus'));
 app.use("/events", eventroutes);
