@@ -356,30 +356,13 @@ MongoClient.connect(myurl, (err, client) => {
   db = client.db('marketplace') 
   
 })
-router.post("/signup",upload.single('picture'),async(req,res)=>{ 
-	var obj = new Object()
+router.post("/signup",async(req,res)=>{ 
+	//let test=new Object
 	try{
 		console.log("i m here");
 		const email=await User.findOne({email:req.body.email})
 		const username=await User.findOne({username:req.body.username})
-		var img = fs.readFileSync(req.file.path);
-		var encode_image = img.toString('base64');
-		// Define a JSONobject for the image attributes for saving to database
-		 
-		var finalImg = {
-			 contentType: req.file.mimetype,
-			 image:  new Buffer(encode_image, 'base64')
-		  };
-		  db.collection('quotes').insertOne(finalImg, (err, result) => {
-			console.log(result)
-		  obj = result
-			if (err) return console.log(err)
-			//const user= User.findOne()
-			//user.img=finalImg
-			console.log('saved to database')
-			//find user and do user.image=finalImg
-		})
-		console.log( finalImg)
+		
 		console.log('yes')
 		if(email)
 		{
@@ -397,18 +380,15 @@ router.post("/signup",upload.single('picture'),async(req,res)=>{
 		else
 		{
 			console.log('yes')
-			var user=new User(req.body)
-			user.test = obj
-			console.log(obj)
+			const user=new User(req.body)
 			await user.save()
 			
 			mailverification(user.email, user._id);
+			//collageverification('kl.ecerasystem@gmail.com', user._id,user.fullname,user.batch);
 			req.flash('error','Email is sent Verify email to login!')
 			res.redirect('/user/signup')
-			/*res.render("message-register.ejs", {
-				   message: "Registered Sucessfully!",
-				   error: null,
-			 });*/
+			
+			
 		}
 	}catch(e){
 		console.log(e)

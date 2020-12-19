@@ -11,6 +11,7 @@ const eventroutes = require("./routes/event-routes")
 const userroutes = require ("./routes/user-routes")
 const datingroutes = require('./routes/dating-routes')
 const userimage = require ("./routes/user/image")
+const update = require ("./routes/picture_update")
 //const userimage2 = require ("./routes/user/image2")
 
 
@@ -63,12 +64,14 @@ app.use('/user',require('./routes/user/post'));
 //app.use('/',require('./routes/user/chorus'));
 app.use('/platform',require('./routes/platform-routes'));
 app.use('/comfortzone',require('./routes/comfort-zone'));
+app.use('/friendline',require('./routes/friendline'));
 app.use('/chorus',require('./routes/chorus-routes'));
 //app.use('/main_chorus',require('./routes/main_chorus'));
 app.use("/events", eventroutes);
 app.use("/userprofile", userroutes)
 app.use("/datingprofile" , datingroutes)
 app.use("/userimage" , userimage)
+app.use("/user/pictureUpdate", update);
 //app.use("/userimage2" , userimage2)
 
 const PORT = process.env.PORT || 3000;

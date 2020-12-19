@@ -3,3 +3,4 @@
 1.upload_____________For Profile Picture Update
 2.upload1_______________For User video upload
 3.uploads_______________post picture upload
+3.upload2_______________profile  picture update and saving in avatar

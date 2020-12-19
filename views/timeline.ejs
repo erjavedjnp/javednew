@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<title>4U2NVY</title>
 	<link rel="stylesheet" href="/css/main.min.css">
 	<link rel="stylesheet" href="/css/style.css">
@@ -35,29 +35,29 @@
 <div class="app-layout">
 	
 	<header class="topbar">
-		<div class="back-btn ico-hover" title="Back"><i class="lni lni-angle-double-left"></i></div>
-		<div class="top-search ico-hover" title="Search"><i class="lni lni-search-alt"></i></div>
+		<div class="back-btn ico-hover" title="Back"><i class="fa fa-angle-double-left fa-2x" aria-hidden="true"></i></div>
+		<div class="top-search ico-hover" title="Search"><i class="fa fa-search" aria-hidden="true"></i></div>
 		<div class="logo-place"><a href="#" title=""><img src="/images/logo-white.png" alt=""></a></div>
-		<div class="ac-settings ico-hover" title="Settings"><i class="lni lni-radio-button"></i></div>
+		<div class="ac-settings ico-hover" title="Settings"><i class="fa fa-list fa-lg " aria-hidden="true"></i></i></div>
 		<div class="new-post" title="Create New Post"><i><img src="/images/svg/create-new.png" alt=""></i></div>
 	</header>
 
 	<div class="bottom-header">
 		<ul class="menu-left">
-			<li><a class="ico-hover" href="#" title=""><i class="lni lni-home"></i></a></li>
-			<li><a class="ico-hover" href="/user/notification" title=""><i class="lni lni-alarm"></i></a><span>3</span></li>
+			<li><a class="ico-hover" href="#" title=""><i class="fa fa-home fa-lg" aria-hidden="true"></i></a></li>
+			<li><a class="ico-hover" href="#" title=""><i class="fa fa-bell-o" aria-hidden="true"></i><span>3</span></li>
 		</ul>
 		<div id="nav-icon2" class="menu-button">
 			<span></span>
 			<span></span>
 			<span></span>
-			<span></span>
+			<span></span> 
 			<span></span>
 			<span></span>
 		</div>
 		<ul class="menu-right">
-			<li><a class="" href="/user/message" title=""><i class="lni lni-comments"></i></a></li>
-			<li class=""><a class="" href="/user/main" title=""><i class="lni lni-user"></i></a></li>
+			<li><a class="" href="/user/message" title=""><i class="fa fa-commenting-o fa-lg" aria-hidden="true"></i></a></li>
+			<li class=""><a class="" href="/user/main" title=""><i class="fa fa-user-o" aria-hidden="true"></i></li>
 		</ul>
 	</div>
 	
@@ -69,8 +69,8 @@
 		  <li data-text="Home"><a href="/user/videos" title=""><i><img src="/images/svg/video.png" alt=""></i><span>Videos</span></a></li>
 		  <li data-text="Home"><a href="/user/videoupload" title=""><i><img src="/images/svg/groups.png" alt=""></i><span>Chorus</span></a></li>
 		  <li data-text="Home"><a href="/user/notification" title=""><i><img src="/images/svg/about.png" alt=""></i><span>Notifications</span></a></li>
-		  <li data-text="Home"><a href="/user/message" title=""><i><img src="/images/svg/inbox.png" alt=""></i><span>Messages</span></a></li>
-		  <li data-text="Home"><a href="/user/followers" title=""><i><img src="/images/svg/users.png" alt=""></i><span>Followers</span></a></li>
+		  <li data-text="Home"><a href="/user/message" title=""><i class="fa fa-commenting-o" aria-hidden="true"></i><span>Messages</span></a></li>
+		  
 		  <li data-text="Home"><a href="/platform" title=""><i><img src="/images/svg/market.png" alt=""></i><span>Platform</span></a></li>
 		  <li data-text="Home"><a href="/tv" title=""><i><img src="/images/svg/film.png" alt=""></i><span>TV</span></a></li>
 		  <li data-text="Home"><a href="#" title=""><i><img src="/images/svg/event.png" alt=""></i><span>Events</span></a></li>
@@ -91,10 +91,11 @@
 					
 					<figure>
 						<% if( users){ %>
-						<img src="/upload/<%= users.userImage %>" alt="">
-						<% } %>
+							<img src="/upload2/<%= users.avatar %>" alt="">
+							<% } %>
 						<span class="status greenbg"></span>
 					</figure>
+					<i style="font-size:24px; color: gold;" class="fa"></i>
 					<% if( users){ %>
 						
 						<h5><%= users.fullname %> </h5>
@@ -103,9 +104,9 @@
 						
 						<% } %>
 					<ul>
-						<li><a class="redbg" href="/userprofile/users" title="Profile"><i class="lni lni-user"></i></a></li>
-						<li><a class="bluebg" href="/user/setting" title="Edit Profile"><i class="lni lni-pencil"></i></a></li>
-						<li><a class="yellowbg" href="#" title="Follow"><i class="lni lni-star"></i></a></li>
+						<li><a class="redbg" href="/userprofile/users" title="Profile"><i class="fa fa-user-o" aria-hidden="true"></i></a></li>
+						<li><a class="bluebg" href="/user/setting" title="Edit Profile"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+						<li><a class="yellowbg" href="#" title="Follow"><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></a></li>
 					</ul>
 					
 				</div>
@@ -121,10 +122,10 @@
 			<div class="profile-info">
 				<% if( users){ %>
 				<ul>
-					<li title="followers"><i class="lni lni-star"></i><ins><%= users.followers %></ins></li>
-					<li title="following"><i class="lni lni-users"></i><ins><%= users.followings %></ins></li>
-					<li title="Likes"><i class="lni lni-heart"></i><ins><%=users.posts.likes %></ins></li>
-					<li title="Posts"><i class="lni lni-postcard"></i><ins><%= users.posts.likes %></ins></li>
+					<li title="followers"><i class="fa fa-star-o" aria-hidden="true"></i><ins><%= users.followers %></ins></li>
+					<li title="following"><i class="fa fa-user-o" aria-hidden="true"></i><ins><%= users.followings %></ins></li>
+					<li title="Likes"><i class="fa fa-heart-o" aria-hidden="true"></i><ins><%=users.posts.likes %></ins></li>
+					<li title="Posts"><i class="fa fa-newspaper-o" aria-hidden="true"></i><ins><%= users.posts.likes %></ins></li>
 				</ul>
 				<% } %>
 			</div>
@@ -174,6 +175,7 @@
 			</div>
 		</div>
 	</section>
+	
 <!-- 
 	<section>
 		<div class="gap no-gap">
@@ -206,7 +208,7 @@
 						<div class="user-post">
 								<figure>
 									<% if( users){ %>
-										<img src="/upload/<%= users.userImage %>" alt="">
+										<img src="/upload2/<%= users.avatar %>" alt="">
 										<% } %>
 								</figure>
 							<div class="user-name">
@@ -242,7 +244,7 @@
 								</div>
 								<div class="coment-state">
 									<span><i class="lni lni-comments"></i><%= item.comments.length %> comments</span>
-									<span><i class="lni lni-share"></i><%= item.shares %> shares</span>
+									<span><i class="lni lni-share"></i><%= item.shared.length %> shares</span>
 								</div>
 							</div>
 							<div class="stat-tools">
@@ -282,8 +284,13 @@
 										<input type="text" name="content" placeholder="write comment">
 										<button type="submit"><i class="lni lni-pointer"></i></button>
 									</form>
+									
 									<!-- comment section section -->
 								</div>
+								<form action="/userprofile/<%= item._id %>/share" method="post">
+							
+									<button type="submit"><i class="lni lni-pointer"></i></button>
+								</form>
 								<div class="box">
 									<div class="Emojis">
 									  <div class="Emoji Emoji--like">
@@ -315,11 +322,11 @@
 										<li>
 											<figure>
 												<% if( users){ %>
-													<img src="/upload/<%= users.userImage %>" alt="">
+													<img src="/upload2/<%= users.avatar %>" alt="">
 													<% } %>
 											</figure>
 											<div class="commenter">
-												<h5><a href="#" title=""></a></h5>
+												<h5><a href="#" title=""><%= once.usercommented.fullname %></a></h5>
 												<span>2 hours ago</span>
 												<p>
 													<%= once.content %>
@@ -333,23 +340,10 @@
 
 								</ul>
 							</div>
-							
 							<!-- comment section section -->
 						</div><!-- with image -->
 					<% }) %>
-					<div class="post-meta">
-						<p>
-							sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. David !
-						</p>
-						
-							<% if( users){ %>
-								<video width = "500" height = "250" controls>
-									<source src="/upload1/<%= users.userVideo %>" type = "video/mp4">
-									This browser doesn't support video tag.
-								 </video>
-						<% } %>
-					</div>
-					
+
 						<div class="loadmore">
 							<div class="loader">
 								<div class="line"></div>
@@ -370,7 +364,7 @@
 	</div>
 
 	<div class="side-slide">
-		<span class="close-btn"><i class="lni lni-cross-circle"></i></span>
+		<span class="close-btn"><i class="fa fa-times" aria-hidden="true"></i></span>
 		<div class="user-avatar">
 			<figure><img src="/images/resources/user3.jpg" alt=""><span class="status status greenbg"></span></figure>
 			<div class="user-options">
@@ -379,16 +373,16 @@
 			</div>
 		</div>
 		<ul>
-			<li><a href="#" title=""><i class="lni lni-inbox"></i>inbox</a></li>
-			<li><a href="#" title=""><i class="lni lni-alarm"></i>Notifications</a></li>
-			<li><a href="/user/setting" title=""><i class="lni lni-pencil-alt"></i>Edit Profile</a></li>
-			<li><a href="#" title=""><i class="lni lni-key"></i>Lock screen</a></li>
-			<li><a href="/user/setting" title=""><i class="lni lni-control-panel"></i>setting</a></li>
-			<li><a href="#" title=""><i class="lni lni-sort-amount-asc"></i>Privacy & Help</a></li>
-			<li><a href="/user/logout" title=""><i class="lni lni-power-switch"></i>Logout</a></li>
+			<li><a href="#" title=""><i class="fa fa-inbox" aria-hidden="true"></i>inbox</a></li>
+			<li><a href="#" title=""><i class="fa fa-bell" aria-hidden="true"></i>Notifications</a></li>
+			<li><a href="/user/pictureUpdate" title=""><i class="fa fa-pencil" aria-hidden="true"></i>Edit Profile</a></li>
+			<li><a href="#" title=""><i class="fa fa-key" aria-hidden="true"></i>Lock screen</a></li>
+			<li><a href="/user/setting" title=""><i class="fa fa-cogs" aria-hidden="true"></i>setting</a></li>
+			<li><a href="#" title=""><i class="fa fa-sort-amount-desc" aria-hidden="true"></i>Privacy & Help</a></li>
+			<li><a href="/user/logout" title=""><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
 		</ul>
 		<div class="night-mode">
-			<i class="lni lni-night"></i>Night Mode 
+			<i class="fa fa-moon-o" aria-hidden="true"></i>Night-Mode
 			<input type="checkbox" hidden="hidden" id="night-mode">
 			<label class="switch" for="night-mode"></label>
 		</div>

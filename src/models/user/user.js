@@ -120,6 +120,10 @@ const userSchema = new mongoose.Schema({
 		  ref: "Follow"
 		}
 	  ],
+	  img2: [{
+        type: String
+    }
+    ],
 	  posts: [
 		{
 		  type: mongoose.Schema.Types.ObjectId,

@@ -34,6 +34,12 @@ let postSchema = new mongoose.Schema({
       ref: "Comment",
       required: "Comment is Required"
     }
+  ],
+  shared: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Share"
+    }
   ]
 },{collection: 'Post'});
 

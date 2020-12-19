@@ -12,7 +12,8 @@ const mailverification=(emailid,id)=>{
     })
     
     const token=jwt.sign({_id:id,type:'mailverification'},'thisismyjwtsecret')
-     const url=`http://localhost:3000/user/mailverification?token=${token}`
+     //const url=`http://localhost:3000/user/mailverification?token=${token}`
+     const url=`https://walson-4u2nvy.herokuapp.com/user/mailverification?token=${token}`
     const mailOption={
         from:'trytolearntech20@gmail.com',
         to:emailid,
@@ -42,7 +43,8 @@ const resetpassword=async(emailid)=>{
     })
 
     const token=jwt.sign({emailid,type:'resetpassword'},'thisismyjwtsecret2')
-   const url=`http://localhost:3000/user/reset-password?token=${token}`
+  // const url=`http://localhost:3000/user/reset-password?token=${token}`
+   const url=`https://walson-4u2nvy.herokuapp.com/user/reset-password?token=${token}`
     const mailOption={
         from:'trytolearntech20@gmail.com',
         to:emailid,

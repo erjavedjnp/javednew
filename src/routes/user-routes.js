@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const path = require('path')
 const User = require("../models/user/user")
 const Post = require("../models/user/post");
+const Share = require("../models/user/share")
 const likes = require("../models/user/likes");
 const dislikes = require("../models/user/dislikes");
 const Comment = require("../models/user/Comment")
@@ -204,6 +205,26 @@ router.get("/:postId/dislikes", async (req, res) => {
 });
 //following followers
 
+//share post
+router.post("/:postId/share",auth,async (req, res) => {
+  //Find a POst
+  const post = await Post.findOne({ _id: req.params.postId });
+
+  //Create a Comment
+  const share = new Share();
+  share.post = post;
+  share.user = req.user
+  await share.save();
+  // console.log(comment)
+  // Associate Post with comment
+  post.shared.push(share._id);
+  await post.save();
+  console.log(share.post._id)
+  console.log(post.shared)
+   //res.send(share);
+  res.redirect('/userprofile/users')
+  // res.render('shared',{posts:share})
+});
 
 
 
