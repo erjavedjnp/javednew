@@ -219,9 +219,18 @@
 								<p>
 									<%= item.description %>
 								</p>
+								
+									
 								<!-- <img src="/src/src/uploads/file_1607426940784.jpg" alt=""> -->
 								<% item.image.forEach((one)=>{ %>
+									<% if (one.match(/.(jpg|jpeg|png|gif)$/i)) { %>
 									<img src="/uploads/<%= one %>" alt="">
+									<%} else { %>
+									<video width="500" height="240" autoplay controls>
+										
+										<source src="/uploads/<%= one %>" type=video/mp4>
+									  </video>
+									  <% } %>
 								<% }) %>
 							</div>
 							<div class="more ico-hover">
