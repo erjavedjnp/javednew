@@ -144,6 +144,10 @@
   .active, .collapsible:hover {
     background-color:  #eee;
   }
+  .active , .collapsible:hover{
+    border-radius: 20px 20px 0px 0px;
+  }
+  
   
   .content {
     padding: 0 18px;
