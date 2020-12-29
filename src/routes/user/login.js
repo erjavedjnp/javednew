@@ -7,6 +7,7 @@ const path = require("path");
 //const fs = require('fs-extra')
 const multer = require("multer");
 const User = require("../../models/user/user.js");
+const notification = require('../../models/notifications');
 //const imgModel = require("../../models/user/Image.js");
 const auth=require('../../authentication/user/auth')
 const {mailverification,resetpassword} = require("../../emails/mailverification");
@@ -199,9 +200,7 @@ router.get('/videos',auth,async(req,res)=>{
 router.get('/setting',auth,async(req,res)=>{
 	res.render('setting.ejs')
 })
-router.get('/notification',auth,async(req,res)=>{
-	res.render('notification.ejs')
-})
+
 router.get('/livemap',auth,async(req,res)=>{
 	res.render('screen18.ejs')
 })
@@ -583,6 +582,16 @@ router.post('/postvideo',auth, function(req, res) {
 	res.redirect('/userprofile/users');
 });
 
+router.get('/notification',auth,async(req,res)=>{
+	let notifications = await req.user.notification
+	let notificationarray = []
+	for(const one of notifications) {
+		var onenotification = await notification.findById(one)
+		notificationarray.push(onenotification)
+	}
+	console.log(notificationarray)
+	res.render('notification.ejs',{notifications : notificationarray,users:req.user})
+});
 
 module.exports = router;
 

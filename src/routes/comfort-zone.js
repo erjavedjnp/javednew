@@ -23,16 +23,18 @@ router.get('/',auth,async(req,res)=>{
     var topuser = user.mytop8
     var mytop8 = new Array()
     var mytop8posts = new Array()
-    topuser.forEach(async(item)=>{
-        var a = users.findById(item)
+    for(const item of topuser) {
+        var a = await users.findById(item)
         mytop8.push(a)
+        // console.log(a)
         var post = a.posts 
-        post.forEach(async(i) => {
-            var p = posts.findById(i)
+        for(const i of post) {
+            var p = await posts.findById(i)
             mytop8posts.push(p)  
-        })
-    })
-    res.render('comfort-zone',{mytop8:mytop8, mytop8posts:mytop8posts, gift:gift})
+        }
+    }
+    console.log(mytop8)
+    res.render('comfort-zone.ejs',{mytop8:mytop8, mytop8posts:mytop8posts, gifts:gift})
 });
 
 router.get('/story/:id',auth,async(req,res)=>{
@@ -53,27 +55,29 @@ router.get('/send-gift',auth,async(req,res)=>{
     var mytop8 = []
     var topuser = loginuser.mytop8
     // console.log(topuser)
-    topuser.forEach(async(item) => {
+    for(const item of topuser) {
         // console.log(item)
         var a = await users.findById(item)
         // console.log(a)
-        mytop8.push(a)        
-    });
+        if(a != null)
+            mytop8.push(a)        
+    }
     var gifts =await products.find(query);
     // console.log(mytop8)
     // console.log(gifts)
-    res.render('send-gift',{mytop8:mytop8, gifts:gifts});
+    res.render('send-gift.ejs',{mytop8:mytop8, gifts:gifts});
 });
 
-router.get('/confirm-gift/:giftid',auth,async(req,res)=>{
-    var loginuser = req.user
-    var gift  = await gifts.findById(req.params.giftid)
-    const receiver = await users.findById(gift.receiverid)
-    const product = await products.findById(gift.productid)
+router.get('/confirm-gift',auth,async(req,res)=>{
+    // var loginuser = req.user
+    // var gift  = await gifts.findById(req.params.giftid)
+    // const receiver = await users.findById(gift.receiverid)
+    // const product = await products.findById(gift.productid)
     // console.log(gift)
     // console.log(receiver)
     // console.log(product)
-    res.render('confirm-gift',{receiver:receiver,product:product, gift:gift})
+    // {receiver:receiver,product:product, gift:gift}
+    res.render('confirm-gift.ejs')
 });
 
 router.get('/addmytop8',auth,(req,res)=>{
