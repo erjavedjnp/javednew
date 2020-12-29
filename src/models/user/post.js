@@ -28,6 +28,24 @@ let postSchema = new mongoose.Schema({
       ref: "likes"
     }
   ],
+  heart: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "heart"
+    }
+  ],
+  lough: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "lough"
+    }
+  ],
+  weep: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "weep"
+    }
+  ],
   comments: [
     {
       type: mongoose.Schema.Types.ObjectId,

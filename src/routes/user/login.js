@@ -337,7 +337,7 @@ router.get("/mailverification", async (req, res) => {
 
  
 // SET STORAGE
-const storage=multer.diskStorage({
+/*const storage=multer.diskStorage({
 	destination: (req, file, cb) => { 
 		cb(null, 'uploads')
   }, 
@@ -354,9 +354,37 @@ MongoClient.connect(myurl, (err, client) => {
   if (err) return console.log(err)
   db = client.db('marketplace') 
   
-})
-router.post("/signup",async(req,res)=>{ 
+})*/
+var storage = multer.diskStorage({ 
+    destination: (req, file, cb) => { 
+        cb(null,path.join(__dirname ,'/../../../','/public/upload2')) 
+    }, 
+    filename: (req, file, cb) => { 
+        cb(null, file.originalname) 
+    } 
+}); 
+  
+var upload = multer({ storage: storage }); 
+
+
+
+
+router.post("/signup",upload.array('image',5),async(req,res)=>{ 
 	//let test=new Object
+	var file = req.files
+	var imgarr = [];
+	
+   for(var i=0;i<file.length;i++){
+	   var src = file[i].filename;
+		imgarr.push(src);
+   }
+	console.log(req.files)
+	console.log(imgarr[0])
+	
+	
+if(!req.file){
+	console.log("not received")
+}
 	try{
 		console.log("i m here");
 		const email=await User.findOne({email:req.body.email})
@@ -380,6 +408,7 @@ router.post("/signup",async(req,res)=>{
 		{
 			console.log('yes')
 			const user=new User(req.body)
+			user.avatar=imgarr[0]
 			await user.save()
 			
 			mailverification(user.email, user._id);
